@@ -8,7 +8,8 @@ During a casting process such as solidifying metal plates, those metal plates us
 
 ## SIP process link:
 
-https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0
+SIP process: https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0
+Sprint reflection: https://docs.google.com/document/d/1ROcQN64o7sSzH2lZel_-hgHf1hhe9IFEqnSOjLyZbQA/edit
 
 ## Dependencies
 
