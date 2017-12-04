@@ -62,13 +62,13 @@ install:
   - cd ~/catkin_ws/src
   - ln -s $CI_SOURCE_PATH .
 script:
-  - export CXX=$COMPILER;
-  - mkdir build
-  - cd build
-  - cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Release ../
-  - make
-  - make code_coverage
-  - test/cpp-test
+  #- export CXX=$COMPILER;
+  #- mkdir build
+  #- cd build
+  #- cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Release ../
+  #- make
+  #- make code_coverage
+  #- test/cpp-test
 
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - cd ~/catkin_ws
