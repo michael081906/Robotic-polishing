@@ -9,35 +9,34 @@ dist: trusty
 language:
   - generic
 cache:
-  - apt
-env:
-       global:
-
-                - ROS_CI_DESKTOP="$(lsb_release -cs)"
-                - CI_SOURCE_PATH=$(pwd)
-                - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
-                - ROS_PARALLEL_JOBS='-j8 -l6'
-
+  - ccache: false
 matrix:
-                - ROS_DISTRO=kinetic
   include:
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources:
-#            - kalakris-cmake
-#            - boost-latest
-#            - kubuntu-backports
-#            - ubuntu-toolchain-r-test
-#            - george-edison55-precise-backports
-#            - sourceline: 'ppa:v-launchpad-jochen-sprickerhof-de/pcl'
+            #- kalakris-cmake
+            #- boost-latest
+            #- kubuntu-backports
+            #- ubuntu-toolchain-r-test
+            #- george-edison55-precise-backports
+            #- sourceline 'ppa:v-launchpad-jochen-sprickerhof-de/pcl'
           packages:
-#            - g++-5
-#            - cmake
-#            - cmake-data
-#            - libpcl-1.7-all-dev
-#           - libgtest-dev
+            #- g++-5
+            #- cmake
+            #- cmake-data
+            #- libpcl-1.7-all-dev
+            #- libgtest-dev
+env:
+       global:
+                - ROS_DISTRO=kinetic
+                - ROS_CI_DESKTOP="$(lsb_release -cs)"
+                - CI_SOURCE_PATH=$(pwd)
+                - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
+                - ROS_PARALLEL_JOBS='-j8 -l6'
+                
 
 before_install:
   - pip install --user cpp-coveralls
