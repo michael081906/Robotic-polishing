@@ -21,7 +21,7 @@ matrix:
             - kubuntu-backports
             - ubuntu-toolchain-r-test
             - george-edison55-precise-backports
-            - sourceline: 'ppa:v-launchpad-jochen-sprickerhof-de/pcl'
+
           packages:
             - g++-5
             - cmake
