@@ -3,7 +3,7 @@
 # vim:set ts=2 sw=2 et:
 dist: trusty
 sudo: required
-language: generic
+language: cpp
 compiler:
   - gcc
 cache:
@@ -18,9 +18,7 @@ env:
     - ROS_PARALLEL_JOBS='-j8 -l6'
 
   matrix:
-    - ROS_DISTRO=indigo
-    - ROS_DISTRO=jade
-
+    - ROS_DISTRO=kinetic
 before_install:
   - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
   #- sudo sh -c "echo \"deb http://packages.ros.org/ros-shadow-fixed/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
