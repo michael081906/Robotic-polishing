@@ -1,88 +1,71 @@
-# We need a decent ubuntu dist
 # Based on https://github.com/felixduvallet/ros-travis-integration
-
-sudo: required
+#
+# vim:set ts=2 sw=2 et:
 dist: trusty
-
-# Modern cpp settings from
-#  http://genbattle.bitbucket.org/blog/2016/01/17/c++-travis-ci/
-language:
-  - generic
+sudo: required
+language: generic
+compiler:
+  - gcc
 cache:
   - apt
-matrix:
-  include:
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-            - kalakris-cmake
-            - boost-latest
-            - kubuntu-backports
-            - ubuntu-toolchain-r-test
-            - george-edison55-precise-backports
-            - sourceline: 'ppa:v-launchpad-jochen-sprickerhof-de/pcl'
-          packages:
-            - g++-5
-            - cmake
-            - cmake-data
-            - libpcl-1.7-all-dev
-            - libgtest-dev
 
-          env:
-              global:
-                - ROS_DISTRO=kinetic
-                - ROS_CI_DESKTOP="$(lsb_release -cs)"
-                - CI_SOURCE_PATH=$(pwd)
-                #- ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
-                #- ROS_PARALLEL_JOBS='-j8 -l6'
+env:
+  global:
+    #- ROS_DISTRO=indigo
+    - ROS_CI_DESKTOP="$(lsb_release -cs)"
+    - CI_SOURCE_PATH=$(pwd)
+    - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
+    - ROS_PARALLEL_JOBS='-j8 -l6'
 
+  matrix:
+    - ROS_DISTRO=indigo
+    - ROS_DISTRO=jade
 
 before_install:
-  - pip install --user cpp-coveralls
   - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
-  - sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
- #apt-get clean
- #rm -rf /var/lib/apt/lists/*
- #apt-get clean
- #apt-get update 
- #apt-get upgrade
+  #- sudo sh -c "echo \"deb http://packages.ros.org/ros-shadow-fixed/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
   - sudo apt-get update -qq
-  - sudo apt-get install -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin
+  - sudo apt-get install -qq -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin python-catkin-tools
   - source /opt/ros/$ROS_DISTRO/setup.bash
-  # Prepare rosdep to install dependencies.
+  # Prepare rosdep
   - sudo rosdep init
   - rosdep update
+
 install:
-  - sudo apt-get install -y -qq lcov
-  - mkdir -p ~/catkin_ws/src
-  - cd ~/catkin_ws/src
-  - catkin_init_workspace
-  # Create the devel/setup.bash (run catkin_make with an empty workspace) and
-  # source it to set the path variables.
+  # Create catkin workspace
+  - mkdir -p ~/catkin_ws
   - cd ~/catkin_ws
-  - catkin_make
-  - source devel/setup.bash
-  # Add the package under integration to the workspace using a symlink.
-  - cd ~/catkin_ws/src
+  - catkin config --init --mkdirs
+  # Pull source depends
+  - cd src
+  - wstool init
+  - if [[ -f $ROSINSTALL_FILE ]]; then wstool merge $ROSINSTALL_FILE; fi
+  - wstool up
+  # Link the repo we are testing to the new workspace
   - ln -s $CI_SOURCE_PATH .
-script:
-  #- export CXX=$COMPILER;
-  #- mkdir build
-  #- cd build
-  #- cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Release ../
-  #- make
-  #- make code_coverage
-  #- test/cpp-test
-
-  - source /opt/ros/$ROS_DISTRO/setup.bash
+  # Install dependencies using rosdep
   - cd ~/catkin_ws
-  #- catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS ) -DCMAKE_BUILD_TYPE=Release
-  - catkin_make -DCMAKE_BUILD_TYPE=Release
+  - rosdep install -q -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 
-after_success:
-  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+before_script:
+  - source /opt/ros/$ROS_DISTRO/setup.bash
+
+script:
+  - cd ~/catkin_ws
+  - catkin config --install
+  - catkin build --no-status --summary
+  - source devel/setup.bash
+  - catkin run_tests --no-status -p1 -i --summary
+  #- catkin_test_results --all ~/catkin_ws/build
+
+after_failure:
+  - find ~/catkin_ws/build -path '*/test_results/*' -type f -exec echo "==== {} ====" \; -exec cat {} \;
 
 notifications:
-  email: false
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/b856f174ff9736ad23ec
+    on_success: change
+    on_failure: always
+    on_start: false
