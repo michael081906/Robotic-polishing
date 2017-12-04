@@ -29,11 +29,11 @@ matrix:
             - libpcl-1.7-all-dev
             - libgtest-dev
 
-  	env:
-  		global:
+          env:
+              global:
                 - ROS_DISTRO=kinetic
- 		- ROS_CI_DESKTOP="$(lsb_release -cs)"
-    		- CI_SOURCE_PATH=$(pwd)
+                - ROS_CI_DESKTOP="$(lsb_release -cs)"
+                - CI_SOURCE_PATH=$(pwd)
                 #- ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
                 #- ROS_PARALLEL_JOBS='-j8 -l6'
 
