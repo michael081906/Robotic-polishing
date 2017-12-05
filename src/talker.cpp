@@ -42,7 +42,7 @@
 #include <sstream>
 #include <pcl_ros/point_cloud.h>
 #include <sensor_msgs/PointCloud2.h>
-#include "mrepathplanning/Trajectory.h" // This header name name from the project name in CmakeList.txt, not physical folder name
+#include "robotic_polishing/Trajectory.h" // This header name name from the project name in CmakeList.txt, not physical folder name
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 
@@ -50,8 +50,8 @@ void callback(const sensor_msgs::PointCloud2Ptr cloud) {
 
 }
 
-bool find(mrepathplanning::Trajectory::Request &req,
-          mrepathplanning::Trajectory::Response &res) {
+bool find(robotic_polishing::Trajectory::Request &req,
+          robotic_polishing::Trajectory::Response &res) {
 
   // 0. Initialization
   pclIo pclLoad;
