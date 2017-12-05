@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(roboticpolishing)
+project(robotic_polishing)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,6 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  genmsg
+  pcl_ros
+  sensor_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -46,19 +50,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+## 11/30 Generate messages in the 'msg' folder
+ add_message_files(DIRECTORY msg)
 
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+## 11/30 Generate services in the 'srv' folder
+ add_service_files(DIRECTORY srv)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -67,11 +63,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   Action2.action
 # )
 
-## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+## 11/30 Generate added messages and services with any dependencies listed here 
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -98,14 +94,15 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
-## INCLUDE_DIRS: uncomment this if you package contains header files
+## INCLUDE_DIRS: uncomment this if your package contains header files
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES roboticpolishing
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  LIBRARIES mrepathplanning
+# 11/30
+  CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -116,13 +113,18 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
 )
+
+find_package(PCL 1.2 REQUIRED)
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/roboticpolishing.cpp
+#   src/${PROJECT_NAME}/mrepathplanning.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -133,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/roboticpolishing_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/mrepathplanning_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -185,12 +187,32 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+add_executable(talkerpcl 
+	 src/talker.cpp
+     src/pcl_midterm/findNearestPoint.cpp
+     src/pcl_midterm/pclIo.cpp 
+     src/pcl_midterm/pclCloudViewer.cpp 
+     src/pcl_midterm/pclVoxel.cpp 
+     src/pcl_midterm/pclPassThrough.cpp 
+     src/pcl_midterm/pclStatisticalOutlierRemoval.cpp 
+     src/pcl_midterm/pclMlsSmoothing.cpp
+     src/pcl_midterm/pclFastTriangular.cpp
+     src/pcl_midterm/obstacleIdentify.cpp 
+     src/pcl_midterm/graph.cpp
+     src/pcl_midterm/prepareDijkstra.cpp
+     src/pcl_midterm/s_hull_pro.cpp
+     src/pcl_midterm/delaunay3.cpp
+     src/pcl_midterm/dijkstraPQ.cpp
+     )
+target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+
 #############
 ## Testing ##
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_roboticpolishing.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_mrepathplanning.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
