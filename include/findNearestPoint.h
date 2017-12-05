@@ -41,6 +41,8 @@ class findNearestPoint {
    * @return none */
   void findNearestProcess(std::vector<int>& nearIndices);
 
+  void setPosition(const std::vector<float>& pos);
+
 
 
 };

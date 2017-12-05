@@ -137,9 +137,9 @@ bool find(mrepathplanning::Trajectory::Request &req,
   findNearestPoint mg;
   std::vector<int> selectedPoint;
 
-  mg.readtext("./src/Robotic-polishing/kidney3dots3_pointCluster.txt");
-  //mg.setPosition(req.start);
-  //mg.setPosition(req.end);
+  //mg.readtext("./src/Robotic-polishing/kidney3dots3_pointCluster.txt");
+  mg.setPosition(req.start);
+  mg.setPosition(req.end);
 
   mg.setInputCloud(*cloud_with_normal);
   mg.findNearestProcess(selectedPoint);

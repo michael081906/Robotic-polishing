@@ -39,6 +39,15 @@ std::vector<double> findNearestPoint::readtext(const std::string &fileName) {
   return readDouble;
 }
 
+void findNearestPoint::setPosition(const std::vector<float>& pos)
+{
+  for (std::vector<float>::const_iterator it = pos.begin(); it < pos.end();
+      ++it) {
+    this->specificPoints.push_back(*it);
+  }
+}
+
+
 void findNearestPoint::setInputCloud(
     pcl::PointCloud<pcl::PointNormal>& cloudIn) {
   cloud = cloudIn;
