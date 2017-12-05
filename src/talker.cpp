@@ -8,7 +8,6 @@
 #include "pclStatisticalOutlierRemoval.h"
 #include "pclFastTriangular.h"
 #include "pclCloudViewer.h"
-#include "obstacleIdentify.h"
 #include "findNearestPoint.h"
 #include "graph.h"
 #include "delaunay3.h"
@@ -59,7 +58,6 @@ bool find(robotic_polishing::Trajectory::Request &req,
   pclPassThrough pt;
   pclVoxel vx;
   pclStatistOutRev sor;
-  obstacleIdentify oi;
   pclMlsSmoothing mls;
   pclFastTriangular ft;
   pcl::PolygonMesh triangles;

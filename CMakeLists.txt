@@ -188,7 +188,7 @@ add_definitions(${PCL_DEFINITIONS})
 # )
 
 add_executable(talkerpcl 
-	 src/talker.cpp
+     src/talker.cpp
      src/pcl_midterm/findNearestPoint.cpp
      src/pcl_midterm/pclIo.cpp 
      src/pcl_midterm/pclCloudViewer.cpp 
@@ -197,7 +197,6 @@ add_executable(talkerpcl
      src/pcl_midterm/pclStatisticalOutlierRemoval.cpp 
      src/pcl_midterm/pclMlsSmoothing.cpp
      src/pcl_midterm/pclFastTriangular.cpp
-     src/pcl_midterm/obstacleIdentify.cpp 
      src/pcl_midterm/graph.cpp
      src/pcl_midterm/prepareDijkstra.cpp
      src/pcl_midterm/s_hull_pro.cpp
@@ -219,3 +218,44 @@ target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+
+if (CATKIN_ENABLE_TESTING)
+ find_package(rostest REQUIRED)
+ find_package(PCL 1.2 REQUIRED)
+ include_directories( ${PROJECT_NAME}/include ${catkin_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
+ link_directories(${PCL_LIBRARY_DIRS})
+ add_definitions(${PCL_DEFINITIONS})
+ 
+catkin_add_gtest(
+    test_robotic_polishing
+     ./test/main.cpp
+     ./test/pclIoTest.cpp
+#    ./test/pclPassThroughTest.cpp
+#    ./test/pclVoxelTest.cpp
+#    ./test/pclStatisticalOutlierRemovalTest.cpp
+#    ./test/pclMlsSmoothingTest.cpp
+#    ./test/pclFastTriangularTest.cpp
+#    ./src/pcl_midterm/pclPassThrough.cpp
+#    ./src/pcl_midterm/pclVoxel.cpp
+#    ./src/pcl_midterm/pclIo.cpp
+#    ./src/pcl_midterm/pclStatisticalOutlierRemoval.cpp
+#    ./src/pcl_midterm/pclMlsSmoothing.cpp
+#    ./src/pcl_midterm/pclFastTriangular.cpp
+     )
+
+
+target_link_libraries(test_robotic_polishing ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+add_dependencies(
+  test_robotic_polishing
+  talkerpcl 
+  ${PROJECT_NAME}_generate_messages_cpp
+  ${catkin_EXPORTED_TARGETS}
+  )
+
+endif()
+
+
+
+
+
