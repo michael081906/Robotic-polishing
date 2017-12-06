@@ -30,26 +30,7 @@ TEST(pclVoxelTest, setLeafValue) {
   EXPECT_NEAR(0.7, leafSize[2], 0.1);
 }
 
-/**@brief TEST(pclVoxelTest, pointCloudDownSampleing)
- * will test the filterProcess() method.*/
-TEST(pclVoxelTest, pointCloudDownSampleing) {
-  pclIo pclLoad;
-  pclVoxel pclVoxel;
-  int originSize = 0;
-  int filteredSize = 0;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered(
-      new pcl::PointCloud<pcl::PointXYZ>);
-  pclLoad.readPCDfile(
-      "../PCL_Matlab_Result__ROI_Smoothing_ascii.pcd");
-  pclLoad.getPointCloud(*cloud);
-  originSize = cloud->height * cloud->width;
-  pclVoxel.setInputCloud(*cloud);
-  pclVoxel.setLeafSize(0.5, 0.4, 0.7);
-  pclVoxel.filterProcess(*cloudFiltered);
-  filteredSize = cloudFiltered->height * cloudFiltered->width;
-  EXPECT_LT(filteredSize, originSize);
-}
+
 /**@brief TEST(pclVoxelTest, setpclCloud) will
  * test the getInputCloud() and setInputCloud() method.*/
 TEST(pclVoxelTest, setpclCloud) {

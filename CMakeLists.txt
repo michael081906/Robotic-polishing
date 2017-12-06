@@ -229,29 +229,29 @@ if (CATKIN_ENABLE_TESTING)
  
 catkin_add_gtest(
     test_robotic_polishing
-     ./test/main.cpp
-     ./test/pclIoTest.cpp
-#    ./test/pclPassThroughTest.cpp
-#    ./test/pclVoxelTest.cpp
-#    ./test/pclStatisticalOutlierRemovalTest.cpp
-#    ./test/pclMlsSmoothingTest.cpp
-#    ./test/pclFastTriangularTest.cpp
-#    ./src/pcl_midterm/pclPassThrough.cpp
-#    ./src/pcl_midterm/pclVoxel.cpp
-#    ./src/pcl_midterm/pclIo.cpp
-#    ./src/pcl_midterm/pclStatisticalOutlierRemoval.cpp
-#    ./src/pcl_midterm/pclMlsSmoothing.cpp
-#    ./src/pcl_midterm/pclFastTriangular.cpp
+    test/main.cpp
+    test/pclPassThroughTest.cpp
+    test/pclVoxelTest.cpp
+    test/pclStatisticalOutlierRemovalTest.cpp
+    test/pclMlsSmoothingTest.cpp
+    test/pclFastTriangularTest.cpp
+    src/pcl_midterm/pclPassThrough.cpp
+    src/pcl_midterm/pclVoxel.cpp
+    src/pcl_midterm/pclIo.cpp
+    src/pcl_midterm/pclStatisticalOutlierRemoval.cpp
+    src/pcl_midterm/pclMlsSmoothing.cpp
+    src/pcl_midterm/pclFastTriangular.cpp
      )
 
 
 target_link_libraries(test_robotic_polishing ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(
-  test_robotic_polishing
-  talkerpcl 
-  ${PROJECT_NAME}_generate_messages_cpp
-  ${catkin_EXPORTED_TARGETS}
-  )
+
+#add_dependencies(
+#  test_robotic_polishing
+#  talkerpcl 
+#  ${PROJECT_NAME}_generate_messages_cpp
+#  ${catkin_EXPORTED_TARGETS}
+#  )
 
 endif()
 
