@@ -42,11 +42,22 @@
 #include <pcl_ros/point_cloud.h>
 #include <sensor_msgs/PointCloud2.h>
 #include "robotic_polishing/Trajectory.h" // This header name name from the project name in CmakeList.txt, not physical folder name
+#include <pcl_conversions/pcl_conversions.h>
+#include <pcl_ros/transforms.h>
+
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 
-void callback(const sensor_msgs::PointCloud2Ptr cloud) {
+PointCloud pointcloud_in;
+PointCloud pointcloud_out;
 
+void callback(const sensor_msgs::PointCloud2Ptr& cloud) {
+
+  pcl::fromROSMsg(*cloud, pointcloud_in);  // copy sensor_msg::Pointcloud message into pcl::PointCloud
+  tf::Transform transformKinect;
+  transformKinect.setOrigin(tf::Vector3(1.0, 0.0, 0.0));
+  transformKinect.setRotation(tf::Quaternion(0, 0, 0, 1));
+  pcl_ros::transformPointCloud(pointcloud_in, pointcloud_out, transformKinect);
 }
 
 bool find(robotic_polishing::Trajectory::Request &req,
