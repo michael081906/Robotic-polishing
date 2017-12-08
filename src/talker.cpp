@@ -53,12 +53,13 @@ PointCloud pointcloud_out;
 
 void callback(const sensor_msgs::PointCloud2Ptr& cloud) {
 
-  pcl::fromROSMsg(*cloud, pointcloud_out);  // copy sensor_msg::Pointcloud message into pcl::PointCloud
+  pcl::fromROSMsg(*cloud, pointcloud_in);  // copy sensor_msg::Pointcloud message into pcl::PointCloud
 
-  /*tf::Transform transformKinect;
-  transformKinect.setOrigin(tf::Vector3(1.0, 0.0, 0.0));
+  tf::Transform transformKinect;
+  transformKinect.setOrigin(tf::Vector3(0.0, 0.0, 1.0));
+  tf::Quaternion q;
   transformKinect.setRotation(tf::Quaternion(0, 0, 0, 1));
-   pcl_ros::transformPointCloud(pointcloud_in, pointcloud_out, transformKinect);*/
+  pcl_ros::transformPointCloud(pointcloud_in, pointcloud_out, transformKinect);
 }
 
 bool find(robotic_polishing::Trajectory::Request &req,
