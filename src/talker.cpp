@@ -53,11 +53,12 @@ PointCloud pointcloud_out;
 
 void callback(const sensor_msgs::PointCloud2Ptr& cloud) {
 
-  pcl::fromROSMsg(*cloud, pointcloud_in);  // copy sensor_msg::Pointcloud message into pcl::PointCloud
-  tf::Transform transformKinect;
+  pcl::fromROSMsg(*cloud, pointcloud_out);  // copy sensor_msg::Pointcloud message into pcl::PointCloud
+
+  /*tf::Transform transformKinect;
   transformKinect.setOrigin(tf::Vector3(1.0, 0.0, 0.0));
   transformKinect.setRotation(tf::Quaternion(0, 0, 0, 1));
-  pcl_ros::transformPointCloud(pointcloud_in, pointcloud_out, transformKinect);
+   pcl_ros::transformPointCloud(pointcloud_in, pointcloud_out, transformKinect);*/
 }
 
 bool find(robotic_polishing::Trajectory::Request &req,
@@ -74,16 +75,27 @@ bool find(robotic_polishing::Trajectory::Request &req,
   pcl::PolygonMesh triangles;
   pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normal(
       new pcl::PointCloud<pcl::PointNormal>);
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out(
-      new pcl::PointCloud<pcl::PointXYZ>);
+  // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out;
+  cloud_out = pointcloud_out.makeShared();
+
+  pcl::visualization::CloudViewer viewer("Cloud of Raw data");
+  viewer.showCloud(cloud_out);
+  int user_data = 0;
+  do {
+    user_data++;
+  } while (!viewer.wasStopped());
 
   // pub_pcl.publish(cloud_out);
 
   //  1. Load pcd file
-  std::cout << " 1. Loading pcd file, please wait..." << std::endl;
+  /*std::cout << " 1. Loading pcd file, please wait..." << std::endl;
   pclLoad.readPCDfile("./src/Robotic-polishing/kidney3dots3_p1.pcd");
   pclLoad.getPointCloud(*cloud_out);
   std::cout << " Loading completed" << std::endl;
+
+
+
   //  2. Remove the noise of point cloud
   std::cout << " 2. Removing the noise of point cloud, please wait..."
             << std::endl;
@@ -104,7 +116,7 @@ bool find(robotic_polishing::Trajectory::Request &req,
   std::cout << " Removing completed" << std::endl;
   /*****************************************************************/
   //  4. Down sample the point cloud
-  std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
+  /*std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
   vx.setInputCloud(*cloud_out);
   vx.setLeafSize(0.2, 0.2, 0.2);
   vx.filterProcess(*cloud_out);
@@ -241,7 +253,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle n, nh;
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   // ros::Publisher pub_pcl = nh.advertise<PointCloud>("test", 10);
-  ros::Subscriber sub_pcl = n.subscribe("test", 20, &callback);
+  ros::Subscriber sub_pcl = n.subscribe("camera/depth/points", 20, &callback);
   ros::ServiceServer service = n.advertiseService("FindTrajectory", &find);
 
   ros::Rate loop_rate(10);
