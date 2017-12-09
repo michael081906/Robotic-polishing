@@ -223,26 +223,6 @@ bool find(robotic_polishing::Trajectory::Request &req,
    ++routePos;
    }
 
-   if (0) {
-   std::cout << " 11. Calculating weighting function..." << std::endl;
-   double** wei;
-   prepareDijkstra pD(size3);
-   pD.setInputCloud(*cloud_with_normal);
-   pD.setTri(triads);
-   pD.computeWeight();
-   pD.getWeight(wei);
-   std::cout << " 11. Calculation completed" << std::endl;
-   Graph Dpath(size3.size(), wei);
-   Dpath.initializeState();
-   Dpath.Dijkstra(start, end);
-   Dpath.returnDijkstraPath(start, end, path);
-   std::vector<int>::iterator route = path.begin();
-   std::cout << "Distance = " << Dpath.returnDijkstraPathDistance(end);
-   std::cout << std::endl;
-   while (route != path.end()) {
-   std::cout << *route << " ";
-   ++route;
-   }
    }*/
 //---------------------------------------------------//
   return true;
