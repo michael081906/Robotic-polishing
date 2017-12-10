@@ -15,7 +15,11 @@ find_package(catkin REQUIRED COMPONENTS
   pcl_ros
   sensor_msgs
   message_generation
+  trajectory_msgs
+  roslib
 )
+
+find_package( orocos_kdl REQUIRED )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -204,6 +208,12 @@ add_executable(talkerpcl
      src/pcl_midterm/dijkstraPQ.cpp
      )
 target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(ref_planning src/ref.cpp)
+target_link_libraries(ref_planning ${catkin_LIBRARIES})
+
+add_executable(roboticPolishing_kuka_control_joint src/jointControlKuka.cpp)
+target_link_libraries(roboticPolishing_kuka_control_joint ${catkin_LIBRARIES} orocos-kdl)
 
 
 #############
