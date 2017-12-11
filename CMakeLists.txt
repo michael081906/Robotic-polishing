@@ -212,7 +212,7 @@ target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 add_executable(ref_planning src/ref.cpp)
 target_link_libraries(ref_planning ${catkin_LIBRARIES})
 
-add_executable(roboticPolishing_kuka_control_joint src/jointControlKuka.cpp)
+add_executable(roboticPolishing_kuka_control_joint src/jointControlKuka.cpp src/kuka_control/kukaControl.cpp)
 target_link_libraries(roboticPolishing_kuka_control_joint ${catkin_LIBRARIES} orocos-kdl)
 
 

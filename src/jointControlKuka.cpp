@@ -4,6 +4,7 @@
  *  Created on: Dec 9, 2017
  *      Author: michael
  */
+#include "kukaControl.h"
 #include<ros/ros.h>
 #include<trajectory_msgs/JointTrajectory.h>
 #include<trajectory_msgs/JointTrajectoryPoint.h>
@@ -20,6 +21,8 @@
 #include <kdl/chainjnttojacsolver.hpp>
 #include <string>
 #include <sstream>
+
+
 
 KDL::Chain LWR() {
 
@@ -86,45 +89,6 @@ void get_joints(const sensor_msgs::JointState & data) {
   initialized = true;
 }
 
-// initialize the joint positions with a non-zero value to be used in the solvers
-void initialize_joints(KDL::JntArray & _jointpositions, int _nj, float _init) {
-  /*for (int i = 0; i < _nj; ++i)
-   _jointpositions(i) = _init;*/
-  _jointpositions(0) = 0;
-  _jointpositions(1) = 0;
-  _jointpositions(2) = 0;
-  _jointpositions(3) = -1.57;
-  _jointpositions(4) = 0;
-  _jointpositions(5) = 1.57;
-  _jointpositions(6) = 0;
-
-}
-
-// initialize a joint command point
-void initialize_points(trajectory_msgs::JointTrajectoryPoint & _pt, int _nj,
-                       float _init) {
-  for (int i = 0; i < _nj; ++i)
-    _pt.positions.push_back(_init);
-}
-
-//defines the joint names for the robot (used in the jointTrajectory messages)
-void name_joints(trajectory_msgs::JointTrajectory & _cmd, int _nj) {
-  for (int i = 1; i <= _nj; ++i) {
-    std::ostringstream joint_name;
-    joint_name << "iiwa_joint_";
-    joint_name << i;
-    _cmd.joint_names.push_back(joint_name.str());
-  }
-}
-
-// loads the joint space points to be sent as a command to the robot
-void eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
-                 KDL::JntArray & _jointpositions, int _nj) {
-  for (int i = 0; i < _nj; ++i)
-    _point.positions[i] = _jointpositions(i);
-
-}
-
 // read the reference trajectory from the reflexxes node e.g. ref xyz-rpy
 bool ref_received = false;
 geometry_msgs::Twist ref;
@@ -135,6 +99,7 @@ void get_ref(const geometry_msgs::Twist & data) {
 
 int main(int argc, char * argv[]) {
 
+  kukaControl kc;
   KDL::Chain chain = LWR();
   // define the forward kinematic solver via the defined chain
   KDL::ChainFkSolverPos_recursive fksolver = KDL::ChainFkSolverPos_recursive(
@@ -158,7 +123,7 @@ int main(int argc, char * argv[]) {
   trajectory_msgs::JointTrajectory joint_cmd;
   trajectory_msgs::JointTrajectoryPoint pt;
 
-  initialize_points(pt, nj, 0.0);
+  kc.initialize_points(pt, nj, 0.0);
 
   ros::Publisher cmd_pub = nh_.advertise<trajectory_msgs::JointTrajectory>(
       "iiwa/PositionJointInterface_trajectory_controller/command", 10);
@@ -176,8 +141,8 @@ int main(int argc, char * argv[]) {
   double roll, pitch, yaw, x, y, z;
   KDL::Frame cartpos;
 
-  name_joints(joint_cmd, nj);
-  initialize_joints(jointpositions, nj, 0.2);
+  kc.name_joints(joint_cmd, nj);
+  kc.initialize_joints(jointpositions, nj, 0.2);
   ROS_INFO("Load current joint configuration");
   ROS_INFO("J1= %f", jointpositions(0));
   ROS_INFO("J2= %f", jointpositions(1));
@@ -254,7 +219,7 @@ int main(int argc, char * argv[]) {
   int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
                                     jointpositions_new);
   ROS_INFO("ik_error= %d", ik_error);
-  eval_points(pt, jointpositions_new, nj);
+  kc.eval_points(pt, jointpositions_new, nj);
   pt.time_from_start = ros::Duration(1.0);
   joint_cmd.points.push_back(pt);
   pt.time_from_start = ros::Duration(dt);
