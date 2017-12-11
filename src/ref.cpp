@@ -24,7 +24,7 @@ int main(int argc, char * argv[])
 
       ref.linear.x = 0.4;
       ref.linear.y = 0;
-      ref.linear.z = 0.6;
+      ref.linear.z = 0.4;
       ref.angular.x = 3.14;
       ref.angular.y = 0;
       ref.angular.z = -3.14;
