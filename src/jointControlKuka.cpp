@@ -89,15 +89,14 @@ void get_joints(const sensor_msgs::JointState & data) {
 // initialize the joint positions with a non-zero value to be used in the solvers
 void initialize_joints(KDL::JntArray & _jointpositions, int _nj, float _init) {
   /*for (int i = 0; i < _nj; ++i)
-    _jointpositions(i) = _init;*/
-  _jointpositions(0)=0;
-  _jointpositions(1)=0;
-  _jointpositions(2)=0;
-  _jointpositions(3)=-1.57;
-  _jointpositions(4)=0;
-  _jointpositions(5)=1.57;
-  _jointpositions(6)=0;
-
+   _jointpositions(i) = _init;*/
+  _jointpositions(0) = 0;
+  _jointpositions(1) = 0;
+  _jointpositions(2) = 0;
+  _jointpositions(3) = -1.57;
+  _jointpositions(4) = 0;
+  _jointpositions(5) = 1.57;
+  _jointpositions(6) = 0;
 
 }
 
@@ -203,38 +202,38 @@ int main(int argc, char * argv[]) {
 
   ROS_INFO("Set command cartpos configuration");
   /*
-  x=cartpos.p[0];
-  y=cartpos.p[1];
-  z=cartpos.p[2];
-  */
-
-  x=0.4;
-  y=0;
-  z=0.4;
+   x=cartpos.p[0];
+   y=cartpos.p[1];
+   z=cartpos.p[2];
+   */
   /*
-  roll=3.14;
-  pitch=0;
-  yaw=-3.14;*/
+   x = 0.4;
+   y = 0;
+   z = 0.4;
+   roll = 0.0052;
+   pitch = 1.57;
+   yaw = 0.0052;*/
+  home.getParam("roll", roll);
+  home.getParam("pitch", pitch);
+  home.getParam("yaw", yaw);
+  home.getParam("x", x);
+  home.getParam("y", y);
+  home.getParam("z", z);
   ROS_INFO("cmd_x= %f", x);
   ROS_INFO("cmd_y= %f", y);
   ROS_INFO("cmd_z= %f", z);
   ROS_INFO("cmd_rx= %f", roll);
   ROS_INFO("cmd_ry= %f", pitch);
   ROS_INFO("cmd_rz= %f\n", yaw);
-  /*home.getParam("roll", roll);
-  home.getParam("pitch", pitch);
-  home.getParam("yaw", yaw);
-  home.getParam("x", x);
-  home.getParam("y", y);
-  home.getParam("z", z);*/
+
   pt.time_from_start = ros::Duration(1.0);
 
-
   KDL::Rotation rpy = KDL::Rotation::RPY(roll, pitch, yaw);  //Rotation built from Roll-Pitch-Yaw angles
+  //rpy = KDL::Rotation::RPY(roll, pitch, yaw);
   cartpos.p[0] = x;
   cartpos.p[1] = y;
   cartpos.p[2] = z;
-  cartpos.M = rpy;// 2017.12.10 Bug here!!!!!!! Causing IK failed...... because you did not initialize it.
+  cartpos.M = rpy;  // 2017.12.10 Bug here!!!!!!! Causing IK failed...... because you did not initialize it.
   /*
    if (initialized) {
    for (int k = 0; k < 7; ++k) {
@@ -252,7 +251,8 @@ int main(int argc, char * argv[]) {
   ROS_INFO("J5= %f", jointpositions(4));
   ROS_INFO("J6= %f", jointpositions(5));
   ROS_INFO("J7= %f\n", jointpositions(6));
-  int ik_error = iksolver.CartToJnt(jointpositions, cartpos, jointpositions_new);
+  int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
+                                    jointpositions_new);
   ROS_INFO("ik_error= %d", ik_error);
   eval_points(pt, jointpositions_new, nj);
   pt.time_from_start = ros::Duration(1.0);
@@ -270,10 +270,22 @@ int main(int argc, char * argv[]) {
   ROS_INFO("J7= %f\n", jointpositions_new(6));
   joint_cmd.header.stamp = ros::Time::now();
 
+  kinematics_status = fksolver.JntToCart(jointpositions_new, cartpos);
+  ROS_INFO("Get FK result");
+  if (kinematics_status >= 0) {
+    ROS_INFO("FK_x= %f", cartpos.p[0]);
+    ROS_INFO("FK_y= %f", cartpos.p[1]);
+    ROS_INFO("FK_z= %f", cartpos.p[2]);
+    cartpos.M.GetRPY(roll, pitch, yaw);
+    ROS_INFO("FK_Rx= %f", roll);
+    ROS_INFO("FK_Ry= %f", pitch);
+    ROS_INFO("FK_Rz= %f\n", yaw);
+  }
+
   while (ros::ok()) {
-  cmd_pub.publish(joint_cmd);
-  loop_rate.sleep();
-  ros::spinOnce();
+    cmd_pub.publish(joint_cmd);
+    loop_rate.sleep();
+    ros::spinOnce();
   }
   return 0;
 
