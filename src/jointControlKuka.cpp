@@ -21,8 +21,8 @@
 #include <kdl/chainjnttojacsolver.hpp>
 #include <string>
 #include <sstream>
+#include <cmath>
 
-/*
 sensor_msgs::JointState joints;
 bool initialized = false;
 //callback for reading joint values
@@ -38,15 +38,45 @@ void get_joints(const sensor_msgs::JointState & data) {
   }
   initialized = true;
 }
-
-// read the reference trajectory from the reflexxes node e.g. ref xyz-rpy
-bool ref_received = false;
-geometry_msgs::Twist ref;
-void get_ref(const geometry_msgs::Twist & data) {
-  ref = data;
-  ref_received = true;
+/*
+ // read the reference trajectory from the reflexxes node e.g. ref xyz-rpy
+ bool ref_received = false;
+ geometry_msgs::Twist ref;
+ void get_ref(const geometry_msgs::Twist & data) {
+ ref = data;
+ ref_received = true;
+ }
+ */
+double threshold=0.001;
+bool checkIfArrived(const KDL::JntArray& joint_ref) {
+  float d0, d1, d2, d3, d4, d5, d6;
+  d0 = joint_ref(0) - joints.position[0];
+  d0 = fabs(d0);
+  d1 = joint_ref(1) - joints.position[1];
+  d1 = fabs(d1);
+  d2 = joint_ref(2) - joints.position[2];
+  d2 = fabs(d2);
+  d3 = joint_ref(3) - joints.position[3];
+  d3 = fabs(d3);
+  d4 = joint_ref(4) - joints.position[4];
+  d4 = fabs(d4);
+  d5 = joint_ref(5) - joints.position[5];
+  d5 = fabs(d5);
+  d6 = joint_ref(6) - joints.position[6];
+  d6 = fabs(d6);
+  if (d0 < threshold && d1 < threshold && d2 < threshold && d3 < threshold && d4 < threshold
+      && d5 < threshold && d6 < threshold) {
+    return true;
+  }
+  return true;
 }
-*/
+
+struct position {
+  float x;
+  float y;
+  float z;
+} test1;
+
 int main(int argc, char * argv[]) {
 
   kukaControl kc;
@@ -58,6 +88,7 @@ int main(int argc, char * argv[]) {
   unsigned int nj = chain.getNrOfJoints();  // get the number of joints from the chain
   KDL::JntArray jointpositions = KDL::JntArray(nj);  // define a joint array in KDL format for the joint positions
   KDL::JntArray jointpositions_new = KDL::JntArray(nj);  // define a joint array in KDL format for the next joint positions
+  KDL::JntArray joint_ref = KDL::JntArray(nj);
   KDL::JntArray manual_joint_cmd = KDL::JntArray(nj);  // define a manual joint command array for debugging
   ros::init(argc, argv, "joint");
   ros::NodeHandle nh_;
@@ -67,8 +98,9 @@ int main(int argc, char * argv[]) {
   kc.initialize_points(pt, nj, 0.0);
   ros::Publisher cmd_pub = nh_.advertise<trajectory_msgs::JointTrajectory>(
       "iiwa/PositionJointInterface_trajectory_controller/command", 10);
-   // ros::Subscriber joints_sub = nh_.subscribe("/iiwa/joint_states", 10, get_joints);
-   // ros::Subscriber ref_sub = nh_.subscribe("/reftraj", 10, get_ref);
+  ros::Subscriber joints_sub = nh_.subscribe("/iiwa/joint_states", 10,
+                                             get_joints);
+  // ros::Subscriber ref_sub = nh_.subscribe("/reftraj", 10, get_ref);
   int loop_freq = 10;
   float dt = (float) 1 / loop_freq;
   ros::Rate loop_rate(loop_freq);
@@ -112,7 +144,7 @@ int main(int argc, char * argv[]) {
   ROS_INFO("cmd_ry= %f", pitch);
   ROS_INFO("cmd_rz= %f\n", yaw);
 
-  pt.time_from_start = ros::Duration(1.0);
+  pt.time_from_start = ros::Duration(3.0);
   KDL::Rotation rpy = KDL::Rotation::RPY(roll, pitch, yaw);  //Rotation built from Roll-Pitch-Yaw angles
   cartpos.p[0] = x;
   cartpos.p[1] = y;
@@ -132,9 +164,9 @@ int main(int argc, char * argv[]) {
                                     jointpositions_new);
   ROS_INFO("ik_error= %d", ik_error);
   kc.eval_points(pt, jointpositions_new, nj);
-  pt.time_from_start = ros::Duration(1.0);
+  pt.time_from_start = ros::Duration(3.0);
   joint_cmd.points.push_back(pt);
-  pt.time_from_start = ros::Duration(dt);
+  pt.time_from_start = ros::Duration(3.0);
   joint_cmd.points[0] = pt;
 
   ROS_INFO("Set current joint configuration after IK");
@@ -159,7 +191,42 @@ int main(int argc, char * argv[]) {
     ROS_INFO("FK_Rz= %f\n", yaw);
   }
 
+  std::vector<position> test_ref;
+  float y_test = (-0.2);
+  for (int i = 0; i < 5; i++) {
+    test1.x = 0.6;
+    test1.y = y_test;
+    test1.z = 0.2;
+    test_ref.push_back(test1);
+    y_test = y_test + 0.1;
+  }
+
+  joint_ref = jointpositions_new;
+  std::vector<position>::iterator now_cmd = test_ref.begin();
   while (ros::ok()) {
+    while (now_cmd != test_ref.end()) {
+      // if joint error<0.001
+      if (checkIfArrived(joint_ref)) {  //{ take out element
+        cartpos.p[0] = now_cmd->x;
+        cartpos.p[1] = now_cmd->y;
+        cartpos.p[2] = now_cmd->z;
+        /*for (int k = 0; k < nj; k++) {
+          jointpositions(k) = joints.position[k];
+        }*/
+      }
+/*
+       // IK }
+        int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
+                                          jointpositions_new);
+        pt.time_from_start = ros::Duration(3.0);
+        kc.eval_points(pt, jointpositions_new, nj);
+        joint_cmd.points[0] = pt;
+        joint_ref = jointpositions_new;
+        ++now_cmd;
+      }*/
+      // send command
+      cmd_pub.publish(joint_cmd);
+    }
     cmd_pub.publish(joint_cmd);
     loop_rate.sleep();
     ros::spinOnce();

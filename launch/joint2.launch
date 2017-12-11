@@ -1,8 +1,8 @@
 <launch>
 	<node name="joint_control" pkg="robotic_polishing" type="roboticPolishing_kuka_control_joint">
 		<param name="x" value="0.6"/>
-		<param name="y" value="0"/>
-		<param name="z" value="0.5"/>
+		<param name="y" value="-0.2"/>
+		<param name="z" value="0.2"/>
 		<param name="roll" value="0"/>
 		<param name="pitch" value="1.57"/>
 		<param name="yaw" value="0"/>
