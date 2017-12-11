@@ -66,3 +66,56 @@ void kukaControl::eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
 
 }
 
+KDL::Chain kukaControl::LWR() {
+
+  KDL::Chain chain;
+
+  //base
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::None),
+                   KDL::Frame::DH_Craig1989(0, 0, 0.33989, 0)));
+
+  //joint 1
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0, 0)));
+
+  //joint 2
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, M_PI_2, 0.40011, 0)));
+
+  //joint 3
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, M_PI_2, 0, 0)));
+
+  //joint 4
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0.40003, 0)));
+
+  //joint 5
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0, 0)));
+
+  //joint 6
+  chain.addSegment(
+      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+                   KDL::Frame::DH_Craig1989(0, M_PI_2, 0, 0)));
+
+  //joint 7 (with flange adapter)
+  chain.addSegment(KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
+  //KDL::Frame::DH_Craig1989(0,0,0.098,0)));
+//    KDL::Frame::DH_Craig1989(0,0,0.088,0))); //AS
+      KDL::Frame::DH_Craig1989(0, 0, 0.12597, 0)));
+
+  return chain;
+
+}
+
+
+
+
+

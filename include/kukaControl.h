@@ -35,7 +35,7 @@ public:
   void name_joints(trajectory_msgs::JointTrajectory & _cmd, int _nj);
   void eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
                    KDL::JntArray & _jointpositions, int _nj);
-
+  KDL::Chain LWR();
 };
 
 
