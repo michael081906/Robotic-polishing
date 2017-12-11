@@ -22,8 +22,7 @@
 #include <string>
 #include <sstream>
 
-
-//reading the kuka lwr joint positions
+/*
 sensor_msgs::JointState joints;
 bool initialized = false;
 //callback for reading joint values
@@ -47,51 +46,34 @@ void get_ref(const geometry_msgs::Twist & data) {
   ref = data;
   ref_received = true;
 }
-
+*/
 int main(int argc, char * argv[]) {
 
   kukaControl kc;
   KDL::Chain chain = kc.LWR();
-  // define the forward kinematic solver via the defined chain
   KDL::ChainFkSolverPos_recursive fksolver = KDL::ChainFkSolverPos_recursive(
-      chain);
-  // define the inverse kinematics solver
+      chain);  // define the forward kinematic solver via the defined chain
   KDL::ChainIkSolverVel_pinv iksolverv = KDL::ChainIkSolverVel_pinv(chain);  //Inverse velocity solver
   KDL::ChainIkSolverPos_NR iksolver(chain, fksolver, iksolverv, 100, 1e-6);  //Maximum 100 iterations, stop at accuracy 1e-6
-
-  // get the number of joints from the chain
-  unsigned int nj = chain.getNrOfJoints();
-  // define a joint array in KDL format for the joint positions
-  KDL::JntArray jointpositions = KDL::JntArray(nj);
-  // define a joint array in KDL format for the next joint positions
-  KDL::JntArray jointpositions_new = KDL::JntArray(nj);
-  // define a manual joint command array for debugging
-  KDL::JntArray manual_joint_cmd = KDL::JntArray(nj);
-
+  unsigned int nj = chain.getNrOfJoints();  // get the number of joints from the chain
+  KDL::JntArray jointpositions = KDL::JntArray(nj);  // define a joint array in KDL format for the joint positions
+  KDL::JntArray jointpositions_new = KDL::JntArray(nj);  // define a joint array in KDL format for the next joint positions
+  KDL::JntArray manual_joint_cmd = KDL::JntArray(nj);  // define a manual joint command array for debugging
   ros::init(argc, argv, "joint");
   ros::NodeHandle nh_;
   ros::NodeHandle home("~");
   trajectory_msgs::JointTrajectory joint_cmd;
   trajectory_msgs::JointTrajectoryPoint pt;
-
   kc.initialize_points(pt, nj, 0.0);
-
   ros::Publisher cmd_pub = nh_.advertise<trajectory_msgs::JointTrajectory>(
       "iiwa/PositionJointInterface_trajectory_controller/command", 10);
-
-  ros::Subscriber joints_sub = nh_.subscribe("/iiwa/joint_states", 10,
-                                             get_joints);
-
-  ros::Subscriber ref_sub = nh_.subscribe("/reftraj", 10, get_ref);
-
-  ROS_INFO("OK!");
-
+   // ros::Subscriber joints_sub = nh_.subscribe("/iiwa/joint_states", 10, get_joints);
+   // ros::Subscriber ref_sub = nh_.subscribe("/reftraj", 10, get_ref);
   int loop_freq = 10;
   float dt = (float) 1 / loop_freq;
   ros::Rate loop_rate(loop_freq);
   double roll, pitch, yaw, x, y, z;
   KDL::Frame cartpos;
-
   kc.name_joints(joint_cmd, nj);
   kc.initialize_joints(jointpositions, nj, 0.2);
   ROS_INFO("Load current joint configuration");
@@ -117,18 +99,6 @@ int main(int argc, char * argv[]) {
   }
 
   ROS_INFO("Set command cartpos configuration");
-  /*
-   x=cartpos.p[0];
-   y=cartpos.p[1];
-   z=cartpos.p[2];
-   */
-  /*
-   x = 0.4;
-   y = 0;
-   z = 0.4;
-   roll = 0.0052;
-   pitch = 1.57;
-   yaw = 0.0052;*/
   home.getParam("roll", roll);
   home.getParam("pitch", pitch);
   home.getParam("yaw", yaw);
@@ -143,22 +113,13 @@ int main(int argc, char * argv[]) {
   ROS_INFO("cmd_rz= %f\n", yaw);
 
   pt.time_from_start = ros::Duration(1.0);
-
   KDL::Rotation rpy = KDL::Rotation::RPY(roll, pitch, yaw);  //Rotation built from Roll-Pitch-Yaw angles
-  //rpy = KDL::Rotation::RPY(roll, pitch, yaw);
   cartpos.p[0] = x;
   cartpos.p[1] = y;
   cartpos.p[2] = z;
   cartpos.M = rpy;  // 2017.12.10 Bug here!!!!!!! Causing IK failed...... because you did not initialize it.
-  /*
-   if (initialized) {
-   for (int k = 0; k < 7; ++k) {
-   jointpositions(k) = joints.posllition[k];
-   }
-   */
 
   KDL::Twist xyzr;
-
   ROS_INFO("Set current joint configuration before IK");
   ROS_INFO("J1= %f", jointpositions(0));
   ROS_INFO("J2= %f", jointpositions(1));
@@ -175,7 +136,7 @@ int main(int argc, char * argv[]) {
   joint_cmd.points.push_back(pt);
   pt.time_from_start = ros::Duration(dt);
   joint_cmd.points[0] = pt;
-//    }
+
   ROS_INFO("Set current joint configuration after IK");
   ROS_INFO("J1= %f", jointpositions_new(0));
   ROS_INFO("J2= %f", jointpositions_new(1));

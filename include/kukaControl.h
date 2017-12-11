@@ -26,8 +26,6 @@
 class kukaControl{
 private:
 
-
-
 public:
   kukaControl();
   void initialize_joints(KDL::JntArray & _jointpositions, int _nj, float _init);
