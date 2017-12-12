@@ -58,7 +58,7 @@ find_package( orocos_kdl REQUIRED )
  add_message_files(DIRECTORY msg)
 
 ## 11/30 Generate services in the 'srv' folder
- add_service_files(DIRECTORY srv)
+ add_service_files(FILES Trajectory.srv)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -71,6 +71,7 @@ find_package( orocos_kdl REQUIRED )
  generate_messages(
    DEPENDENCIES
    std_msgs
+   sensor_msgs
  )
 
 ################################################
@@ -106,7 +107,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES mrepathplanning
 # 11/30
-  CATKIN_DEPENDS message_runtime
+  CATKIN_DEPENDS message_runtime std_msgs sensor_msgs
 #  DEPENDS system_lib
 )
 
