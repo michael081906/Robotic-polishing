@@ -28,8 +28,8 @@ void delaunay3::putPointCloudIntoShx()
   int siz = cloud.size();
   for (int v = 0; v < siz; v++) {
     pt.id = v;
-    pt.r = (float) cloud.points[v].x;
-    pt.c = (float) cloud.points[v].y;
+    pt.r = (float) cloud.points[v].y;
+    pt.c = (float) cloud.points[v].z;
     pts.push_back(pt);
   }
 }

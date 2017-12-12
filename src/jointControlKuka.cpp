@@ -283,7 +283,6 @@ int main(int argc, char * argv[]) {
   ROS_INFO("joint_ref(6)= %f", joint_ref(6));
   std::vector<position>::iterator now_cmd = test_ref.begin();
   bool arrived = false;
-
   double d0, d1, d2, d3, d4, d5, d6;
   double d01, d02, d03, d04, d05, d06, d07;
 
@@ -301,22 +300,16 @@ int main(int argc, char * argv[]) {
 
        d0 = joint_ref(0) - joints.position[0];
        d01 = fabs(d0);
-
        d1 = joint_ref(1) - joints.position[1];
        d02 = fabs(d1);
-
        d2 = joint_ref(2) - joints.position[2];
        d03 = fabs(d2);
-
        d3 = joint_ref(3) - joints.position[3];
        d04 = fabs(d3);
-
        d4 = joint_ref(4) - joints.position[4];
        d05 = fabs(d4);
-
        d5 = joint_ref(5) - joints.position[5];
        d06 = fabs(d5);
-
        d6 = joint_ref(6) - joints.position[6];
        d07 = fabs(d6);
 

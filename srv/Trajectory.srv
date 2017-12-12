@@ -1,4 +1,7 @@
 float32[] start
 float32[] end
 ---
-int32[] path
+float32[] path_x
+float32[] path_y
+float32[] path_z 
+

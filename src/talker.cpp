@@ -56,7 +56,7 @@ void callback(const sensor_msgs::PointCloud2Ptr& cloud) {
 
   // tf::Transform transformKinect;
   tf::Pose transformKinect;
-  transformKinect.setOrigin(tf::Vector3(1.0, 0.0, 0.0));
+  transformKinect.setOrigin(tf::Vector3(0.3, 0.0, 0.0));
   tf::Matrix3x3 rotationMatrix(0, 0, 1, -1, 0, 0, 0, -1, 0);
  // tf::Matrix3x3 rotationMatrix(1, 0, 0, 0, 1, 0, 0, 0, 1);
   transformKinect.setBasis(rotationMatrix);
@@ -83,21 +83,30 @@ bool find(robotic_polishing::Trajectory::Request &req,
   // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZ>);
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out;
   cloud_out = pointcloud_out.makeShared();
-
+  pt.setInputCloud(*cloud_out);
+  pt.setFilterZlimit(0, 2);
+  pt.filterProcess(*cloud_out);
+  //  4. Down sample the point cloud
+  std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
+   vx.setInputCloud(*cloud_out);
+   vx.setLeafSize(0.01, 0.01, 0.01);
+   vx.filterProcess(*cloud_out);
+   std::cout << " Down sampling completed" << std::endl;
+  ///****************************************************************************
   pcl::visualization::CloudViewer viewer("Cloud of Raw data");
   viewer.showCloud(cloud_out);
   int user_data = 0;
   do {
     user_data++;
   } while (!viewer.wasStopped());
-
+  // ****************************************************************************/
   // pub_pcl.publish(cloud_out);
 
   //  1. Load pcd file
   /*std::cout << " 1. Loading pcd file, please wait..." << std::endl;
    pclLoad.readPCDfile("./src/Robotic-polishing/kidney3dots3_p1.pcd");
    pclLoad.getPointCloud(*cloud_out);
-   std::cout << " Loading completed" << std::endl;
+   std::cout << " Loading completed" << std::endl;*/
 
 
 
@@ -120,35 +129,28 @@ bool find(robotic_polishing::Trajectory::Request &req,
    //*******************************************************************
    std::cout << " Removing completed" << std::endl;
    /*****************************************************************/
-  //  4. Down sample the point cloud
-  /*std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
-   vx.setInputCloud(*cloud_out);
-   vx.setLeafSize(0.2, 0.2, 0.2);
-   vx.filterProcess(*cloud_out);
-   std::cout << " Down sampling completed" << std::endl;
+
    //  3. Extract certain region of point cloud
-   std::cout << " 3. Extracting certain region of point cloud, please wait..."
+  /* std::cout << " 3. Extracting certain region of point cloud, please wait..."
    << std::endl;
    pt.setInputCloud(*cloud_out);
-   pt.setFilterXlimit(4.5, 23.0);
+   pt.setFilterXlimit(0, 1.0);
    pt.filterProcess(*cloud_out);
    pt.setInputCloud(*cloud_out);
-   pt.setFilterYlimit(5.0, 16.5);
+   pt.setFilterYlimit(-1, 1);
    pt.filterProcess(*cloud_out);
-   pt.setInputCloud(*cloud_out);
-   pt.setFilterZlimit(7, 11.0);
-   pt.filterProcess(*cloud_out);
-   std::cout << " Extracting completed" << std::endl;
+
+   std::cout << " Extracting completed" << std::endl;*/
    //  5. Smooth the point cloud
    std::cout << " 5. Smoothing the point cloud, please wait..." << std::endl;
    mls.setInputCloud(*cloud_out);
-   mls.setSearchRadius(4);
+   mls.setSearchRadius(0.05);
    mls.mlsProcess(*cloud_with_normal);
    std::cout << " Smoothing completed" << std::endl;
    //  7. Mesh the obstacle
    std::cout << " 7. Meshing the obstacle, please wait..." << std::endl;
    ft.setInputCloud(*cloud_with_normal);
-   ft.setSearchRadius(4);
+   ft.setSearchRadius(0.05);
    ft.reconctruct(triangles);
    std::vector<int> gp33 = ft.getSegID();
    int sizegp3 = gp33.size();
@@ -156,7 +158,8 @@ bool find(robotic_polishing::Trajectory::Request &req,
    std::cout << " Meshing completed..." << std::endl;
    std::cout << " size of gp3: " << sizegp3 << std::endl;
    //  8. Show the result
-   //pclView.display(triangles);
+   // pclView.display(triangles);
+
    // 9.mergeHanhsPoint
    std::cout << " 9. Merging point of selected point, please wait..."
    << std::endl;
@@ -194,8 +197,7 @@ bool find(robotic_polishing::Trajectory::Request &req,
    dPQ.computeWeight();
    dPQ.shortestPath(start, end);
    dPQ.returnDijkstraPath(start, end, path);
-   res.path = path;
-   /*
+
    std::vector<int>::iterator route = path.begin();
    while (route != path.end()) {
    std::cout << *route << " ";
@@ -206,24 +208,30 @@ bool find(robotic_polishing::Trajectory::Request &req,
    dPQ.returnDijkstraPathPosition(start, end, POS);
    std::vector<position>::iterator routePos = POS.begin();
 
+   float px,py,pz;
    while (routePos != POS.end()) {
    std::cout << (*routePos).x << " ";  // p.80
+   px=(*routePos).x;
+   res.path_x.push_back(px);
    ++routePos;
    }
    std::cout << std::endl;
    routePos = POS.begin();
    while (routePos != POS.end()) {
    std::cout << (*routePos).y << " ";
+   py=(*routePos).y;
+   res.path_y.push_back(py);
    ++routePos;
    }
    std::cout << std::endl;
    routePos = POS.begin();
    while (routePos != POS.end()) {
    std::cout << (*routePos).z << " ";
+   pz=(*routePos).z;
+   res.path_z.push_back(pz);
    ++routePos;
    }
 
-   }*/
 //---------------------------------------------------//
   return true;
 }
