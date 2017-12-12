@@ -1,0 +1,10 @@
+<launch>
+	<node name="joint_control" pkg="robotic_polishing" type="roboticPolishing_kuka_control_joint">
+		<param name="xStart" value="0.8"/>
+		<param name="yStart" value="0.1"/>
+		<param name="zStart" value="0.3"/>
+		<param name="xEnd" value="0.8"/>
+		<param name="yEnd" value="-0.1"/>
+		<param name="zEnd" value="0.1"/>
+	</node>
+</launch>

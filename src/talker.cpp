@@ -84,7 +84,7 @@ bool find(robotic_polishing::Trajectory::Request &req,
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out;
   cloud_out = pointcloud_out.makeShared();
   pt.setInputCloud(*cloud_out);
-  pt.setFilterZlimit(0, 2);
+  pt.setFilterZlimit(0, 10);
   pt.filterProcess(*cloud_out);
   //  4. Down sample the point cloud
   std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
@@ -122,8 +122,8 @@ bool find(robotic_polishing::Trajectory::Request &req,
    pcl::RadiusOutlierRemoval<pcl::PointXYZ> outrem;
    // build the filter
    outrem.setInputCloud(cloud_out);
-   outrem.setRadiusSearch(3);
-   outrem.setMinNeighborsInRadius(100);
+   outrem.setRadiusSearch(0.5);
+   outrem.setMinNeighborsInRadius(30);
    // apply filter
    outrem.filter(*cloud_out);
    //*******************************************************************
