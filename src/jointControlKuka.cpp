@@ -65,7 +65,7 @@ void get_joints(const sensor_msgs::JointState & data) {
  ref_received = true;
  }
  */
-double threshold = 0.04;
+double threshold = 0.001;
 bool checkIfArrived(const KDL::JntArray& joint_ref) {
   double d0, d1, d2, d3, d4, d5, d6;
   double d01, d02, d03, d04, d05, d06, d07;
@@ -206,6 +206,7 @@ int main(int argc, char * argv[]) {
   if (pclTraj.call(srv)) {
     ROS_INFO("service called");
   }
+
   std::vector<position> test_ref;
   for (int a = 0; a < srv.response.path_x.size(); a++) {
     test1.x = srv.response.path_x[a];
@@ -214,20 +215,9 @@ int main(int argc, char * argv[]) {
     test_ref.push_back(test1);
   }
 
-  for (int aa=0;aa< test_ref.size();aa++)
-  {
-      ROS_INFO("%f ",test_ref[aa].x);
-  }
-  for (int aa=0;aa< test_ref.size();aa++)
-  {
-      ROS_INFO("%f", test_ref[aa].y);
-  }
-  for (int aa=0;aa< test_ref.size();aa++)
-  {
-      ROS_INFO("%f", test_ref[aa].z);
-  }
 
-  /*float y_test = (-0.2);
+
+/*  float y_test = (-0.2);
    for (int i = 0; i < 5; i++) {
    test1.x = 0.6;
    test1.y = y_test;
@@ -235,7 +225,20 @@ int main(int argc, char * argv[]) {
    test_ref.push_back(test1);
    y_test = y_test + 0.1;
    }*/
-  /*
+
+   for (int aa=0;aa< test_ref.size();aa++)
+   {
+       ROS_INFO("%f ",test_ref[aa].x);
+   }
+   for (int aa=0;aa< test_ref.size();aa++)
+   {
+       ROS_INFO("%f", test_ref[aa].y);
+   }
+   for (int aa=0;aa< test_ref.size();aa++)
+   {
+       ROS_INFO("%f", test_ref[aa].z);
+   }
+
    ROS_INFO("command show");
    ROS_INFO("FK_Rz= %f", test_ref[0].x);
    ROS_INFO("FK_Rz= %f", test_ref[0].y);
@@ -257,8 +260,20 @@ int main(int argc, char * argv[]) {
    ROS_INFO("FK_Rz= %f", test_ref[4].y);
    ROS_INFO("FK_Rz= %f", test_ref[4].z);
 
+   ROS_INFO("FK_Rz= %f", test_ref[5].x);
+   ROS_INFO("FK_Rz= %f", test_ref[5].y);
+   ROS_INFO("FK_Rz= %f", test_ref[5].z);
+
+   ROS_INFO("FK_Rz= %f", test_ref[6].x);
+   ROS_INFO("FK_Rz= %f", test_ref[6].y);
+   ROS_INFO("FK_Rz= %f", test_ref[6].z);
+
+   ROS_INFO("FK_Rz= %f", test_ref[7].x);
+   ROS_INFO("FK_Rz= %f", test_ref[7].y);
+   ROS_INFO("FK_Rz= %f", test_ref[7].z);
+
    ROS_INFO("command show end ");
-   */
+
   // ***********************************************************************************//
   ROS_INFO("Set command cartpos configuration");
   /*home.getParam("roll", roll);
@@ -370,6 +385,15 @@ int main(int argc, char * argv[]) {
       d6 = joint_ref(6) - joints.position[6];
       d07 = fabs(d6);
 
+
+      ROS_INFO("joint_ref(0)= %f", joint_ref(0));
+      ROS_INFO("joint_ref(1)= %f", joint_ref(1));
+      ROS_INFO("joint_ref(2)= %f", joint_ref(2));
+      ROS_INFO("joint_ref(3)= %f", joint_ref(3));
+      ROS_INFO("joint_ref(4)= %f", joint_ref(4));
+      ROS_INFO("joint_ref(5)= %f", joint_ref(5));
+      ROS_INFO("joint_ref(6)= %f", joint_ref(6));
+
       ROS_INFO("d0= %f", d01);
       ROS_INFO("d1= %f", d02);
       ROS_INFO("d2= %f", d03);
@@ -379,7 +403,7 @@ int main(int argc, char * argv[]) {
       ROS_INFO("d6= %f", d07);
 
      //******************************************************************************
-      for (int k = 0; k < nj; k++) {
+      /*  for (int k = 0; k < nj; k++) {
         jointpositions(k) = joints.position[k];
       }
       kinematics_status = fksolver.JntToCart(jointpositions, cartpos);
@@ -392,7 +416,7 @@ int main(int argc, char * argv[]) {
         ROS_INFO("FK_Rx= %f", roll);
         ROS_INFO("FK_Ry= %f", pitch);
         ROS_INFO("FK_Rz= %f\n", yaw);
-      }
+      }*/
       //****************************************************************************
 
 
@@ -417,7 +441,13 @@ int main(int argc, char * argv[]) {
         // IK }
         int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
                                           jointpositions_new);
-
+        ROS_INFO("jointpositions_new(0)= %f", jointpositions_new(0));
+        ROS_INFO("jointpositions_new(1)= %f", jointpositions_new(1));
+        ROS_INFO("jointpositions_new(2)= %f", jointpositions_new(2));
+        ROS_INFO("jointpositions_new(3)= %f", jointpositions_new(3));
+        ROS_INFO("jointpositions_new(4)= %f", jointpositions_new(4));
+        ROS_INFO("jointpositions_new(5)= %f", jointpositions_new(5));
+        ROS_INFO("jointpositions_new(6)= %f", jointpositions_new(6));
         kinematics_status = fksolver.JntToCart(jointpositions_new, cartpos);
         ROS_INFO("Get FK result");
         if (kinematics_status >= 0) {
@@ -430,16 +460,17 @@ int main(int argc, char * argv[]) {
           ROS_INFO("FK_Rz= %f\n", yaw);
         }
 
-        pt.time_from_start = ros::Duration(3.0);
         kc.eval_points(pt, jointpositions_new, nj);
+        pt.time_from_start = ros::Duration(dt);
         joint_cmd.points[0] = pt;
         joint_ref = jointpositions_new;
         ++now_cmd;
       }
       // send command
-      //  cmd_pub.publish(joint_cmd);
+       // cmd_pub.publish(joint_cmd);
 
     }
+    joint_cmd.header.stamp = ros::Time::now();
     cmd_pub.publish(joint_cmd);
     loop_rate.sleep();
     ros::spinOnce();
