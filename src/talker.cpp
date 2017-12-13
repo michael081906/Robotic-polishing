@@ -92,13 +92,13 @@ bool find(robotic_polishing::Trajectory::Request &req,
    vx.setLeafSize(0.01, 0.01, 0.01);
    vx.filterProcess(*cloud_out);
    std::cout << " Down sampling completed" << std::endl;
-  ///****************************************************************************
- /* pcl::visualization::CloudViewer viewer("Cloud of Raw data");
+  /****************************************************************************
+  pcl::visualization::CloudViewer viewer("Cloud of Raw data");
   viewer.showCloud(cloud_out);
   int user_data = 0;
   do {
     user_data++;
-  } while (!viewer.wasStopped());*/
+  } while (!viewer.wasStopped());
   // ****************************************************************************/
   // pub_pcl.publish(cloud_out);
 

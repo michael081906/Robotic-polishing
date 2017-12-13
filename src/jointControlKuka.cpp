@@ -65,7 +65,7 @@ void get_joints(const sensor_msgs::JointState & data) {
  ref_received = true;
  }
  */
-double threshold = 0.001;
+double threshold = 0.005;
 bool checkIfArrived(const KDL::JntArray& joint_ref) {
   double d0, d1, d2, d3, d4, d5, d6;
   double d01, d02, d03, d04, d05, d06, d07;
@@ -282,9 +282,14 @@ int main(int argc, char * argv[]) {
    home.getParam("x", x);
    home.getParam("y", y);
    home.getParam("z", z);*/
+  /*
   x = test_ref[0].x;
   y = test_ref[0].y;
   z = test_ref[0].z;
+  */
+  x = 0.6;
+  y = 0;
+  z = 0.3;
   roll = 0;
   pitch = 1.57;
   yaw = 0;
@@ -316,9 +321,9 @@ int main(int argc, char * argv[]) {
                                     jointpositions_new);
   ROS_INFO("ik_error= %d", ik_error);
   kc.eval_points(pt, jointpositions_new, nj);
-  pt.time_from_start = ros::Duration(3.0);
+  pt.time_from_start = ros::Duration(1.0);
   joint_cmd.points.push_back(pt);
-  pt.time_from_start = ros::Duration(3.0);
+  pt.time_from_start = ros::Duration(1.0);
   joint_cmd.points[0] = pt;
 
   ROS_INFO("Set current joint configuration after IK");

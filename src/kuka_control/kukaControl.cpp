@@ -72,9 +72,8 @@ KDL::Chain kukaControl::LWR() {
 
   //base
   chain.addSegment(
-      KDL::Segment(KDL::Joint(KDL::Joint::None),
-                   KDL::Frame::DH_Craig1989(0, 0, 0.33989, 0)));
-
+      //KDL::Segment(KDL::Joint(KDL::Joint::None),KDL::Frame::DH_Craig1989(0, 0, 0.33989, 0)));
+      KDL::Segment(KDL::Joint(KDL::Joint::None),KDL::Frame::DH_Craig1989(0, 0, 0.36, 0)));
   //joint 1
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
@@ -82,8 +81,8 @@ KDL::Chain kukaControl::LWR() {
 
   //joint 2
   chain.addSegment(
-      KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
-                   KDL::Frame::DH_Craig1989(0, M_PI_2, 0.40011, 0)));
+      //KDL::Segment(KDL::Joint(KDL::Joint::RotZ),KDL::Frame::DH_Craig1989(0, M_PI_2, 0.40011, 0)));
+       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),KDL::Frame::DH_Craig1989(0, M_PI_2, 0.42, 0)));
 
   //joint 3
   chain.addSegment(
@@ -93,7 +92,7 @@ KDL::Chain kukaControl::LWR() {
   //joint 4
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
-                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0.40003, 0)));
+                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0.4000, 0)));
 
   //joint 5
   chain.addSegment(
@@ -110,6 +109,7 @@ KDL::Chain kukaControl::LWR() {
   //KDL::Frame::DH_Craig1989(0,0,0.098,0)));
 //    KDL::Frame::DH_Craig1989(0,0,0.088,0))); //AS
       KDL::Frame::DH_Craig1989(0, 0, 0.12597, 0)));
+ //    KDL::Frame::DH_Craig1989(0, 0, 0.081, 0)));
 
   return chain;
 
