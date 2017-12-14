@@ -30,6 +30,12 @@
 #include <pcl/io/pcd_io.h>
 #include <string>
 #include <vector>
+/** @brief findNearestPoint is an finding the closest point on a post
+ * smoothing surface.
+ *
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ */
 class findNearestPoint {
 
  private:

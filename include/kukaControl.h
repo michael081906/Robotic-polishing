@@ -37,7 +37,11 @@
 #include <sstream>
 #ifndef ROBOTIC_POLISHING_INCLUDE_KUKACONTROL_H_
 #define ROBOTIC_POLISHING_INCLUDE_KUKACONTROL_H_
-
+/** @brief kukaControl is an implementation of controlling the iiwa kuka arm
+ * *
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ */
 class kukaControl{
 private:
 public:

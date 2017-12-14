@@ -37,7 +37,12 @@ struct position {
   float z;
 };
 
-
+/** @brief kukaControl is a header file of finding shortest
+ *  path among the point cloud.
+ *
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ */
 class dijkstraPQ {
  private:
   /**@brief size of the point cloud */
@@ -58,17 +63,51 @@ class dijkstraPQ {
  public:
   /**constructor */
   dijkstraPQ(int size3);
-  // function to add an edge to graph
+  /**@brief add distance in to the weighting container
+   * @param[in] u is an node index of a point
+   * @param[in] v is an node index of another point
+   * @param[in] w is the weighting value between point u and v.
+   * @return none */
   void addEdge(int u, int v, double w);
-  // prints shortest path from s
+  /**@brief start computing shortest distance by using
+   * dijkstra algorithm.
+   * @param[in] startNode is an node index of the start point
+   * @param[in] endPoint is an node index of the end point
+   * @return none */
   void shortestPath(int startNode, int endPoint);
+  /**@brief request to calculate a specific edge distance in a triangle
+   * @param[in] same3indices contains three node index of a traingle
+   * @return none */
   void distanceCalculation(std::vector<int>& same3indices);
+  /**@brief calculates distance of two points
+   * @param[in] point1 is the first point index
+   * @param[in] point2 is the second point index
+   * @return none */
   double cal2Point(int point1, int point2);
+  /**@brief set Tirad into private triads
+   * @param[in] contains a sets of Triad
+   * @return none */
   void setTri(std::vector<Triad>& triadsIn);
+  /**@brief compute the deistance between two node
+   * @param[in] none
+   * @return none */
   void computeWeight();
+  /**@brief return a set of node index on the  path
+   * @param[in] startNode is an node index of the start point
+   * @param[in] endNode is an node index of the end point
+   * @param[out] pathNode is a container that stores a sets of node index
+   * @return none */
   void returnDijkstraPath(int startNode, int endNode,
                           std::vector<int>& pathNode);
+  /**@brief input a point cloud data and set it to the private cloud
+   * @param[in] cloudIn reference of a point cloud
+   * @return none */
   void setInputCloud(pcl::PointCloud<pcl::PointNormal>& cloudIn);
+  /**@brief return the path position
+   * @param[in] startNode is an node index of the start point
+   * @param[in] endNode is an node index of the end point
+   * @param[out] pathPos is a container that stores a sets of position
+   * @return none */
   void returnDijkstraPathPosition(int startNode, int endNode,
                                   std::vector<position>& pathPos);
 };
