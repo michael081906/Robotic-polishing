@@ -1,8 +1,25 @@
-/*
- * dijkstraPQ.cpp
+// "Copyright [2017] <Michael Kam>"
+/** @file dijkstraPQ.cpp
+ *  @brief This dijkstraPQ.cpp is an implementation of finding shortest
+ *  path among the point cloud. The algorithm refer to here:
+ *  http://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/
  *
- *  Created on: Nov 22, 2017
- *      Author: viki
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ *  @copyright GNU Public License.
+ *
+ *  dijkstraPQ is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  dijkstraPQ is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with dijkstraPQ.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 #include "dijkstraPQ.h"
 #include <bits/stdc++.h>
@@ -20,10 +37,7 @@ void dijkstraPQ::addEdge(int u, int v, double w) {
 }
 
 void dijkstraPQ::shortestPath(int startNode, int endPoint) {
-  // Create a priority queue to store vertices that
-  // are being preprocessed. This is weird syntax in C++.
-  // Refer below link for details of this syntax
-  // http://geeksquiz.com/implement-min-heap-using-stl/
+
   std::priority_queue<iPair, std::vector<iPair>, std::greater<iPair> > pq;
 
   // Create a vector for distances and initialize all

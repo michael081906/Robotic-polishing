@@ -60,7 +60,7 @@ class findNearestPoint {
    * @return none */
   void findNearestProcess(std::vector<int>& nearIndices);
   /**@brief this function takes pos and stores it into private variable specificPoints
-   * @param[in]
+   * @param[in] pos position you want it to be search for its nearest point
    * @return none */
   void setPosition(const std::vector<float>& pos);
 
