@@ -13,8 +13,6 @@
  */
 #include <gtest/gtest.h>
 #include <pclMlsSmoothing.h>
-using std::cout;
-using std::endl;
 /** @brief TEST(pclMlsSmoothingTest, setRadius) will
  * test the setSearchRadius() and getSearchRadius() method */
 TEST(pclMlsSmoothingTest, setRadius) {
@@ -91,7 +89,6 @@ TEST(pclMlsSmoothingTest, MlsFiltering) {
   mlsing.mlsProcess(*cloudFiltered);
   double testZ = cloudFiltered->points[4].z;
   // cloudFiltered->points[4].normal;
-  // cout << testZ << endl;
   EXPECT_GT(1.4, testZ);
 }
 

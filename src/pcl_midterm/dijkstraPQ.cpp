@@ -79,8 +79,7 @@ void dijkstraPQ::shortestPath(int startNode, int endPoint) {
     }
   }
   // Print shortest distances stored in dist[]
-  std::cout << "Vertex Distance from Source to EndPoint: " << dist[endPoint]
-            << std::endl;
+  // std::cout << "Vertex Distance from Source to EndPoint: " << dist[endPoint] << std::endl;
 }
 
 double dijkstraPQ::cal2Point(int point1, int point2) {

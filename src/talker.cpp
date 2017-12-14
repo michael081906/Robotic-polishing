@@ -121,11 +121,11 @@ bool find(robotic_polishing::Trajectory::Request &req,
   pt.setFilterZlimit(0, 10);
   pt.filterProcess(*cloud_out);
   //  4. Down sample the point cloud
-  std::cout << " 4. Down sampling the point cloud, please wait..." << std::endl;
+  ROS_INFO(" 4. Down sampling the point cloud, please wait...");
   vx.setInputCloud(*cloud_out);
   vx.setLeafSize(0.01, 0.01, 0.01);
   vx.filterProcess(*cloud_out);
-  std::cout << " Down sampling completed" << std::endl;
+  ROS_INFO(" Down sampling completed");
   /****************************************************************************
    pcl::visualization::CloudViewer viewer("Cloud of Raw data");
    viewer.showCloud(cloud_out);
@@ -136,8 +136,7 @@ bool find(robotic_polishing::Trajectory::Request &req,
    // ****************************************************************************/
   // pub_pcl.publish(cloud_out);
   //  2. Remove the noise of point cloud
-  std::cout << " 2. Removing the noise of point cloud, please wait..."
-            << std::endl;
+  ROS_INFO("2. Removing the noise of point cloud, please wait...");
   sor.setInputCloud(*cloud_out);
   sor.setMeanK(50);
   sor.setStddevMulThresh(1);
@@ -152,32 +151,30 @@ bool find(robotic_polishing::Trajectory::Request &req,
   // apply filter
   outrem.filter(*cloud_out);
   //*******************************************************************
-  std::cout << " Removing completed" << std::endl;
+  ROS_INFO(" Removing completed");
   /*****************************************************************/
 
   //  3. Extract certain region of point cloud
   //  5. Smooth the point cloud
-  std::cout << " 5. Smoothing the point cloud, please wait..." << std::endl;
+  ROS_INFO(" 5. Smoothing the point cloud, please wait...");
   mls.setInputCloud(*cloud_out);
   mls.setSearchRadius(0.05);
   mls.mlsProcess(*cloud_with_normal);
-  std::cout << " Smoothing completed" << std::endl;
+
   //  7. Mesh the obstacle
-  std::cout << " 7. Meshing the obstacle, please wait..." << std::endl;
+  ROS_INFO(" 7. Meshing the obstacle, please wait...");
   ft.setInputCloud(*cloud_with_normal);
   ft.setSearchRadius(0.05);
   ft.reconctruct(triangles);
   std::vector<int> gp33 = ft.getSegID();
   int sizegp3 = gp33.size();
   int sizePointCloud = cloud_with_normal->size();
-  std::cout << " Meshing completed..." << std::endl;
-  std::cout << " size of gp3: " << sizegp3 << std::endl;
+
   //  8. Show the result
   // pclView.display(triangles);
 
   // 9.mergeHanhsPoint
-  std::cout << " 9. Merging point of selected point, please wait..."
-            << std::endl;
+  ROS_INFO(" 9. Merging point of selected point, please wait...");
   findNearestPoint mg;
   std::vector<int> selectedPoint;
 
@@ -187,12 +184,9 @@ bool find(robotic_polishing::Trajectory::Request &req,
 
   mg.setInputCloud(*cloud_with_normal);
   mg.findNearestProcess(selectedPoint);
-  std::cout << " 9. Merging completed" << std::endl;
   std::vector<int> size3;
   size3 = ft.getSegID();
-  std::cout << selectedPoint[0] << " " << selectedPoint[1] << " "
-            << size3.size() << std::endl;
-  std::cout << " 10. Delaunay3 function..." << std::endl;
+  ROS_INFO(" 10. Delaunay3 function...");
   std::vector<Triad> triads;
   // std::vector<Shx> ptsOut;
   delaunay3 dy3;
@@ -202,7 +196,6 @@ bool find(robotic_polishing::Trajectory::Request &req,
   // dy3.getShx(ptsOut);
   // write_Triads(triads, "triangles.txt");
   // write_Shx(ptsOut, "pts.txt");
-  std::cout << " 10. Delaunay3 function completed..." << std::endl;
   int start = selectedPoint[0];
   int end = selectedPoint[1];
   std::vector<int> path;
@@ -215,33 +208,37 @@ bool find(robotic_polishing::Trajectory::Request &req,
 
   std::vector<int>::iterator route = path.begin();
   while (route != path.end()) {
-    std::cout << *route << " ";
+    ROS_INFO("%d ",*route);
+ //   std::cout << *route << " ";
     ++route;
   }
-  std::cout << std::endl;
+ //  std::cout << std::endl;
   std::vector<position> POS;
   dPQ.returnDijkstraPathPosition(start, end, POS);
   std::vector<position>::iterator routePos = POS.begin();
 
   float px, py, pz;
   while (routePos != POS.end()) {
-    std::cout << (*routePos).x << " ";  // p.80
+    ROS_INFO("%f ",(*routePos).x );
+   // std::cout << (*routePos).x << " ";  // p.80
     px = (*routePos).x;
     res.path_x.push_back(px);
     ++routePos;
   }
-  std::cout << std::endl;
+ // std::cout << std::endl;
   routePos = POS.begin();
   while (routePos != POS.end()) {
-    std::cout << (*routePos).y << " ";
+    ROS_INFO("%f ",(*routePos).y );
+  //  std::cout << (*routePos).y << " ";
     py = (*routePos).y;
     res.path_y.push_back(py);
     ++routePos;
   }
-  std::cout << std::endl;
+ // std::cout << std::endl;
   routePos = POS.begin();
   while (routePos != POS.end()) {
-    std::cout << (*routePos).z << " ";
+    ROS_INFO("%f ",(*routePos).z );
+   // std::cout << (*routePos).z << " ";
     pz = (*routePos).z;
     res.path_z.push_back(pz);
     ++routePos;
