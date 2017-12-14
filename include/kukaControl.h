@@ -1,8 +1,23 @@
-/*
- * kukaControl.h
+// "Copyright [2017] <Michael Kam>"
+/** @file kukaControl.h
+ *  @brief This kukaControl.h is a header file of controlling the iiwa kuka arm
  *
- *  Created on: Dec 11, 2017
- *      Author: michael
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ *  @copyright GNU Public License.
+ *
+ *  kukaControl is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  kukaControl is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with kukaControl.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 #include<ros/ros.h>
 #include<trajectory_msgs/JointTrajectory.h>
@@ -25,14 +40,35 @@
 
 class kukaControl{
 private:
-
 public:
+  /**constructor */
   kukaControl();
-  void initialize_joints(KDL::JntArray & _jointpositions);
-  void initialize_points(trajectory_msgs::JointTrajectoryPoint & _pt, int _nj,float _init);
-  void name_joints(trajectory_msgs::JointTrajectory & _cmd, int _nj);
-  void eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
-                   KDL::JntArray & _jointpositions, int _nj);
+  /**@brief initializeJoints sets the initial value for the IK solver
+   * @param[in] jointPositions vector that store joint position value
+   * @return none     */
+  void initializeJoints(KDL::JntArray & jointPositions);
+  /**@brief initialize_points() set the _init into _pt
+   * @param[in] pt trajectory_msgs::JointTrajectoryPoint
+   * @param[in] nj number of joint of the robot
+   * @param[in] init initial value want to set
+   * @return none     */
+  void initializePoints(trajectory_msgs::JointTrajectoryPoint & pt, int nj,
+                        float init);
+  /**@brief nameJoints() name the joint
+   * @param[in] cmd stores the command message to control iiwa
+   * @param[in] nj number of joint of the robot
+   * @return none     */
+  void nameJoints(trajectory_msgs::JointTrajectory & cmd, int nj);
+  /**@brief evalPoints set the jointPositions value into point
+   * @param[in] point stores the command message to control iiwa
+   * @param[in] jointPositions vector that store joint position value
+   * @param[in] nj number of joint of the robot
+   * @return none     */
+  void evalPoints(trajectory_msgs::JointTrajectoryPoint & point,
+                  KDL::JntArray & jointPositions, int nj);
+  /**@brief the function defined the kinematic chain of the iiwa robot
+   * @param[in] none
+   * @return KDL::Chain     */
   KDL::Chain LWR();
 };
 
