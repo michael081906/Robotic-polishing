@@ -79,5 +79,4 @@ class pclVoxel {
   void filterProcess(pcl::PointCloud<pcl::PointXYZ>& cloudOut);
 };
 
-
 #endif  // INCLUDE_PCLVOXEL_H_

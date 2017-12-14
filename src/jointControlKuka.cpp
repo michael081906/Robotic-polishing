@@ -1,8 +1,23 @@
-/*
- * jointControlKuka.cpp
+// "Copyright [2017] <Michael Kam>"
+/** @file jointControlKuka.cpp
+ *  @brief This jointControlKuka.cpp is a ros node that use to control the iiwa in gazebo
  *
- *  Created on: Dec 9, 2017
- *      Author: michael
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ *  @copyright GNU Public License.
+ *
+ *  jointControlKuka is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  jointControlKuka is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with jointControlKuka.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 #include "kukaControl.h"
 #include <ros/ros.h>
@@ -27,6 +42,11 @@
 sensor_msgs::JointState joints;
 bool initialized = false;
 //callback for reading joint values
+/** @brief get_joints is a callback function that subscribe the joint position data
+ * and set it into joints vector
+ *  @param[in] data sensor_msgs::JointState that contains joint position
+ *  @return none
+ */
 void get_joints(const sensor_msgs::JointState & data) {
   for (int i = 0; i < data.position.size(); i++) {
     // if this is not the first time the callback function is read, obtain the joint positions

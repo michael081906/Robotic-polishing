@@ -1,8 +1,23 @@
-/*
- * kukaControl.cpp
+// "Copyright [2017] <Michael Kam>"
+/** @file kukaControl.cpp
+ *  @brief This kukaControl.cpp is an implement file of controlling the iiwa kuka arm
  *
- *  Created on: Dec 11, 2017
- *      Author: michael
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ *  @copyright GNU Public License.
+ *
+ *  kukaControl is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  kukaControl is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with kukaControl.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 #include "kukaControl.h"
 #include<ros/ros.h>

@@ -1,6 +1,6 @@
 // "Copyright [2017] <Michael Kam>"
 /** @file findNearestPoint.cpp
- *  @brief This findNearestPoint.cpp is an implementation of finding
+ *  @brief This findNearestPoint.h is a header file of finding
  *   the closest point on a post smoothing surface. There are three method in this class.
  *   The goal is to get indices array which indicate the closest point with several given points.
  *   For example, I can given a arbitrary coordinate and use this class to
@@ -63,12 +63,6 @@ class findNearestPoint {
    * @param[in]
    * @return none */
   void setPosition(const std::vector<float>& pos);
-
-
-
 };
-
-
-
 
 #endif /* INCLUDE_FINDNEARESTPOINT_H_ */

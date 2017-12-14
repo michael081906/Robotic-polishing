@@ -1,3 +1,4 @@
+// "Copyright [2016] <Dr David Sinclair>"
 /* copyright 2016 Dr David Sinclair
  david@s-hull.org
 
