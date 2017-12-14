@@ -43,30 +43,31 @@ private:
 public:
   /**constructor */
   kukaControl();
-  /**@brief initialize_joints sets the initial value for the IK solver
-   * @param[in] _jointpositions vector that store joint position value
+  /**@brief initializeJoints sets the initial value for the IK solver
+   * @param[in] jointPositions vector that store joint position value
    * @return none     */
-  void initialize_joints(KDL::JntArray & _jointpositions);
+  void initializeJoints(KDL::JntArray & jointPositions);
   /**@brief initialize_points() set the _init into _pt
-   * @param[in] _pt trajectory_msgs::JointTrajectoryPoint
-   * @param[in] _nj number of joint of the robot
-   * @param[in] _init initial value want to set
+   * @param[in] pt trajectory_msgs::JointTrajectoryPoint
+   * @param[in] nj number of joint of the robot
+   * @param[in] init initial value want to set
    * @return none     */
-  void initialize_points(trajectory_msgs::JointTrajectoryPoint & _pt, int _nj,float _init);
-  /**@brief name_joints() name the joint
-   * @param[in] _cmd stores the command message to control iiwa
-   * @param[in] _nj number of joint of the robot
+  void initializePoints(trajectory_msgs::JointTrajectoryPoint & pt, int nj,
+                        float init);
+  /**@brief nameJoints() name the joint
+   * @param[in] cmd stores the command message to control iiwa
+   * @param[in] nj number of joint of the robot
    * @return none     */
-  void name_joints(trajectory_msgs::JointTrajectory & _cmd, int _nj);
-  /**@brief eval_points set the _jointpositions value into _point
-   * @param[in] _point stores the command message to control iiwa
-   * @param[in] _jointpositions vector that store joint position value
-   * @param[in] _nj number of joint of the robot
+  void nameJoints(trajectory_msgs::JointTrajectory & cmd, int nj);
+  /**@brief evalPoints set the jointPositions value into point
+   * @param[in] point stores the command message to control iiwa
+   * @param[in] jointPositions vector that store joint position value
+   * @param[in] nj number of joint of the robot
    * @return none     */
-  void eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
-                   KDL::JntArray & _jointpositions, int _nj);
+  void evalPoints(trajectory_msgs::JointTrajectoryPoint & point,
+                  KDL::JntArray & jointPositions, int nj);
   /**@brief the function defined the kinematic chain of the iiwa robot
-   * @param[in] noe
+   * @param[in] none
    * @return KDL::Chain     */
   KDL::Chain LWR();
 };

@@ -101,7 +101,7 @@ int main(int argc, char * argv[]) {
   ros::NodeHandle home("~");
   trajectory_msgs::JointTrajectory joint_cmd;
   trajectory_msgs::JointTrajectoryPoint pt;
-  kc.initialize_points(pt, nj, 0.0);
+  kc.initializePoints(pt, nj, 0.0);
   ros::Publisher cmd_pub = nh_.advertise<trajectory_msgs::JointTrajectory>(
       "iiwa/PositionJointInterface_trajectory_controller/command", 10);
   ros::Subscriber joints_sub = nh_.subscribe("/iiwa/joint_states", 10,
@@ -115,8 +115,8 @@ int main(int argc, char * argv[]) {
   ros::Rate loop_rate(loop_freq);
   double roll, pitch, yaw, x, y, z;
   KDL::Frame cartpos;
-  kc.name_joints(joint_cmd, nj);
-  kc.initialize_joints(jointpositions);
+  kc.nameJoints(joint_cmd, nj);
+  kc.initializeJoints(jointpositions);
   ROS_INFO("Load current joint configuration");
   ROS_INFO("J1= %f", jointpositions(0));
   ROS_INFO("J2= %f", jointpositions(1));
@@ -290,7 +290,7 @@ int main(int argc, char * argv[]) {
   int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
                                     jointpositions_new);
   ROS_INFO("ik_error= %d", ik_error);
-  kc.eval_points(pt, jointpositions_new, nj);
+  kc.evalPoints(pt, jointpositions_new, nj);
   pt.time_from_start = ros::Duration(1.0);
   joint_cmd.points.push_back(pt);
   pt.time_from_start = ros::Duration(1.0);
@@ -435,7 +435,7 @@ int main(int argc, char * argv[]) {
             ROS_INFO("FK_Rz= %f\n", yaw);
           }
 
-          kc.eval_points(pt, jointpositions_new, nj);
+          kc.evalPoints(pt, jointpositions_new, nj);
           pt.time_from_start = ros::Duration(dt);
           joint_cmd.points[0] = pt;
           joint_ref = jointpositions_new;
@@ -482,7 +482,7 @@ int main(int argc, char * argv[]) {
           // IK }
           int ik_error = iksolver.CartToJnt(jointpositions, cartpos,
                                             jointpositions_new);
-          kc.eval_points(pt, jointpositions_new, nj);
+          kc.evalPoints(pt, jointpositions_new, nj);
           pt.time_from_start = ros::Duration(0.5);
           joint_cmd.points[0] = pt;
           joint_ref = jointpositions_new;

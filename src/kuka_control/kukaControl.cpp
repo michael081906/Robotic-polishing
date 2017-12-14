@@ -41,41 +41,40 @@ kukaControl::kukaControl() {
 }
 
 // initialize the joint positions with a non-zero value to be used in the solvers
-void kukaControl::initialize_joints(KDL::JntArray & _jointpositions) {
+void kukaControl::initializeJoints(KDL::JntArray & jointPositions) {
 
-  _jointpositions(0) = 0;
-  _jointpositions(1) = 0;
-  _jointpositions(2) = 0;
-  _jointpositions(3) = -1.57;
-  _jointpositions(4) = 0;
-  _jointpositions(5) = 1.57;
-  _jointpositions(6) = 0;
+  jointPositions(0) = 0;
+  jointPositions(1) = 0;
+  jointPositions(2) = 0;
+  jointPositions(3) = -1.57;
+  jointPositions(4) = 0;
+  jointPositions(5) = 1.57;
+  jointPositions(6) = 0;
 
 }
 
 // initialize a joint command point
-void kukaControl::initialize_points(trajectory_msgs::JointTrajectoryPoint & _pt,
-                                    int _nj, float _init) {
-  for (int i = 0; i < _nj; ++i)
-    _pt.positions.push_back(_init);
+void kukaControl::initializePoints(trajectory_msgs::JointTrajectoryPoint & pt,
+                                   int nj, float init) {
+  for (int i = 0; i < nj; ++i)
+    pt.positions.push_back(init);
 }
 
 //defines the joint names for the robot (used in the jointTrajectory messages)
-void kukaControl::name_joints(trajectory_msgs::JointTrajectory & _cmd,
-                              int _nj) {
-  for (int i = 1; i <= _nj; ++i) {
+void kukaControl::nameJoints(trajectory_msgs::JointTrajectory & cmd, int nj) {
+  for (int i = 1; i <= nj; ++i) {
     std::ostringstream joint_name;
     joint_name << "iiwa_joint_";
     joint_name << i;
-    _cmd.joint_names.push_back(joint_name.str());
+    cmd.joint_names.push_back(joint_name.str());
   }
 }
 
 // loads the joint space points to be sent as a command to the robot
-void kukaControl::eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
-                              KDL::JntArray & _jointpositions, int _nj) {
-  for (int i = 0; i < _nj; ++i)
-    _point.positions[i] = _jointpositions(i);
+void kukaControl::evalPoints(trajectory_msgs::JointTrajectoryPoint & point,
+                             KDL::JntArray & jointPositions, int nj) {
+  for (int i = 0; i < nj; ++i)
+    point.positions[i] = jointPositions(i);
 
 }
 
