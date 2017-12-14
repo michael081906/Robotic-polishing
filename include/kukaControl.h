@@ -28,7 +28,7 @@ private:
 
 public:
   kukaControl();
-  void initialize_joints(KDL::JntArray & _jointpositions, int _nj, float _init);
+  void initialize_joints(KDL::JntArray & _jointpositions);
   void initialize_points(trajectory_msgs::JointTrajectoryPoint & _pt, int _nj,float _init);
   void name_joints(trajectory_msgs::JointTrajectory & _cmd, int _nj);
   void eval_points(trajectory_msgs::JointTrajectoryPoint & _point,

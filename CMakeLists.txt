@@ -202,16 +202,11 @@ add_executable(talkerpcl
      src/pcl_midterm/pclStatisticalOutlierRemoval.cpp 
      src/pcl_midterm/pclMlsSmoothing.cpp
      src/pcl_midterm/pclFastTriangular.cpp
-     src/pcl_midterm/graph.cpp
-     src/pcl_midterm/prepareDijkstra.cpp
      src/pcl_midterm/s_hull_pro.cpp
      src/pcl_midterm/delaunay3.cpp
      src/pcl_midterm/dijkstraPQ.cpp
      )
 target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-
-add_executable(ref_planning src/ref.cpp)
-target_link_libraries(ref_planning ${catkin_LIBRARIES})
 
 add_executable(roboticPolishing_kuka_control_joint src/jointControlKuka.cpp src/kuka_control/kukaControl.cpp)
 target_link_libraries(roboticPolishing_kuka_control_joint ${catkin_LIBRARIES} orocos-kdl)

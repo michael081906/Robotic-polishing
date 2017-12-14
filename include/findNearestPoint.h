@@ -1,10 +1,28 @@
-/*
- * mergeHanhsPoint.h
+// "Copyright [2017] <Michael Kam>"
+/** @file findNearestPoint.cpp
+ *  @brief This findNearestPoint.cpp is an implementation of finding
+ *   the closest point on a post smoothing surface. There are three method in this class.
+ *   The goal is to get indices array which indicate the closest point with several given points.
+ *   For example, I can given a arbitrary coordinate and use this class to
+ *   find a closest point ID from point cloud group.
  *
- *  Created on: Oct 24, 2017
- *      Author: viki
+ *  @author Michael Kam (michael081906)
+ *  @bug No known bugs.
+ *  @copyright GNU Public License.
+ *
+ *  findNearestPoint is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  findNearestPoint is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with findNearestPoint.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-
 #ifndef INCLUDE_FINDNEARESTPOINT_H_
 #define INCLUDE_FINDNEARESTPOINT_H_
 #include <pcl/point_types.h>
@@ -15,6 +33,7 @@
 class findNearestPoint {
 
  private:
+  /**@brief vector of storing specificPoints */
   std::vector<double> specificPoints;
   /**@brief object of PointNormal */
   pcl::PointCloud<pcl::PointNormal> cloud;
@@ -36,11 +55,13 @@ class findNearestPoint {
   /**@brief this function calculate the nearest point in the given pointNormal.
    * Before using this function, make sure you have setInpuCloud and a specificPoints
    * instance.
-   * This method refer to http://pointclouds.org/documentation/tutorials/kdtree_search.php
-   * @param[in] none
+   * This method was referred to http://pointclouds.org/documentation/tutorials/kdtree_search.php
+   * @param[in] nearIndices
    * @return none */
   void findNearestProcess(std::vector<int>& nearIndices);
-
+  /**@brief this function takes pos and stores it into private variable specificPoints
+   * @param[in]
+   * @return none */
   void setPosition(const std::vector<float>& pos);
 
 

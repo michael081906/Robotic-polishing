@@ -9,9 +9,7 @@
 #include "pclFastTriangular.h"
 #include "pclCloudViewer.h"
 #include "findNearestPoint.h"
-#include "graph.h"
 #include "delaunay3.h"
-#include "prepareDijkstra.h"
 #include "dijkstraPQ.h"
 #include <pcl/io/io.h>
 #include <pcl/io/pcd_io.h>
@@ -102,14 +100,6 @@ bool find(robotic_polishing::Trajectory::Request &req,
   // ****************************************************************************/
   // pub_pcl.publish(cloud_out);
 
-  //  1. Load pcd file
-  /*std::cout << " 1. Loading pcd file, please wait..." << std::endl;
-   pclLoad.readPCDfile("./src/Robotic-polishing/kidney3dots3_p1.pcd");
-   pclLoad.getPointCloud(*cloud_out);
-   std::cout << " Loading completed" << std::endl;*/
-
-
-
    //  2. Remove the noise of point cloud
    std::cout << " 2. Removing the noise of point cloud, please wait..."
    << std::endl;
@@ -131,16 +121,6 @@ bool find(robotic_polishing::Trajectory::Request &req,
    /*****************************************************************/
 
    //  3. Extract certain region of point cloud
-  /* std::cout << " 3. Extracting certain region of point cloud, please wait..."
-   << std::endl;
-   pt.setInputCloud(*cloud_out);
-   pt.setFilterXlimit(0, 1.0);
-   pt.filterProcess(*cloud_out);
-   pt.setInputCloud(*cloud_out);
-   pt.setFilterYlimit(-1, 1);
-   pt.filterProcess(*cloud_out);
-
-   std::cout << " Extracting completed" << std::endl;*/
    //  5. Smooth the point cloud
    std::cout << " 5. Smoothing the point cloud, please wait..." << std::endl;
    mls.setInputCloud(*cloud_out);

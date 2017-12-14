@@ -26,10 +26,8 @@ kukaControl::kukaControl() {
 }
 
 // initialize the joint positions with a non-zero value to be used in the solvers
-void kukaControl::initialize_joints(KDL::JntArray & _jointpositions, int _nj,
-                                    float _init) {
-  /*for (int i = 0; i < _nj; ++i)
-   _jointpositions(i) = _init;*/
+void kukaControl::initialize_joints(KDL::JntArray & _jointpositions) {
+
   _jointpositions(0) = 0;
   _jointpositions(1) = 0;
   _jointpositions(2) = 0;
@@ -67,7 +65,6 @@ void kukaControl::eval_points(trajectory_msgs::JointTrajectoryPoint & _point,
 }
 
 KDL::Chain kukaControl::LWR() {
-
   KDL::Chain chain;
 
   //base
@@ -78,27 +75,22 @@ KDL::Chain kukaControl::LWR() {
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
                    KDL::Frame::DH_Craig1989(0, -M_PI_2, 0, 0)));
-
   //joint 2
   chain.addSegment(
       //KDL::Segment(KDL::Joint(KDL::Joint::RotZ),KDL::Frame::DH_Craig1989(0, M_PI_2, 0.40011, 0)));
        KDL::Segment(KDL::Joint(KDL::Joint::RotZ),KDL::Frame::DH_Craig1989(0, M_PI_2, 0.42, 0)));
-
   //joint 3
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
                    KDL::Frame::DH_Craig1989(0, M_PI_2, 0, 0)));
-
   //joint 4
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
-                   KDL::Frame::DH_Craig1989(0, -M_PI_2, 0.4000, 0)));
-
+                  KDL::Frame::DH_Craig1989(0, -M_PI_2, 0.4000, 0)));
   //joint 5
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
                    KDL::Frame::DH_Craig1989(0, -M_PI_2, 0, 0)));
-
   //joint 6
   chain.addSegment(
       KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
@@ -106,10 +98,7 @@ KDL::Chain kukaControl::LWR() {
 
   //joint 7 (with flange adapter)
   chain.addSegment(KDL::Segment(KDL::Joint(KDL::Joint::RotZ),
-  //KDL::Frame::DH_Craig1989(0,0,0.098,0)));
-//    KDL::Frame::DH_Craig1989(0,0,0.088,0))); //AS
       KDL::Frame::DH_Craig1989(0, 0, 0.12597, 0)));
- //    KDL::Frame::DH_Craig1989(0, 0, 0.081, 0)));
 
   return chain;
 
