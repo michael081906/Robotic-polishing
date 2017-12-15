@@ -1,0 +1,139 @@
+\hypertarget{classpclMlsSmoothing}{}\section{pcl\+Mls\+Smoothing Class Reference}
+\label{classpclMlsSmoothing}\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+
+
+\hyperlink{classpclMlsSmoothing}{pcl\+Mls\+Smoothing} is an implementation by using moving least square(mls) method to smooth the point cloud among the surface.  
+
+
+
+
+{\ttfamily \#include $<$pcl\+Mls\+Smoothing.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpclMlsSmoothing_a432b28f2d31dd09a68233e34e51f733e}{pcl\+Mls\+Smoothing} ()\hypertarget{classpclMlsSmoothing_a432b28f2d31dd09a68233e34e51f733e}{}\label{classpclMlsSmoothing_a432b28f2d31dd09a68233e34e51f733e}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classpclMlsSmoothing_a992cb767ccb2e64b6d09e24cd5a9f80c}{set\+Search\+Radius} (double radius)
+\begin{DoxyCompactList}\small\item\em set a search range into search\+Radius variable \end{DoxyCompactList}\item 
+double \hyperlink{classpclMlsSmoothing_a1675949acb6f8333557e9b7d16664fec}{get\+Search\+Radius} ()
+\begin{DoxyCompactList}\small\item\em get a search range from search\+Radius variable \end{DoxyCompactList}\item 
+void \hyperlink{classpclMlsSmoothing_a405d1ba5aaca55d2e560e1dc02b3e725}{set\+Input\+Cloud} (const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclMlsSmoothing_a2ebbe84a7c774532fa9a3f7073991594}{get\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em get a point cloud data from private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclMlsSmoothing_a214375dff0302996fdb76000b02a0aa9}{mls\+Process} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em compute the mls method to smooth the point cloud \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classpclMlsSmoothing}{pcl\+Mls\+Smoothing} is an implementation by using moving least square(mls) method to smooth the point cloud among the surface. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000016}{Bug}]No known bugs. \end{DoxyRefDesc}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License. 
+\end{DoxyCopyright}
+
+
+\subsection{Member Function Documentation}
+\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}!get\+Input\+Cloud@{get\+Input\+Cloud}}
+\index{get\+Input\+Cloud@{get\+Input\+Cloud}!pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+\subsubsection[{\texorpdfstring{get\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{getInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Mls\+Smoothing\+::get\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclMlsSmoothing_a2ebbe84a7c774532fa9a3f7073991594}{}\label{classpclMlsSmoothing_a2ebbe84a7c774532fa9a3f7073991594}
+
+
+get a point cloud data from private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}!get\+Search\+Radius@{get\+Search\+Radius}}
+\index{get\+Search\+Radius@{get\+Search\+Radius}!pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+\subsubsection[{\texorpdfstring{get\+Search\+Radius()}{getSearchRadius()}}]{\setlength{\rightskip}{0pt plus 5cm}double pcl\+Mls\+Smoothing\+::get\+Search\+Radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclMlsSmoothing_a1675949acb6f8333557e9b7d16664fec}{}\label{classpclMlsSmoothing_a1675949acb6f8333557e9b7d16664fec}
+
+
+get a search range from search\+Radius variable 
+
+\begin{DoxyReturn}{Returns}
+search range 
+\end{DoxyReturn}
+\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}!mls\+Process@{mls\+Process}}
+\index{mls\+Process@{mls\+Process}!pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+\subsubsection[{\texorpdfstring{mls\+Process(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+Out)}{mlsProcess(pcl::PointCloud< pcl::PointNormal > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Mls\+Smoothing\+::mls\+Process (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclMlsSmoothing_a214375dff0302996fdb76000b02a0aa9}{}\label{classpclMlsSmoothing_a214375dff0302996fdb76000b02a0aa9}
+
+
+compute the mls method to smooth the point cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+In)}{setInputCloud(const pcl::PointCloud< pcl::PointXYZ > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Mls\+Smoothing\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{const pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclMlsSmoothing_a405d1ba5aaca55d2e560e1dc02b3e725}{}\label{classpclMlsSmoothing_a405d1ba5aaca55d2e560e1dc02b3e725}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}!set\+Search\+Radius@{set\+Search\+Radius}}
+\index{set\+Search\+Radius@{set\+Search\+Radius}!pcl\+Mls\+Smoothing@{pcl\+Mls\+Smoothing}}
+\subsubsection[{\texorpdfstring{set\+Search\+Radius(double radius)}{setSearchRadius(double radius)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Mls\+Smoothing\+::set\+Search\+Radius (
+\begin{DoxyParamCaption}
+\item[{double}]{radius}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclMlsSmoothing_a992cb767ccb2e64b6d09e24cd5a9f80c}{}\label{classpclMlsSmoothing_a992cb767ccb2e64b6d09e24cd5a9f80c}
+
+
+set a search range into search\+Radius variable 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em radius} & range of choosing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{pclMlsSmoothing_8h}{pcl\+Mls\+Smoothing.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{pclMlsSmoothing_8cpp}{pcl\+Mls\+Smoothing.\+cpp}\end{DoxyCompactItemize}

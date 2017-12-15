@@ -1,0 +1,158 @@
+\hypertarget{talker_8cpp}{}\section{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/talker.cpp File Reference}
+\label{talker_8cpp}\index{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/talker.\+cpp@{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/talker.\+cpp}}
+
+
+This \hyperlink{talker_8cpp}{talker.\+cpp} is a ros node that subscribes point cloud and computes the trajectory f.  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/\+String.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}s\+\_\+hull\+\_\+pro.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Io.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Voxel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Mls\+Smoothing.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Pass\+Through.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Statistical\+Outlier\+Removal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Fast\+Triangular.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcl\+Cloud\+Viewer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}find\+Nearest\+Point.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}delaunay3.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dijkstra\+P\+Q.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pcl/io/io.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/io/pcd\+\_\+io.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/point\+\_\+types.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/filters/statistical\+\_\+outlier\+\_\+removal.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/visualization/cloud\+\_\+viewer.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/filters/radius\+\_\+outlier\+\_\+removal.\+h$>$}\\*
+{\ttfamily \#include $<$pcl/filters/conditional\+\_\+removal.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$queue$>$}\\*
+{\ttfamily \#include $<$stack$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$hash\+\_\+set$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$set$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$pcl\+\_\+ros/point\+\_\+cloud.\+h$>$}\\*
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Point\+Cloud2.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}robotic\+\_\+polishing/\+Trajectory.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pcl\+\_\+conversions/pcl\+\_\+conversions.\+h$>$}\\*
+{\ttfamily \#include $<$pcl\+\_\+ros/transforms.\+h$>$}\\*
+Include dependency graph for talker.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{talker_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ {\bfseries Point\+Cloud}\hypertarget{talker_8cpp_a6c737bbce051bc4690e4c608adc2deec}{}\label{talker_8cpp_a6c737bbce051bc4690e4c608adc2deec}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{talker_8cpp_a284e0e47d3aae6d849b820ab8985a966}{callback} (const sensor\+\_\+msgs\+::\+Point\+Cloud2\+Ptr \&cloud)
+\begin{DoxyCompactList}\small\item\em callback is a callback function that subscribes the point cloud data and uses tf to transform to world coordinate \end{DoxyCompactList}\item 
+bool \hyperlink{talker_8cpp_a0a850b1779efa9cd37089e6f5a2c3200}{find} (robotic\+\_\+polishing\+::\+Trajectory\+::\+Request \&req, robotic\+\_\+polishing\+::\+Trajectory\+::\+Response \&res)
+\begin{DoxyCompactList}\small\item\em get\+\_\+joints is a callback function that subscribe the joint position data and set it into joints vector \end{DoxyCompactList}\item 
+int \hyperlink{talker_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Point\+Cloud {\bfseries pointcloud\+\_\+in}\hypertarget{talker_8cpp_aaf642a9de8c488cf8e26f3d008494f94}{}\label{talker_8cpp_aaf642a9de8c488cf8e26f3d008494f94}
+
+\item 
+Point\+Cloud {\bfseries pointcloud\+\_\+out}\hypertarget{talker_8cpp_a09a14efc015b6ec457716cc95a141156}{}\label{talker_8cpp_a09a14efc015b6ec457716cc95a141156}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This \hyperlink{talker_8cpp}{talker.\+cpp} is a ros node that subscribes point cloud and computes the trajectory f. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000024}{Bug}]No known bugs. \end{DoxyRefDesc}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License.
+\end{DoxyCopyright}
+talker is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+talker is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details. You should have received a copy of the G\+NU General Public License along with talker. If not, see \href{http://www.gnu.org/licenses/}{\tt http\+://www.\+gnu.\+org/licenses/}. 
+
+\subsection{Function Documentation}
+\index{talker.\+cpp@{talker.\+cpp}!callback@{callback}}
+\index{callback@{callback}!talker.\+cpp@{talker.\+cpp}}
+\subsubsection[{\texorpdfstring{callback(const sensor\+\_\+msgs\+::\+Point\+Cloud2\+Ptr \&cloud)}{callback(const sensor_msgs::PointCloud2Ptr &cloud)}}]{\setlength{\rightskip}{0pt plus 5cm}void callback (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Point\+Cloud2\+Ptr \&}]{cloud}
+\end{DoxyParamCaption}
+)}\hypertarget{talker_8cpp_a284e0e47d3aae6d849b820ab8985a966}{}\label{talker_8cpp_a284e0e47d3aae6d849b820ab8985a966}
+
+
+callback is a callback function that subscribes the point cloud data and uses tf to transform to world coordinate 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud} & sensor\+\_\+msgs\+::\+Point\+Cloud2\+Ptr that contains point cloud information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{talker.\+cpp@{talker.\+cpp}!find@{find}}
+\index{find@{find}!talker.\+cpp@{talker.\+cpp}}
+\subsubsection[{\texorpdfstring{find(robotic\+\_\+polishing\+::\+Trajectory\+::\+Request \&req, robotic\+\_\+polishing\+::\+Trajectory\+::\+Response \&res)}{find(robotic_polishing::Trajectory::Request &req, robotic_polishing::Trajectory::Response &res)}}]{\setlength{\rightskip}{0pt plus 5cm}bool find (
+\begin{DoxyParamCaption}
+\item[{robotic\+\_\+polishing\+::\+Trajectory\+::\+Request \&}]{req, }
+\item[{robotic\+\_\+polishing\+::\+Trajectory\+::\+Response \&}]{res}
+\end{DoxyParamCaption}
+)}\hypertarget{talker_8cpp_a0a850b1779efa9cd37089e6f5a2c3200}{}\label{talker_8cpp_a0a850b1779efa9cd37089e6f5a2c3200}
+
+
+get\+\_\+joints is a callback function that subscribe the joint position data and set it into joints vector 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & sensor\+\_\+msgs\+::\+Joint\+State that contains joint position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nonefind is a service for computing trajectory based on a start and an end point. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em req} & is a request that contains coordinates of start and end point. \\
+\hline
+\mbox{\tt in}  & {\em res} & is a response that contains trajectory information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{talker.\+cpp@{talker.\+cpp}!main@{main}}
+\index{main@{main}!talker.\+cpp@{talker.\+cpp}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv)}{main(int argc, char **argv)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\hypertarget{talker_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{}\label{talker_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+This tutorial demonstrates simple sending of messages over the R\+OS system. 

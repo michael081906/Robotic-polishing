@@ -7,7 +7,18 @@
   </include>
 
  <! Loads the Gazebo world. -->
-    <include file="$(find iiwa_gazebo)/launch/iiwa_gazebo.launch">
-    </include>
+
+	<arg name="rosbag" default = "false"/> 
+
+    	<include file="$(find iiwa_gazebo)/launch/iiwa_gazebo.launch">
+    	</include>
     
+        <node pkg="robotic_polishing" type="talkerpcl" name="talker">
+	</node>
+
+	<group if="$(arg rosbag)">
+        <node name="record_topics_for_verification" pkg="rosbag" type="record" args="-a -x /camera/(.*)|/camera_ir/(.*)" output="screen"/>
+	</group>
+
+
 </launch>

@@ -1,0 +1,48 @@
+\hypertarget{kukaControl_8cpp}{}\section{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/kuka\+\_\+control/kuka\+Control.cpp File Reference}
+\label{kukaControl_8cpp}\index{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/kuka\+\_\+control/kuka\+Control.\+cpp@{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/kuka\+\_\+control/kuka\+Control.\+cpp}}
+
+
+This \hyperlink{kukaControl_8cpp}{kuka\+Control.\+cpp} is an implement file of controlling the iiwa kuka arm.  
+
+
+{\ttfamily \#include \char`\"{}kuka\+Control.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$trajectory\+\_\+msgs/\+Joint\+Trajectory.\+h$>$}\\*
+{\ttfamily \#include $<$trajectory\+\_\+msgs/\+Joint\+Trajectory\+Point.\+h$>$}\\*
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Twist.\+h$>$}\\*
+{\ttfamily \#include $<$iiwa\+\_\+msgs/\+Joint\+Position.\+h$>$}\\*
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Joint\+State.\+h$>$}\\*
+{\ttfamily \#include $<$kdl/chain.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}Eigen/\+Core\char`\"{}}\\*
+{\ttfamily \#include $<$kdl/chainfksolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainfksolverpos\+\_\+recursive.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolvervel\+\_\+pinv.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolverpos\+\_\+nr.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainjnttojacsolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+Include dependency graph for kuka\+Control.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kukaControl_8cpp__incl}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+This \hyperlink{kukaControl_8cpp}{kuka\+Control.\+cpp} is an implement file of controlling the iiwa kuka arm. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000025}{Bug}]No known bugs. \end{DoxyRefDesc}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License.
+\end{DoxyCopyright}
+\hyperlink{classkukaControl}{kuka\+Control} is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+\hyperlink{classkukaControl}{kuka\+Control} is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details. You should have received a copy of the G\+NU General Public License along with \hyperlink{classkukaControl}{kuka\+Control}. If not, see \href{http://www.gnu.org/licenses/}{\tt http\+://www.\+gnu.\+org/licenses/}. 

@@ -20,19 +20,20 @@
  *  along with talker.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "s_hull_pro.h"
-#include "pclIo.h"
-#include "pclVoxel.h"
-#include "pclMlsSmoothing.h"
-#include "pclPassThrough.h"
-#include "pclStatisticalOutlierRemoval.h"
-#include "pclFastTriangular.h"
-#include "pclCloudViewer.h"
-#include "findNearestPoint.h"
-#include "delaunay3.h"
-#include "dijkstraPQ.h"
+
+#include <s_hull_pro.h>
+#include <pclIo.h>
+#include <pclVoxel.h>
+#include <pclMlsSmoothing.h>
+#include <pclPassThrough.h>
+#include <pclStatisticalOutlierRemoval.h>
+#include <pclFastTriangular.h>
+#include <pclCloudViewer.h>
+#include <findNearestPoint.h>
+#include <delaunay3.h>
+#include <dijkstraPQ.h>
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <pcl/io/io.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
@@ -40,31 +41,29 @@
 #include <pcl/visualization/cloud_viewer.h>
 #include <pcl/filters/radius_outlier_removal.h>
 #include <pcl/filters/conditional_removal.h>
+#include <pcl_ros/point_cloud.h>
+#include <sensor_msgs/PointCloud2.h>
+#include <robotic_polishing/Trajectory.h>  // This header name name from the project name in CmakeList.txt, not physical folder name
+#include <pcl_conversions/pcl_conversions.h>
+#include <pcl_ros/transforms.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <sys/types.h>
+#include <math.h>
+#include <time.h>
+#include <set>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <hash_set>
 #include <iostream>
 #include <queue>
 #include <stack>
 #include <limits>
 #include <algorithm>
-#include <stdio.h>
-#include <stdlib.h>
-#include <hash_set>
-#include <ctype.h>
-#include <string.h>
-#include <string>
-#include <sys/types.h>
-#include <hash_set>
-#include <set>
-#include <vector>
-#include <fstream>
-#include <math.h>
-#include <time.h>
-#include <sstream>
-#include <pcl_ros/point_cloud.h>
-#include <sensor_msgs/PointCloud2.h>
-#include "robotic_polishing/Trajectory.h" // This header name name from the project name in CmakeList.txt, not physical folder name
-#include <pcl_conversions/pcl_conversions.h>
-#include <pcl_ros/transforms.h>
-
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 
 PointCloud pointcloud_in;
@@ -178,7 +177,7 @@ bool find(robotic_polishing::Trajectory::Request &req,
   findNearestPoint mg;
   std::vector<int> selectedPoint;
 
-  //mg.readtext("./src/Robotic-polishing/kidney3dots3_pointCluster.txt");
+  // mg.readtext("./src/Robotic-polishing/kidney3dots3_pointCluster.txt");
   mg.setPosition(req.start);
   mg.setPosition(req.end);
 
@@ -208,37 +207,37 @@ bool find(robotic_polishing::Trajectory::Request &req,
 
   std::vector<int>::iterator route = path.begin();
   while (route != path.end()) {
-    ROS_INFO("%d ",*route);
- //   std::cout << *route << " ";
+    ROS_INFO("%d ", *route);
+    //   std::cout << *route << " ";
     ++route;
   }
- //  std::cout << std::endl;
+  //  std::cout << std::endl;
   std::vector<position> POS;
   dPQ.returnDijkstraPathPosition(start, end, POS);
   std::vector<position>::iterator routePos = POS.begin();
 
   float px, py, pz;
   while (routePos != POS.end()) {
-    ROS_INFO("%f ",(*routePos).x );
-   // std::cout << (*routePos).x << " ";  // p.80
+    ROS_INFO("%f ", (*routePos).x);
+    // std::cout << (*routePos).x << " ";  // p.80
     px = (*routePos).x;
     res.path_x.push_back(px);
     ++routePos;
   }
- // std::cout << std::endl;
+  // std::cout << std::endl;
   routePos = POS.begin();
   while (routePos != POS.end()) {
-    ROS_INFO("%f ",(*routePos).y );
-  //  std::cout << (*routePos).y << " ";
+    ROS_INFO("%f ", (*routePos).y);
+    //  std::cout << (*routePos).y << " ";
     py = (*routePos).y;
     res.path_y.push_back(py);
     ++routePos;
   }
- // std::cout << std::endl;
+  // std::cout << std::endl;
   routePos = POS.begin();
   while (routePos != POS.end()) {
-    ROS_INFO("%f ",(*routePos).z );
-   // std::cout << (*routePos).z << " ";
+    ROS_INFO("%f ", (*routePos).z);
+    // std::cout << (*routePos).z << " ";
     pz = (*routePos).z;
     res.path_z.push_back(pz);
     ++routePos;

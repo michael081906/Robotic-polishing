@@ -71,4 +71,4 @@ class findNearestPoint {
   void setPosition(const std::vector<float>& pos);
 };
 
-#endif /* INCLUDE_FINDNEARESTPOINT_H_ */
+#endif  // INCLUDE_FINDNEARESTPOINT_H_

@@ -1,0 +1,99 @@
+\hypertarget{jointControlKuka_8cpp}{}\section{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/joint\+Control\+Kuka.cpp File Reference}
+\label{jointControlKuka_8cpp}\index{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/joint\+Control\+Kuka.\+cpp@{/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/joint\+Control\+Kuka.\+cpp}}
+
+
+This \hyperlink{jointControlKuka_8cpp}{joint\+Control\+Kuka.\+cpp} is a ros node that use to control the iiwa in gazebo.  
+
+
+{\ttfamily \#include \char`\"{}kuka\+Control.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$trajectory\+\_\+msgs/\+Joint\+Trajectory.\+h$>$}\\*
+{\ttfamily \#include $<$trajectory\+\_\+msgs/\+Joint\+Trajectory\+Point.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}robotic\+\_\+polishing/\+Trajectory.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Twist.\+h$>$}\\*
+{\ttfamily \#include $<$iiwa\+\_\+msgs/\+Joint\+Position.\+h$>$}\\*
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Joint\+State.\+h$>$}\\*
+{\ttfamily \#include $<$kdl/chain.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}Eigen/\+Core\char`\"{}}\\*
+{\ttfamily \#include $<$kdl/chainfksolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainfksolverpos\+\_\+recursive.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolvervel\+\_\+pinv.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainiksolverpos\+\_\+nr.\+hpp$>$}\\*
+{\ttfamily \#include $<$kdl/chainjnttojacsolver.\+hpp$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+Include dependency graph for joint\+Control\+Kuka.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jointControlKuka_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structposition}{position}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{jointControlKuka_8cpp_a1252494bba2bc971fdb228ed8330f08d}{get\+\_\+joints} (const sensor\+\_\+msgs\+::\+Joint\+State \&data)
+\begin{DoxyCompactList}\small\item\em get\+\_\+joints is a callback function that subscribe the joint position data and set it into joints vector \end{DoxyCompactList}\item 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})\hypertarget{jointControlKuka_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{jointControlKuka_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sensor\+\_\+msgs\+::\+Joint\+State {\bfseries joints}\hypertarget{jointControlKuka_8cpp_ae1f6b7f93d34b40bafa1e4773a663acb}{}\label{jointControlKuka_8cpp_ae1f6b7f93d34b40bafa1e4773a663acb}
+
+\item 
+bool {\bfseries initialized} = false\hypertarget{jointControlKuka_8cpp_aedeffc7d23da25d52b9a50045189fe2b}{}\label{jointControlKuka_8cpp_aedeffc7d23da25d52b9a50045189fe2b}
+
+\item 
+double {\bfseries threshold} = 0.\+005\hypertarget{jointControlKuka_8cpp_afcfbedec6ebde62c6a091ce335836ef1}{}\label{jointControlKuka_8cpp_afcfbedec6ebde62c6a091ce335836ef1}
+
+\item 
+struct \hyperlink{structposition}{position} {\bfseries test1}\hypertarget{jointControlKuka_8cpp_a4c12048046fc75dd88e1da048f21857d}{}\label{jointControlKuka_8cpp_a4c12048046fc75dd88e1da048f21857d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This \hyperlink{jointControlKuka_8cpp}{joint\+Control\+Kuka.\+cpp} is a ros node that use to control the iiwa in gazebo. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000023}{Bug}]No known bugs. \end{DoxyRefDesc}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License.
+\end{DoxyCopyright}
+joint\+Control\+Kuka is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+joint\+Control\+Kuka is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details. You should have received a copy of the G\+NU General Public License along with joint\+Control\+Kuka. If not, see \href{http://www.gnu.org/licenses/}{\tt http\+://www.\+gnu.\+org/licenses/}. 
+
+\subsection{Function Documentation}
+\index{joint\+Control\+Kuka.\+cpp@{joint\+Control\+Kuka.\+cpp}!get\+\_\+joints@{get\+\_\+joints}}
+\index{get\+\_\+joints@{get\+\_\+joints}!joint\+Control\+Kuka.\+cpp@{joint\+Control\+Kuka.\+cpp}}
+\subsubsection[{\texorpdfstring{get\+\_\+joints(const sensor\+\_\+msgs\+::\+Joint\+State \&data)}{get_joints(const sensor_msgs::JointState &data)}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+joints (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Joint\+State \&}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{jointControlKuka_8cpp_a1252494bba2bc971fdb228ed8330f08d}{}\label{jointControlKuka_8cpp_a1252494bba2bc971fdb228ed8330f08d}
+
+
+get\+\_\+joints is a callback function that subscribe the joint position data and set it into joints vector 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & sensor\+\_\+msgs\+::\+Joint\+State that contains joint position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}

@@ -1,0 +1,179 @@
+\hypertarget{classpclStatistOutRev}{}\section{pcl\+Statist\+Out\+Rev Class Reference}
+\label{classpclStatistOutRev}\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+
+
+\hyperlink{classpclStatistOutRev}{pcl\+Statist\+Out\+Rev} is an implementation by using pcl pcl\+Statist\+Outlier\+Removal filter to filter noise in point cloud
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
+
+
+
+
+{\ttfamily \#include $<$pcl\+Statistical\+Outlier\+Removal.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpclStatistOutRev_a4d49820b451f80afc9299bb1f55bf7dc}{pcl\+Statist\+Out\+Rev} ()\hypertarget{classpclStatistOutRev_a4d49820b451f80afc9299bb1f55bf7dc}{}\label{classpclStatistOutRev_a4d49820b451f80afc9299bb1f55bf7dc}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classpclStatistOutRev_abbc7c585c42e4546be7a9d855c8f3376}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclStatistOutRev_a2d86872ea28888af117d843bd906686a}{get\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em get a point cloud data from private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclStatistOutRev_af65327fc8e4044dc4af6f6a54d053926}{filter\+Process} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em start to filter point cloud \end{DoxyCompactList}\item 
+int \hyperlink{classpclStatistOutRev_a8d5a0eb5e55a392a67f594f97f8a45b9}{get\+MeanK} ()
+\begin{DoxyCompactList}\small\item\em get a value of private ktree \end{DoxyCompactList}\item 
+void \hyperlink{classpclStatistOutRev_af92f741eead730afd7a24f8c8f8e7976}{set\+MeanK} (int setktree)
+\begin{DoxyCompactList}\small\item\em set a value into private ktree \end{DoxyCompactList}\item 
+double \hyperlink{classpclStatistOutRev_af5ec19b0d4f674ab1a319f84aaf6d6ff}{get\+Stddev\+Mul\+Thresh} ()
+\begin{DoxyCompactList}\small\item\em get a value of private stand\+Dev\+Mul\+Thresh \end{DoxyCompactList}\item 
+void \hyperlink{classpclStatistOutRev_abadedba5a7c81d63113d4c27d7d36c8e}{set\+Stddev\+Mul\+Thresh} (double Thresh)
+\begin{DoxyCompactList}\small\item\em set a value into private stand\+Dev\+Mul\+Thresh \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classpclStatistOutRev}{pcl\+Statist\+Out\+Rev} is an implementation by using pcl pcl\+Statist\+Outlier\+Removal filter to filter noise in point cloud
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000020}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Member Function Documentation}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!filter\+Process@{filter\+Process}}
+\index{filter\+Process@{filter\+Process}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{filter\+Process(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{filterProcess(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Statist\+Out\+Rev\+::filter\+Process (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_af65327fc8e4044dc4af6f6a54d053926}{}\label{classpclStatistOutRev_af65327fc8e4044dc4af6f6a54d053926}
+
+
+start to filter point cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!get\+Input\+Cloud@{get\+Input\+Cloud}}
+\index{get\+Input\+Cloud@{get\+Input\+Cloud}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{get\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{getInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Statist\+Out\+Rev\+::get\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_a2d86872ea28888af117d843bd906686a}{}\label{classpclStatistOutRev_a2d86872ea28888af117d843bd906686a}
+
+
+get a point cloud data from private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!get\+MeanK@{get\+MeanK}}
+\index{get\+MeanK@{get\+MeanK}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{get\+Mean\+K()}{getMeanK()}}]{\setlength{\rightskip}{0pt plus 5cm}int pcl\+Statist\+Out\+Rev\+::get\+MeanK (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_a8d5a0eb5e55a392a67f594f97f8a45b9}{}\label{classpclStatistOutRev_a8d5a0eb5e55a392a67f594f97f8a45b9}
+
+
+get a value of private ktree 
+
+\begin{DoxyReturn}{Returns}
+int value of private ktree 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!get\+Stddev\+Mul\+Thresh@{get\+Stddev\+Mul\+Thresh}}
+\index{get\+Stddev\+Mul\+Thresh@{get\+Stddev\+Mul\+Thresh}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{get\+Stddev\+Mul\+Thresh()}{getStddevMulThresh()}}]{\setlength{\rightskip}{0pt plus 5cm}double pcl\+Statist\+Out\+Rev\+::get\+Stddev\+Mul\+Thresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_af5ec19b0d4f674ab1a319f84aaf6d6ff}{}\label{classpclStatistOutRev_af5ec19b0d4f674ab1a319f84aaf6d6ff}
+
+
+get a value of private stand\+Dev\+Mul\+Thresh 
+
+\begin{DoxyReturn}{Returns}
+double value of private stand\+Dev\+Mul\+Thresh 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Statist\+Out\+Rev\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_abbc7c585c42e4546be7a9d855c8f3376}{}\label{classpclStatistOutRev_abbc7c585c42e4546be7a9d855c8f3376}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!set\+MeanK@{set\+MeanK}}
+\index{set\+MeanK@{set\+MeanK}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{set\+Mean\+K(int setktree)}{setMeanK(int setktree)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Statist\+Out\+Rev\+::set\+MeanK (
+\begin{DoxyParamCaption}
+\item[{int}]{setktree}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_af92f741eead730afd7a24f8c8f8e7976}{}\label{classpclStatistOutRev_af92f741eead730afd7a24f8c8f8e7976}
+
+
+set a value into private ktree 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em setktree} & value to set ktree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}!set\+Stddev\+Mul\+Thresh@{set\+Stddev\+Mul\+Thresh}}
+\index{set\+Stddev\+Mul\+Thresh@{set\+Stddev\+Mul\+Thresh}!pcl\+Statist\+Out\+Rev@{pcl\+Statist\+Out\+Rev}}
+\subsubsection[{\texorpdfstring{set\+Stddev\+Mul\+Thresh(double Thresh)}{setStddevMulThresh(double Thresh)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Statist\+Out\+Rev\+::set\+Stddev\+Mul\+Thresh (
+\begin{DoxyParamCaption}
+\item[{double}]{Thresh}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclStatistOutRev_abadedba5a7c81d63113d4c27d7d36c8e}{}\label{classpclStatistOutRev_abadedba5a7c81d63113d4c27d7d36c8e}
+
+
+set a value into private stand\+Dev\+Mul\+Thresh 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Thresh} & value to set stand\+Dev\+Mul\+Thresh \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/pcl\+Statistical\+Outlier\+Removal.\+h\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{pclStatisticalOutlierRemoval_8cpp}{pcl\+Statistical\+Outlier\+Removal.\+cpp}\end{DoxyCompactItemize}

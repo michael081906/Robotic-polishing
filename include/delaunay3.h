@@ -23,16 +23,14 @@
 
 #ifndef INCLUDE_DELAUNAY3_H_
 #define INCLUDE_DELAUNAY3_H_
-
-#include <stdlib.h>
-#include <vector>
-#include <set>
+#include <s_hull_pro.h>
 #include <pcl/point_types.h>
 #include <pcl/io/io.h>
 #include <pcl/io/pcd_io.h>
-#include <string>
+#include <stdlib.h>
 #include <vector>
-#include "s_hull_pro.h"
+#include <set>
+#include <string>
 /** @brief This delaunay3.h is a header file of the meshing triangle
  *  among the point cloud
  *  @author Michael Kam (michael081906)
@@ -66,4 +64,4 @@ class delaunay3 {
    * @return none */
   void getShx(std::vector<Shx>& ptsOut);
 };
-#endif /* INCLUDE_DELAUNAY3_H_ */
+#endif  // INCLUDE_DELAUNAY3_H_

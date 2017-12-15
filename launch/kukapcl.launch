@@ -1,4 +1,5 @@
 <launch>
+	<arg name="rosbag" default = "false"/> 
 	<node name="joint_control" pkg="robotic_polishing" type="roboticPolishing_kuka_control_joint">
 		<param name="xStart" value="0.8"/>
 		<param name="yStart" value="0.1"/>
@@ -6,5 +7,11 @@
 		<param name="xEnd" value="0.8"/>
 		<param name="yEnd" value="-0.1"/>
 		<param name="zEnd" value="0.1"/>
+		<param name="times" value="8"/>
 	</node>
+
+	<group if="$(arg rosbag)">
+        <node name="record_topics_for_verification" pkg="rosbag" type="record" args="-a -x /camera/(.*)|/camera_ir/(.*)" output="screen"/>
+	</group>
+
 </launch>

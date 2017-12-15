@@ -1,0 +1,193 @@
+\hypertarget{classpclPassThrough}{}\section{pcl\+Pass\+Through Class Reference}
+\label{classpclPassThrough}\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+
+
+\hyperlink{classpclPassThrough}{pcl\+Pass\+Through} is an implementation by using pcl passthrough filter to extract certain region of point cloud.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
+
+
+
+
+{\ttfamily \#include $<$pcl\+Pass\+Through.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpclPassThrough_a891b3ebe3bfa6744e594d89901597472}{pcl\+Pass\+Through} ()\hypertarget{classpclPassThrough_a891b3ebe3bfa6744e594d89901597472}{}\label{classpclPassThrough_a891b3ebe3bfa6744e594d89901597472}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_a16395691191d890443058cc26554aefc}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_aaba98ecaed175ce56a2bfa4d03ccfd36}{get\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em get a point cloud data from private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_a7acf26c189c77927a022a4fe5a6997a1}{filter\+Process} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_a1391475d2a9979ae8a7b97bf56378097}{set\+Filter\+Xlimit} (const float \&set\+X\+Min, const float \&set\+X\+Max)
+\begin{DoxyCompactList}\small\item\em set value into x\+Min and x\+Max \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_af6b79d0ba266b46054ff6703575bd7ed}{set\+Filter\+Ylimit} (const float \&set\+Y\+Min, const float \&set\+Y\+Max)
+\begin{DoxyCompactList}\small\item\em set value into y\+Min and y\+Max \end{DoxyCompactList}\item 
+void \hyperlink{classpclPassThrough_aef227d9d6f956c59802add17fa52a3aa}{set\+Filter\+Zlimit} (const float \&set\+Z\+Min, const float \&set\+Z\+Max)
+\begin{DoxyCompactList}\small\item\em set value into z\+Min and z\+Max \end{DoxyCompactList}\item 
+vector$<$ float $>$ \hyperlink{classpclPassThrough_a82df8cf76fd3a96153d280a63f47e025}{get\+Filter\+Limit} ()
+\begin{DoxyCompactList}\small\item\em get value from z\+Min, z\+Max, y\+Min, y\+Max, x\+Min, x\+Max \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classpclPassThrough}{pcl\+Pass\+Through} is an implementation by using pcl passthrough filter to extract certain region of point cloud.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000018}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Member Function Documentation}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!filter\+Process@{filter\+Process}}
+\index{filter\+Process@{filter\+Process}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{filter\+Process(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{filterProcess(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::filter\+Process (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_a7acf26c189c77927a022a4fe5a6997a1}{}\label{classpclPassThrough_a7acf26c189c77927a022a4fe5a6997a1}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!get\+Filter\+Limit@{get\+Filter\+Limit}}
+\index{get\+Filter\+Limit@{get\+Filter\+Limit}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{get\+Filter\+Limit()}{getFilterLimit()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ pcl\+Pass\+Through\+::get\+Filter\+Limit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_a82df8cf76fd3a96153d280a63f47e025}{}\label{classpclPassThrough_a82df8cf76fd3a96153d280a63f47e025}
+
+
+get value from z\+Min, z\+Max, y\+Min, y\+Max, x\+Min, x\+Max 
+
+\begin{DoxyReturn}{Returns}
+vector$<$float$>$ which contain six value of above variables 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!get\+Input\+Cloud@{get\+Input\+Cloud}}
+\index{get\+Input\+Cloud@{get\+Input\+Cloud}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{get\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{getInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::get\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_aaba98ecaed175ce56a2bfa4d03ccfd36}{}\label{classpclPassThrough_aaba98ecaed175ce56a2bfa4d03ccfd36}
+
+
+get a point cloud data from private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!set\+Filter\+Xlimit@{set\+Filter\+Xlimit}}
+\index{set\+Filter\+Xlimit@{set\+Filter\+Xlimit}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{set\+Filter\+Xlimit(const float \&set\+X\+Min, const float \&set\+X\+Max)}{setFilterXlimit(const float &setXMin, const float &setXMax)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::set\+Filter\+Xlimit (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{set\+X\+Min, }
+\item[{const float \&}]{set\+X\+Max}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_a1391475d2a9979ae8a7b97bf56378097}{}\label{classpclPassThrough_a1391475d2a9979ae8a7b97bf56378097}
+
+
+set value into x\+Min and x\+Max 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em set\+X\+Min} & reference of a value to set x\+Min \\
+\hline
+\mbox{\tt in}  & {\em set\+X\+Max} & reference of a value to set x\+Max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!set\+Filter\+Ylimit@{set\+Filter\+Ylimit}}
+\index{set\+Filter\+Ylimit@{set\+Filter\+Ylimit}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{set\+Filter\+Ylimit(const float \&set\+Y\+Min, const float \&set\+Y\+Max)}{setFilterYlimit(const float &setYMin, const float &setYMax)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::set\+Filter\+Ylimit (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{set\+Y\+Min, }
+\item[{const float \&}]{set\+Y\+Max}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_af6b79d0ba266b46054ff6703575bd7ed}{}\label{classpclPassThrough_af6b79d0ba266b46054ff6703575bd7ed}
+
+
+set value into y\+Min and y\+Max 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em set\+Y\+Min} & reference of a value to set y\+Min \\
+\hline
+\mbox{\tt in}  & {\em set\+Y\+Max} & reference of a value to set y\+Max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!set\+Filter\+Zlimit@{set\+Filter\+Zlimit}}
+\index{set\+Filter\+Zlimit@{set\+Filter\+Zlimit}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{set\+Filter\+Zlimit(const float \&set\+Z\+Min, const float \&set\+Z\+Max)}{setFilterZlimit(const float &setZMin, const float &setZMax)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::set\+Filter\+Zlimit (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{set\+Z\+Min, }
+\item[{const float \&}]{set\+Z\+Max}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_aef227d9d6f956c59802add17fa52a3aa}{}\label{classpclPassThrough_aef227d9d6f956c59802add17fa52a3aa}
+
+
+set value into z\+Min and z\+Max 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em set\+Z\+Min} & reference of a value to set z\+Min \\
+\hline
+\mbox{\tt in}  & {\em set\+Z\+Max} & reference of a value to set z\+Max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Pass\+Through@{pcl\+Pass\+Through}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!pcl\+Pass\+Through@{pcl\+Pass\+Through}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Pass\+Through\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclPassThrough_a16395691191d890443058cc26554aefc}{}\label{classpclPassThrough_a16395691191d890443058cc26554aefc}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/pcl\+Pass\+Through.\+h\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{pclPassThrough_8cpp}{pcl\+Pass\+Through.\+cpp}\end{DoxyCompactItemize}

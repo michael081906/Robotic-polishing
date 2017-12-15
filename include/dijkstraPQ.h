@@ -24,10 +24,13 @@
 
 #ifndef INCLUDE_DIJKSTRAPQ_H_
 #define INCLUDE_DIJKSTRAPQ_H_
-#include <vector>
 #include <pcl/point_types.h>
 #include <pcl/io/io.h>
 #include <delaunay3.h>
+#include <vector>
+#include <utility>
+#include <list>
+
 
 typedef std::pair<int, double> iPair;
 
@@ -61,8 +64,8 @@ class dijkstraPQ {
   pcl::PointCloud<pcl::PointNormal>::Ptr cloudPtr;
 
  public:
-  /**constructor */
-  dijkstraPQ(int size3);
+  // constructor
+  explicit dijkstraPQ(int size3);
   /**@brief add distance in to the weighting container
    * @param[in] u is an node index of a point
    * @param[in] v is an node index of another point
@@ -112,6 +115,4 @@ class dijkstraPQ {
                                   std::vector<position>& pathPos);
 };
 
-
-
-#endif /* INCLUDE_DIJKSTRAPQ_H_ */
+#endif  // INCLUDE_DIJKSTRAPQ_H_

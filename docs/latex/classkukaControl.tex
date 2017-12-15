@@ -1,0 +1,171 @@
+\hypertarget{classkukaControl}{}\section{kuka\+Control Class Reference}
+\label{classkukaControl}\index{kuka\+Control@{kuka\+Control}}
+
+
+\hyperlink{classkukaControl}{kuka\+Control} is an implementation of controlling the iiwa kuka arm
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
+
+
+
+
+{\ttfamily \#include $<$kuka\+Control.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkukaControl_ac6e3f58be7145947e07ac5f3873c5446}{kuka\+Control} ()
+\item 
+void \hyperlink{classkukaControl_ab0ea69470800ff8c90c81342fa868bfd}{initialize\+Joints} (K\+D\+L\+::\+Jnt\+Array \&joint\+Positions)
+\begin{DoxyCompactList}\small\item\em initialize\+Joints sets the initial value for the IK solver \end{DoxyCompactList}\item 
+void \hyperlink{classkukaControl_a4b47190f308bc2fa9cc197f47baf6a36}{initialize\+Points} (trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&pt, int nj, float init)
+\begin{DoxyCompactList}\small\item\em initialize\+\_\+points() set the \+\_\+init into \+\_\+pt \end{DoxyCompactList}\item 
+void \hyperlink{classkukaControl_a7ced7a3bc02b208e01c129af97009b13}{name\+Joints} (trajectory\+\_\+msgs\+::\+Joint\+Trajectory \&cmd, int nj)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classkukaControl_a7ced7a3bc02b208e01c129af97009b13}{name\+Joints()} name the joint \end{DoxyCompactList}\item 
+void \hyperlink{classkukaControl_a6cbf9b3546c9f4e866843c3fed3af16b}{eval\+Points} (trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&point, K\+D\+L\+::\+Jnt\+Array \&joint\+Positions, int nj)
+\begin{DoxyCompactList}\small\item\em eval\+Points set the joint\+Positions value into point \end{DoxyCompactList}\item 
+K\+D\+L\+::\+Chain \hyperlink{classkukaControl_ae1a0a52dba5433d2e5c496e137a34184}{L\+WR} ()
+\begin{DoxyCompactList}\small\item\em the function defined the kinematic chain of the iiwa robot \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classkukaControl}{kuka\+Control} is an implementation of controlling the iiwa kuka arm
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000008}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{kuka\+Control@{kuka\+Control}!kuka\+Control@{kuka\+Control}}
+\index{kuka\+Control@{kuka\+Control}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{kuka\+Control()}{kukaControl()}}]{\setlength{\rightskip}{0pt plus 5cm}kuka\+Control\+::kuka\+Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_ac6e3f58be7145947e07ac5f3873c5446}{}\label{classkukaControl_ac6e3f58be7145947e07ac5f3873c5446}
+constructor 
+
+\subsection{Member Function Documentation}
+\index{kuka\+Control@{kuka\+Control}!eval\+Points@{eval\+Points}}
+\index{eval\+Points@{eval\+Points}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{eval\+Points(trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&point, K\+D\+L\+::\+Jnt\+Array \&joint\+Positions, int nj)}{evalPoints(trajectory_msgs::JointTrajectoryPoint &point, KDL::JntArray &jointPositions, int nj)}}]{\setlength{\rightskip}{0pt plus 5cm}void kuka\+Control\+::eval\+Points (
+\begin{DoxyParamCaption}
+\item[{trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&}]{point, }
+\item[{K\+D\+L\+::\+Jnt\+Array \&}]{joint\+Positions, }
+\item[{int}]{nj}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_a6cbf9b3546c9f4e866843c3fed3af16b}{}\label{classkukaControl_a6cbf9b3546c9f4e866843c3fed3af16b}
+
+
+eval\+Points set the joint\+Positions value into point 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point} & stores the command message to control iiwa \\
+\hline
+\mbox{\tt in}  & {\em joint\+Positions} & vector that store joint position value \\
+\hline
+\mbox{\tt in}  & {\em nj} & number of joint of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{kuka\+Control@{kuka\+Control}!initialize\+Joints@{initialize\+Joints}}
+\index{initialize\+Joints@{initialize\+Joints}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{initialize\+Joints(\+K\+D\+L\+::\+Jnt\+Array \&joint\+Positions)}{initializeJoints(KDL::JntArray &jointPositions)}}]{\setlength{\rightskip}{0pt plus 5cm}void kuka\+Control\+::initialize\+Joints (
+\begin{DoxyParamCaption}
+\item[{K\+D\+L\+::\+Jnt\+Array \&}]{joint\+Positions}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_ab0ea69470800ff8c90c81342fa868bfd}{}\label{classkukaControl_ab0ea69470800ff8c90c81342fa868bfd}
+
+
+initialize\+Joints sets the initial value for the IK solver 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joint\+Positions} & vector that store joint position value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{kuka\+Control@{kuka\+Control}!initialize\+Points@{initialize\+Points}}
+\index{initialize\+Points@{initialize\+Points}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{initialize\+Points(trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&pt, int nj, float init)}{initializePoints(trajectory_msgs::JointTrajectoryPoint &pt, int nj, float init)}}]{\setlength{\rightskip}{0pt plus 5cm}void kuka\+Control\+::initialize\+Points (
+\begin{DoxyParamCaption}
+\item[{trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \&}]{pt, }
+\item[{int}]{nj, }
+\item[{float}]{init}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_a4b47190f308bc2fa9cc197f47baf6a36}{}\label{classkukaControl_a4b47190f308bc2fa9cc197f47baf6a36}
+
+
+initialize\+\_\+points() set the \+\_\+init into \+\_\+pt 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pt} & trajectory\+\_\+msgs\+::\+Joint\+Trajectory\+Point \\
+\hline
+\mbox{\tt in}  & {\em nj} & number of joint of the robot \\
+\hline
+\mbox{\tt in}  & {\em init} & initial value want to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{kuka\+Control@{kuka\+Control}!L\+WR@{L\+WR}}
+\index{L\+WR@{L\+WR}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{L\+W\+R()}{LWR()}}]{\setlength{\rightskip}{0pt plus 5cm}K\+D\+L\+::\+Chain kuka\+Control\+::\+L\+WR (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_ae1a0a52dba5433d2e5c496e137a34184}{}\label{classkukaControl_ae1a0a52dba5433d2e5c496e137a34184}
+
+
+the function defined the kinematic chain of the iiwa robot 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+K\+D\+L\+::\+Chain 
+\end{DoxyReturn}
+\index{kuka\+Control@{kuka\+Control}!name\+Joints@{name\+Joints}}
+\index{name\+Joints@{name\+Joints}!kuka\+Control@{kuka\+Control}}
+\subsubsection[{\texorpdfstring{name\+Joints(trajectory\+\_\+msgs\+::\+Joint\+Trajectory \&cmd, int nj)}{nameJoints(trajectory_msgs::JointTrajectory &cmd, int nj)}}]{\setlength{\rightskip}{0pt plus 5cm}void kuka\+Control\+::name\+Joints (
+\begin{DoxyParamCaption}
+\item[{trajectory\+\_\+msgs\+::\+Joint\+Trajectory \&}]{cmd, }
+\item[{int}]{nj}
+\end{DoxyParamCaption}
+)}\hypertarget{classkukaControl_a7ced7a3bc02b208e01c129af97009b13}{}\label{classkukaControl_a7ced7a3bc02b208e01c129af97009b13}
+
+
+\hyperlink{classkukaControl_a7ced7a3bc02b208e01c129af97009b13}{name\+Joints()} name the joint 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & stores the command message to control iiwa \\
+\hline
+\mbox{\tt in}  & {\em nj} & number of joint of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{kukaControl_8h}{kuka\+Control.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/kuka\+\_\+control/\hyperlink{kukaControl_8cpp}{kuka\+Control.\+cpp}\end{DoxyCompactItemize}

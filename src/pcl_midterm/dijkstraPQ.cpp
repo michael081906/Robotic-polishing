@@ -23,6 +23,11 @@
  */
 #include "dijkstraPQ.h"
 #include <bits/stdc++.h>
+#include <queue>
+#include <utility>
+#include <list>
+#include <vector>
+#include <functional>
 # define INF 0x3f3f3f3f
 
 dijkstraPQ::dijkstraPQ(int size3) {
@@ -79,7 +84,8 @@ void dijkstraPQ::shortestPath(int startNode, int endPoint) {
     }
   }
   // Print shortest distances stored in dist[]
-  // std::cout << "Vertex Distance from Source to EndPoint: " << dist[endPoint] << std::endl;
+  // std::cout << "Vertex Distance from Source to EndPoint: " <<
+  // dist[endPoint] << std::endl;
 }
 
 double dijkstraPQ::cal2Point(int point1, int point2) {
@@ -104,7 +110,8 @@ void dijkstraPQ::computeWeight() {
 
 void dijkstraPQ::distanceCalculation(std::vector<int>& same3indices) {
   // TODO(Michael): Write a general method for it
-  // TODO(Michael): maybe we need to add some error index in order to debug in the future.
+  // TODO(Michael): maybe we need to add some error index in
+  // order to debug in the future.
 
   /* Get the values from the 'same3indices'. Each values correspond to a point cloud index.
    * Use the cal2Point() to compute a distance between two point cloud. Finally, pass the result
@@ -124,9 +131,10 @@ void dijkstraPQ::distanceCalculation(std::vector<int>& same3indices) {
 void dijkstraPQ::setTri(std::vector<Triad>& triadsIn) {
   triads = triadsIn;
 }
-
+// Make sure you have finish the Dijkstra before you run this method to get the ID
 void dijkstraPQ::returnDijkstraPath(int startPoint, int endPoint,
-                                    std::vector<int>& pathNode) {  // Make sure you have finish the Dijkstra before you run this method to get the ID
+                                    std::vector<int>& pathNode) {
+
   int tempPoint;
   pathNode.push_back(endPoint);
   tempPoint = endPoint;
@@ -154,8 +162,5 @@ void dijkstraPQ::returnDijkstraPathPosition(int startNode, int endNode,
     tempPoint = this->parent[tempPoint];
   }
   std::reverse(pathPos.begin(), pathPos.end());
-
 }
-
-
 

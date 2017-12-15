@@ -14,20 +14,18 @@
 
  revised 2/April/2016
 
+
  */
+#include <s_hull_pro.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <iostream>
-//#include <hash_set.h>
-//#include <hash_set>
 #include <set>
 #include <vector>
 #include <fstream>
-#include <stdlib.h>
-#include <math.h>
 #include <string>
 #include <algorithm>
-#include <stdio.h>
-
-#include "s_hull_pro.h"
 
 using namespace std;
 
@@ -109,10 +107,10 @@ int read_Shx(std::vector<Shx> &pts, char * fname) {
   if (myfile.is_open()) {
 
     getline(myfile, line);
-    //int numc = line.length();
+    // int numc = line.length();
 
     // check string for the string "points"
-    int n = (int) line.find(points_str);
+    int n = static_cast<int>(line.find(points_str));
     if (n > 0) {
       while (myfile.good()) {
         getline(myfile, line);
@@ -162,11 +160,10 @@ int read_Shx(std::vector<Shx> &pts, char * fname) {
     myfile.close();
   }
 
-  nump = (int) pts.size();
+  nump = static_cast<int>(pts.size());
 
   return (nump);
 }
-;
 
 /*
  write out a set of points to disk
@@ -177,7 +174,7 @@ int read_Shx(std::vector<Shx> &pts, char * fname) {
 void write_Shx(std::vector<Shx> &pts, char * fname) {
   std::ofstream out(fname, ios::out);
 
-  int nr = (int) pts.size();
+  int nr = static_cast<int>(pts.size());
   out << nr << " 2 points" << endl;
 
   for (int r = 0; r < nr; r++) {
@@ -187,7 +184,6 @@ void write_Shx(std::vector<Shx> &pts, char * fname) {
 
   return;
 }
-;
 
 /*
  write out triangle ids to be compatible with matlab/octave array numbering.
@@ -196,20 +192,19 @@ void write_Shx(std::vector<Shx> &pts, char * fname) {
 void write_Triads(std::vector<Triad> &ts, char * fname) {
   std::ofstream out(fname, ios::out);
 
-  int nr = (int) ts.size();
+  int nr = static_cast<int>(ts.size());
   out << nr
       << " 6   point-ids (1,2,3)  adjacent triangle-ids ( limbs ab  ac  bc )"
       << endl;
 
   for (int r = 0; r < nr; r++) {
     out << ts[r].a + 1 << ' ' << ts[r].b + 1 << ' ' << ts[r].c + 1 << ' '
-        << ts[r].ab + 1 << ' ' << ts[r].ac + 1 << ' ' << ts[r].bc + 1 << endl;  //" " << ts[r].ro <<  endl;
+        << ts[r].ab + 1 << ' ' << ts[r].ac + 1 << ' ' << ts[r].bc + 1 << endl;
   }
   out.close();
 
   return;
 }
-;
 
 /*  version in which the ids of the triangles associated with the sides of the hull are tracked.
 
@@ -217,22 +212,17 @@ void write_Triads(std::vector<Triad> &ts, char * fname) {
  */
 
 int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
-
-  int nump = (int) pts.size();
-
+  int nump = static_cast<int>(pts.size());
   if (nump < 3) {
     cerr << "less than 3 points, aborting " << endl;
     return (-1);
   }
-
   float r = pts[0].r;
   float c = pts[0].c;
   for (int k = 0; k < nump; k++) {
     float dr = pts[k].r - r;
     float dc = pts[k].c - c;
-
     pts[k].ro = dr * dr + dc * dc;
-
   }
 
   sort(pts.begin(), pts.end());
@@ -247,17 +237,15 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
 
   int k = 2;
   while (k < nump) {
-
     circle_cent2(r1, c1, r2, c2, pts[k].r, pts[k].c, r, c, ro2);
     if (ro2 < romin2 && ro2 > 0) {
       mid = k;
       romin2 = ro2;
       R = r;
       C = c;
-
-    } else if (romin2 * 4 < pts[k].ro)
+    } else if (romin2 * 4 < pts[k].ro) {
       k = nump;
-
+    }
     k++;
   }
 
@@ -282,9 +270,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
   for (int k = 0; k < nump - 3; k++) {
     float dr = pts[k].r - R;
     float dc = pts[k].c - C;
-
     pts[k].ro = dr * dr + dc * dc;
-
   }
 
   sort(pts.begin(), pts.end());
@@ -301,7 +287,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
       slump[pts[k].id] = k;
     } else {
       int mx = pts[k].id + 1;
-      while ((int) slump.size() <= mx) {
+      while (static_cast<int>(slump.size()) <= mx) {
         slump.push_back(0);
       }
       slump[pts[k].id] = k;
@@ -310,8 +296,8 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
 
   std::vector<Shx> hull;
 
-  r = (pts[0].r + pts[1].r + pts[2].r) / (float) 3.0;
-  c = (pts[0].c + pts[1].c + pts[2].c) / (float) 3.0;
+  r = (pts[0].r + pts[1].r + pts[2].r) / static_cast<float>(3.0);
+  c = (pts[0].c + pts[1].c + pts[2].c) / static_cast<float>(3.0);
 
   float dr0 = pts[0].r - r, dc0 = pts[0].c - c;
   float tr01 = pts[1].r - pts[0].r, tc01 = pts[1].c - pts[0].c;
@@ -380,7 +366,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
     ptx.c = cx;
     ptx.id = pts[k].id;
 
-    int numh = (int) hull.size(), numh_old = numh;
+    int numh = static_cast<int>(hull.size()), numh_old = numh;
     dr = rx - hull[0].r;
     dc = cx - hull[0].c;  // outwards pointing from hull[0] to pt.
 
@@ -394,7 +380,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
 
       // check to see if segment numh is also visible
       df = -dc * hull[numh - 1].tr + dr * hull[numh - 1].tc;
-      //cerr << df << ' ' ;
+      // cerr << df << ' ' ;
       if (df < 0) {    // visible.
         pidx.push_back(hull[numh - 1].id);
         tridx.push_back(hull[numh - 1].trid);
@@ -410,7 +396,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
             hull.erase(hull.begin() + h);
             h--;
             numh--;
-          } else {	  // quit on invisibility
+          } else {  // quit on invisibility
             ptx.tr = hull[h].r - ptx.r;
             ptx.tc = hull[h].c - ptx.c;
 
@@ -433,8 +419,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
             hull.erase(hull.begin() + h + 1);  // erase end of chain
 
           } else {
-
-            h = (int) hull.size() - 1;
+            h = static_cast<int>(hull.size()) - 1;
             hull[h].tr = -hull[h].r + ptx.r;   // points at start of chain.
             hull[h].tc = -hull[h].c + ptx.c;
             break;
@@ -444,7 +429,7 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
         df = 9;
 
       } else {
-        //	cerr << df << ' ' << endl;
+        // cerr << df << ' ' << endl;
         hidx = 1;  // keep pt hull[0]
         tridx.push_back(hull[0].trid);
         pidx.push_back(hull[0].id);
@@ -535,8 +520,8 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
     r1 = pts[slump[a]].r;
     c1 = pts[slump[a]].c;
 
-    int npx = (int) pidx.size() - 1;
-    numt = (int) triads.size();
+    int npx = static_cast<int>(pidx.size() - 1);
+    numt = static_cast<int>(triads.size());
     T0 = numt;
 
     if (npx == 1) {
@@ -561,17 +546,15 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
       }
 
       hull[hidx].trid = numt;
-      if (hidx > 0)
+      if (hidx > 0) {
         hull[hidx - 1].trid = numt;
-      else {
-        numh = (int) hull.size();
+      } else {
+        numh = static_cast<int>(hull.size());
         hull[numh - 1].trid = numt;
       }
       triads.push_back(trx);
       numt++;
-    }
-
-    else {
+    } else {
       trx.ab = -1;
       for (int p = 0; p < npx; p++) {
         trx.b = pidx[p];
@@ -601,10 +584,10 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
       triads[numt - 1].ac = -1;
 
       hull[hidx].trid = numt - 1;
-      if (hidx > 0)
+      if (hidx > 0) {
         hull[hidx - 1].trid = T0;
-      else {
-        numh = (int) hull.size();
+      } else {
+        numh = static_cast<int>(hull.size());
         hull[numh - 1].trid = T0;
       }
 
@@ -636,11 +619,11 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
 
   // cerr << "n-ids " << ids.size() << endl;
 
-  int nits = (int) ids.size(), nit = 1;
+  int nits = static_cast<int>(ids.size()), nit = 1;
   while (nits > 0 && nit < 50) {
 
     tf = T_flip_pro_idx(pts, triads, slump, ids, ids2);
-    nits = (int) ids2.size();
+    nits = static_cast<int>(ids2.size());
     ids.swap(ids2);
 
     // cerr << "flipping cycle  " << nit << "   active triangles " << nits << endl;
@@ -661,8 +644,8 @@ int s_hull_pro(std::vector<Shx> &pts, std::vector<Triad> &triads) {
 
     tf = T_flip_pro_idx(pts, triads, slump, ids, ids2);
     ids.swap(ids2);
-    nits = (int) ids.size();
-    //cerr << "flipping cycle  " << nit << "   active triangles " << nits << endl;
+    nits = static_cast<int>(ids.size());
+    // cerr << "flipping cycle  " << nit << "   active triangles " << nits << endl;
 
     nit++;
     if (tf < 0) {
@@ -702,9 +685,9 @@ void circle_cent4(float r1, float c1, float r2, float c2, float r3, float c3,
   else
     rd = (v6 - c * v5) / v4;
 
-  ro2 = (float) ((rd - r1) * (rd - r1) + (cd - c1) * (cd - c1));
-  r = (float) rd;
-  c = (float) cd;
+  ro2 = static_cast<float>(((rd - r1) * (rd - r1) + (cd - c1) * (cd - c1)));
+  r = static_cast<float>(rd);
+  c = static_cast<float>(cd);
 
   return;
 }
@@ -717,7 +700,7 @@ void circle_cent4(float r1, float c1, float r2, float c2, float r3, float c3,
 
 int de_duplicate(std::vector<Shx> &pts, std::vector<int> &outx) {
 
-  int nump = (int) pts.size();
+  int nump = static_cast<int>(pts.size());
   std::vector<Dupex> dpx;
   Dupex d;
   for (int k = 0; k < nump; k++) {
@@ -743,7 +726,7 @@ int de_duplicate(std::vector<Shx> &pts, std::vector<int> &outx) {
 
   sort(outx.begin(), outx.end());
 
-  int nx = (int) outx.size();
+  int nx = static_cast<int>(outx.size());
   for (int k = nx - 1; k >= 0; k--) {
     pts.erase(pts.begin() + outx[k]);
   }
@@ -1156,7 +1139,7 @@ int T_flip_pro_idx(std::vector<Shx> &pts, std::vector<Triad> &triads,
 
   Triad tx, tx2;
   ids2.clear();
-  //std::vector<int> ids2;
+  // std::vector<int> ids2;
 
   int numi = ids.size();
 
@@ -1548,7 +1531,7 @@ int test_center(Shx &pt0, Shx &pt1, Shx &pt2) {
 int de_duplicateX(std::vector<Shx> &pts, std::vector<int> &outx,
                   std::vector<Shx> &pts2) {
 
-  int nump = (int) pts.size();
+  int nump = static_cast<int>(pts.size());
   std::vector<Dupex> dpx;
   Dupex d;
   for (int k = 0; k < nump; k++) {
@@ -1568,8 +1551,8 @@ int de_duplicateX(std::vector<Shx> &pts, std::vector<int> &outx,
 
   for (int k = 0; k < nump - 1; k++) {
     if (dpx[k].r == dpx[k + 1].r && dpx[k].c == dpx[k + 1].c) {
-      //cerr << "duplicate-point ids " << dpx[k].id << "  " << dpx[k+1].id << "   at  ("  << pts[dpx[k+1].id].r << "," << pts[dpx[k+1].id].c << ")" << endl;
-      //cerr << dpx[k+1].id << " ";
+      // cerr << "duplicate-point ids " << dpx[k].id << "  " << dpx[k+1].id << "   at  ("  << pts[dpx[k+1].id].r << "," << pts[dpx[k+1].id].c << ")" << endl;
+      // cerr << dpx[k+1].id << " ";
 
       outx.push_back(dpx[k + 1].id);
     } else {
@@ -1660,7 +1643,7 @@ int T_flip_edge(std::vector<Shx> &pts, std::vector<Triad> &triads,
 
         L1 = tri.ab;
         L2 = tri.ac;
-        //	if( L1 != L3 && L2 != L4 ){  // need this check for stability.
+        // if( L1 != L3 && L2 != L4 ){  // need this check for stability.
 
         tx.a = tri.a;
         tx.b = tri.b;
@@ -1767,7 +1750,7 @@ int T_flip_edge(std::vector<Shx> &pts, std::vector<Triad> &triads,
 
         L1 = tri.ac;
         L2 = tri.bc;
-        //	if( L1 != L3 && L2 != L4 ){  // need this check for stability.
+        // if( L1 != L3 && L2 != L4 ){  // need this check for stability.
 
         tx.a = tri.c;
         tx.b = tri.a;
@@ -1876,7 +1859,7 @@ int T_flip_edge(std::vector<Shx> &pts, std::vector<Triad> &triads,
 
         L1 = tri.ab;   // .ac shared limb
         L2 = tri.bc;
-        //	if( L1 != L3 && L2 != L4 ){  // need this check for stability.
+        // if( L1 != L3 && L2 != L4 ){  // need this check for stability.
 
         tx.a = tri.b;
         tx.b = tri.a;

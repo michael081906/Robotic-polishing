@@ -1,0 +1,129 @@
+\hypertarget{classfindNearestPoint}{}\section{find\+Nearest\+Point Class Reference}
+\label{classfindNearestPoint}\index{find\+Nearest\+Point@{find\+Nearest\+Point}}
+
+
+\hyperlink{classfindNearestPoint}{find\+Nearest\+Point} is an finding the closest point on a post smoothing surface.  
+
+
+
+
+{\ttfamily \#include $<$find\+Nearest\+Point.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfindNearestPoint_a1b67c72c67f69502153d72f7f9f9ec79}{find\+Nearest\+Point} ()
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classfindNearestPoint_adc712dd3762652f1c808098a11ea83b3}{readtext} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classfindNearestPoint_adc712dd3762652f1c808098a11ea83b3}{readtext()} method reads .txt file, storing the coordinate and push back into current point cloud \end{DoxyCompactList}\item 
+void \hyperlink{classfindNearestPoint_a9f3e8fede90d35373b86266f8b2be2b7}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classfindNearestPoint_a4f0e81d1a66fbe367bdb879ae1b9e08f}{find\+Nearest\+Process} (std\+::vector$<$ int $>$ \&near\+Indices)
+\begin{DoxyCompactList}\small\item\em this function calculate the nearest point in the given point\+Normal. Before using this function, make sure you have set\+Inpu\+Cloud and a specific\+Points instance. This method was referred to \href{http://pointclouds.org/documentation/tutorials/kdtree_search.php}{\tt http\+://pointclouds.\+org/documentation/tutorials/kdtree\+\_\+search.\+php} \end{DoxyCompactList}\item 
+void \hyperlink{classfindNearestPoint_af50a6d88d17899637652b8e60da7ae43}{set\+Position} (const std\+::vector$<$ float $>$ \&pos)
+\begin{DoxyCompactList}\small\item\em this function takes pos and stores it into private variable specific\+Points \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classfindNearestPoint}{find\+Nearest\+Point} is an finding the closest point on a post smoothing surface. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000006}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\subsubsection[{\texorpdfstring{find\+Nearest\+Point()}{findNearestPoint()}}]{\setlength{\rightskip}{0pt plus 5cm}find\+Nearest\+Point\+::find\+Nearest\+Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classfindNearestPoint_a1b67c72c67f69502153d72f7f9f9ec79}{}\label{classfindNearestPoint_a1b67c72c67f69502153d72f7f9f9ec79}
+constructor 
+
+\subsection{Member Function Documentation}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!find\+Nearest\+Process@{find\+Nearest\+Process}}
+\index{find\+Nearest\+Process@{find\+Nearest\+Process}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\subsubsection[{\texorpdfstring{find\+Nearest\+Process(std\+::vector$<$ int $>$ \&near\+Indices)}{findNearestProcess(std::vector< int > &nearIndices)}}]{\setlength{\rightskip}{0pt plus 5cm}void find\+Nearest\+Point\+::find\+Nearest\+Process (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$ \&}]{near\+Indices}
+\end{DoxyParamCaption}
+)}\hypertarget{classfindNearestPoint_a4f0e81d1a66fbe367bdb879ae1b9e08f}{}\label{classfindNearestPoint_a4f0e81d1a66fbe367bdb879ae1b9e08f}
+
+
+this function calculate the nearest point in the given point\+Normal. Before using this function, make sure you have set\+Inpu\+Cloud and a specific\+Points instance. This method was referred to \href{http://pointclouds.org/documentation/tutorials/kdtree_search.php}{\tt http\+://pointclouds.\+org/documentation/tutorials/kdtree\+\_\+search.\+php} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em near\+Indices} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!readtext@{readtext}}
+\index{readtext@{readtext}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\subsubsection[{\texorpdfstring{readtext(const std\+::string \&filename)}{readtext(const std::string &filename)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ double $>$ find\+Nearest\+Point\+::readtext (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{classfindNearestPoint_adc712dd3762652f1c808098a11ea83b3}{}\label{classfindNearestPoint_adc712dd3762652f1c808098a11ea83b3}
+
+
+\hyperlink{classfindNearestPoint_adc712dd3762652f1c808098a11ea83b3}{readtext()} method reads .txt file, storing the coordinate and push back into current point cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \&filename} & reference of the filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector that store the value read from .txt 
+\end{DoxyReturn}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointNormal > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void find\+Nearest\+Point\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classfindNearestPoint_a9f3e8fede90d35373b86266f8b2be2b7}{}\label{classfindNearestPoint_a9f3e8fede90d35373b86266f8b2be2b7}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{find\+Nearest\+Point@{find\+Nearest\+Point}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!find\+Nearest\+Point@{find\+Nearest\+Point}}
+\subsubsection[{\texorpdfstring{set\+Position(const std\+::vector$<$ float $>$ \&pos)}{setPosition(const std::vector< float > &pos)}}]{\setlength{\rightskip}{0pt plus 5cm}void find\+Nearest\+Point\+::set\+Position (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ float $>$ \&}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{classfindNearestPoint_af50a6d88d17899637652b8e60da7ae43}{}\label{classfindNearestPoint_af50a6d88d17899637652b8e60da7ae43}
+
+
+this function takes pos and stores it into private variable specific\+Points 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pos} & position you want it to be search for its nearest point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/find\+Nearest\+Point.\+h\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{findNearestPoint_8cpp}{find\+Nearest\+Point.\+cpp}\end{DoxyCompactItemize}

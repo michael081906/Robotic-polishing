@@ -29,8 +29,6 @@ catkin_make
 make sure you have these packages installed in the environment.
 
 
-
-
 ## Run demo
 
 After the Build step, switch to  catkin workspace and type:
@@ -39,10 +37,16 @@ roslaunch robotic_polishing robotPolishing.launch
 ```
 to launch the gazebo environment. The open a new terminal and type:
 ```
-rosrun robotic_polishing roboticPolishing_kuka_control_joint
+rosrun robotic_polishing kukapcl.launch
 ```
 
 First cloud viewer window shows the point cloud of the wheel taken by the depth camera. After closing the window (make sure click only ONE time on X button), the program will continue rest of the algorithm. Switch back to gazebo and you can now see the robot is moving.
+
+If you would like to record by using rosbag, you can type:
+```
+roslaunch robotic_polishing kukapcl.launch rosbag:=1
+```
+to record all the topic without /camera and /camera_ir
 
 ## RosTest
 
@@ -50,7 +54,6 @@ At catkin workspace
 ```
 cd ~/catkin_ws
 catkin_make run_tests
-rostest beginner_tutorials beginner_tutorialTest.launch
 ```
 If the test fail with no reason, try to re-run the test after several seconds.
  
@@ -60,15 +63,15 @@ sudo apt install doxygen
 cd <path to repository>
 mkdir docs
 cd docs
-doxygen -g Midterm
+doxygen -g Robotic-polishing
 ```
-open the Midterm file(which is a configuration file of doxygen), and modify input tag into
+open the Robotic-polishing file(which is a configuration file of doxygen), and modify input tag into
 
 INPUT                  = ../include ../src ../test
 
-and then save the file. Back to terminal and type:
+and then save the file. Go back to the terminal and type:
 ```
-doxygen Midterm
+doxygen Robotic-polishing
 ```
 find an index.html in ./html directory, which can be viewed on web browser.
 

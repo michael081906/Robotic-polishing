@@ -1,0 +1,158 @@
+\hypertarget{classpclFastTriangular}{}\section{pcl\+Fast\+Triangular Class Reference}
+\label{classpclFastTriangular}\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+
+
+\hyperlink{classpclFastTriangular}{pcl\+Fast\+Triangular} is an implementation by using pcl fast\+Triangular method to reconstruct the surface.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
+
+
+
+
+{\ttfamily \#include $<$pcl\+Fast\+Triangular.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpclFastTriangular_a0535f67efbb9378f65b59b1e864467ae}{pcl\+Fast\+Triangular} ()\hypertarget{classpclFastTriangular_a0535f67efbb9378f65b59b1e864467ae}{}\label{classpclFastTriangular_a0535f67efbb9378f65b59b1e864467ae}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classpclFastTriangular_a46541fbe8942a38c73f059a7bcaeda9c}{set\+Search\+Radius} (double radius)
+\begin{DoxyCompactList}\small\item\em set a search range into search\+Radius variable \end{DoxyCompactList}\item 
+double \hyperlink{classpclFastTriangular_a866f045ce0907e64c870790641b907a7}{get\+Search\+Radius} ()
+\begin{DoxyCompactList}\small\item\em get a search range from search\+Radius variable \end{DoxyCompactList}\item 
+void \hyperlink{classpclFastTriangular_acaa55d1c898ea7bf0967051561a6f9fb}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclFastTriangular_ac065538d664120522a4887503011ba20}{get\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em get a point cloud data from private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclFastTriangular_a7739a064f2e156ce15860c2ca5396965}{reconctruct} (pcl\+::\+Polygon\+Mesh \&triangles)
+\begin{DoxyCompactList}\small\item\em compute the triangles among the point cloud \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classpclFastTriangular_ab2c0a020a4ae1fe79b7f81340662c1b4}{get\+Seg\+ID} ()
+\begin{DoxyCompactList}\small\item\em get triangle ID from each point cloud \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classpclFastTriangular}{pcl\+Fast\+Triangular} is an implementation by using pcl fast\+Triangular method to reconstruct the surface.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000012}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Member Function Documentation}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!get\+Input\+Cloud@{get\+Input\+Cloud}}
+\index{get\+Input\+Cloud@{get\+Input\+Cloud}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{get\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+Out)}{getInputCloud(pcl::PointCloud< pcl::PointNormal > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Fast\+Triangular\+::get\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_ac065538d664120522a4887503011ba20}{}\label{classpclFastTriangular_ac065538d664120522a4887503011ba20}
+
+
+get a point cloud data from private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!get\+Search\+Radius@{get\+Search\+Radius}}
+\index{get\+Search\+Radius@{get\+Search\+Radius}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{get\+Search\+Radius()}{getSearchRadius()}}]{\setlength{\rightskip}{0pt plus 5cm}double pcl\+Fast\+Triangular\+::get\+Search\+Radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_a866f045ce0907e64c870790641b907a7}{}\label{classpclFastTriangular_a866f045ce0907e64c870790641b907a7}
+
+
+get a search range from search\+Radius variable 
+
+\begin{DoxyReturn}{Returns}
+search range 
+\end{DoxyReturn}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!get\+Seg\+ID@{get\+Seg\+ID}}
+\index{get\+Seg\+ID@{get\+Seg\+ID}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{get\+Seg\+I\+D()}{getSegID()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ pcl\+Fast\+Triangular\+::get\+Seg\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_ab2c0a020a4ae1fe79b7f81340662c1b4}{}\label{classpclFastTriangular_ab2c0a020a4ae1fe79b7f81340662c1b4}
+
+
+get triangle ID from each point cloud 
+
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ triangle ID set of point cloud 
+\end{DoxyReturn}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!reconctruct@{reconctruct}}
+\index{reconctruct@{reconctruct}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{reconctruct(pcl\+::\+Polygon\+Mesh \&triangles)}{reconctruct(pcl::PolygonMesh &triangles)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Fast\+Triangular\+::reconctruct (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Polygon\+Mesh \&}]{triangles}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_a7739a064f2e156ce15860c2ca5396965}{}\label{classpclFastTriangular_a7739a064f2e156ce15860c2ca5396965}
+
+
+compute the triangles among the point cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em triangles} & reference of a polygon\+Mesh \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointNormal > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Fast\+Triangular\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_acaa55d1c898ea7bf0967051561a6f9fb}{}\label{classpclFastTriangular_acaa55d1c898ea7bf0967051561a6f9fb}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}!set\+Search\+Radius@{set\+Search\+Radius}}
+\index{set\+Search\+Radius@{set\+Search\+Radius}!pcl\+Fast\+Triangular@{pcl\+Fast\+Triangular}}
+\subsubsection[{\texorpdfstring{set\+Search\+Radius(double radius)}{setSearchRadius(double radius)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Fast\+Triangular\+::set\+Search\+Radius (
+\begin{DoxyParamCaption}
+\item[{double}]{radius}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclFastTriangular_a46541fbe8942a38c73f059a7bcaeda9c}{}\label{classpclFastTriangular_a46541fbe8942a38c73f059a7bcaeda9c}
+
+
+set a search range into search\+Radius variable 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em radius} & range of choosing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{pclFastTriangular_8h}{pcl\+Fast\+Triangular.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{pclFastTriangular_8cpp}{pcl\+Fast\+Triangular.\+cpp}\end{DoxyCompactItemize}

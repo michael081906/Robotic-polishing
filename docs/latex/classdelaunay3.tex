@@ -1,0 +1,117 @@
+\hypertarget{classdelaunay3}{}\section{delaunay3 Class Reference}
+\label{classdelaunay3}\index{delaunay3@{delaunay3}}
+
+
+This \hyperlink{delaunay3_8h}{delaunay3.\+h} is a header file of the meshing triangle among the point cloud.  
+
+
+
+
+{\ttfamily \#include $<$delaunay3.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classdelaunay3_ad471ec1146aff4415b29ab0d1a6f429e}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classdelaunay3_a1fdbb109ed42bfb672392cc2f39d6a3f}{put\+Point\+Cloud\+Into\+Shx} ()
+\begin{DoxyCompactList}\small\item\em the function set the point cloud information in to pts \end{DoxyCompactList}\item 
+void \hyperlink{classdelaunay3_af591f1401bf4b3c3a85f749b6d0cf831}{process\+Delaunay} (std\+::vector$<$ \hyperlink{structTriad}{Triad} $>$ \&triads)
+\begin{DoxyCompactList}\small\item\em the function processing the delaunay triangle meshing and return the triads \end{DoxyCompactList}\item 
+void \hyperlink{classdelaunay3_a1732c03a4e19398bf68ed3a9edbb3f42}{get\+Shx} (std\+::vector$<$ \hyperlink{structShx}{Shx} $>$ \&pts\+Out)
+\begin{DoxyCompactList}\small\item\em the function return the private pts \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This \hyperlink{delaunay3_8h}{delaunay3.\+h} is a header file of the meshing triangle among the point cloud. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000002}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Member Function Documentation}
+\index{delaunay3@{delaunay3}!get\+Shx@{get\+Shx}}
+\index{get\+Shx@{get\+Shx}!delaunay3@{delaunay3}}
+\subsubsection[{\texorpdfstring{get\+Shx(std\+::vector$<$ Shx $>$ \&pts\+Out)}{getShx(std::vector< Shx > &ptsOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay3\+::get\+Shx (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Shx} $>$ \&}]{pts\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classdelaunay3_a1732c03a4e19398bf68ed3a9edbb3f42}{}\label{classdelaunay3_a1732c03a4e19398bf68ed3a9edbb3f42}
+
+
+the function return the private pts 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em pts\+Out} & is a container that store the structure \hyperlink{structShx}{Shx} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{delaunay3@{delaunay3}!process\+Delaunay@{process\+Delaunay}}
+\index{process\+Delaunay@{process\+Delaunay}!delaunay3@{delaunay3}}
+\subsubsection[{\texorpdfstring{process\+Delaunay(std\+::vector$<$ Triad $>$ \&triads)}{processDelaunay(std::vector< Triad > &triads)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay3\+::process\+Delaunay (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Triad} $>$ \&}]{triads}
+\end{DoxyParamCaption}
+)}\hypertarget{classdelaunay3_af591f1401bf4b3c3a85f749b6d0cf831}{}\label{classdelaunay3_af591f1401bf4b3c3a85f749b6d0cf831}
+
+
+the function processing the delaunay triangle meshing and return the triads 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em triads} & is a container that store the meshing results \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{delaunay3@{delaunay3}!put\+Point\+Cloud\+Into\+Shx@{put\+Point\+Cloud\+Into\+Shx}}
+\index{put\+Point\+Cloud\+Into\+Shx@{put\+Point\+Cloud\+Into\+Shx}!delaunay3@{delaunay3}}
+\subsubsection[{\texorpdfstring{put\+Point\+Cloud\+Into\+Shx()}{putPointCloudIntoShx()}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay3\+::put\+Point\+Cloud\+Into\+Shx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classdelaunay3_a1fdbb109ed42bfb672392cc2f39d6a3f}{}\label{classdelaunay3_a1fdbb109ed42bfb672392cc2f39d6a3f}
+
+
+the function set the point cloud information in to pts 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{delaunay3@{delaunay3}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!delaunay3@{delaunay3}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointNormal > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay3\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classdelaunay3_ad471ec1146aff4415b29ab0d1a6f429e}{}\label{classdelaunay3_ad471ec1146aff4415b29ab0d1a6f429e}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{delaunay3_8h}{delaunay3.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/delaunay3.\+cpp\end{DoxyCompactItemize}

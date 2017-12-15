@@ -34,32 +34,29 @@
 #include <ctime>
 
 findNearestPoint::findNearestPoint() {
-
 }
 
 std::vector<double> findNearestPoint::readtext(const std::string &fileName) {
-  // TODO: remember how to load file in C++
+  // TODO(Michael): remember how to load file in C++
   std::ifstream file(fileName);  // Create a input stream
   std::vector<std::string> readString;
   std::vector<double> readDouble;
   std::string word;
   while (file >> word) {
-    readString.push_back(word);  //push back string, which defined in the vector
-    // TODO: remember how to convert string into double
+    readString.push_back(word);  // push back string, which defined in the vector
+    // TODO(Michael): remember how to convert string into double
     this->specificPoints.push_back(atof(word.c_str()));
     readDouble.push_back(atof(word.c_str()));
   }
   return readDouble;
 }
 
-void findNearestPoint::setPosition(const std::vector<float>& pos)
-{
+void findNearestPoint::setPosition(const std::vector<float>& pos) {
   for (std::vector<float>::const_iterator it = pos.begin(); it < pos.end();
       ++it) {
     this->specificPoints.push_back(*it);
   }
 }
-
 
 void findNearestPoint::setInputCloud(
     pcl::PointCloud<pcl::PointNormal>& cloudIn) {
@@ -74,17 +71,17 @@ void findNearestPoint::findNearestProcess(std::vector<int>& nearIndices) {
   pcl::PointNormal searchPoint;
   pcl::PointCloud<pcl::PointNormal> searchPoints;
   int i;
-  // TODO: There must be a better way to do this
+  // TODO(Michael): There must be a better way to do this
   /*  for (std::vector<double>::const_iterator iter = specificPoints.begin();
-      iter != specificPoints.end(); iter + 3) {
-    searchPoint.x = *iter;
-    searchPoint.y = *(iter + 1);
-    searchPoint.z = *(iter + 2);
-    searchPoints.push_back(searchPoint);
+   iter != specificPoints.end(); iter + 3) {
+   searchPoint.x = *iter;
+   searchPoint.y = *(iter + 1);
+   searchPoint.z = *(iter + 2);
+   searchPoints.push_back(searchPoint);
    } */
+  // 2017.11.26 [Bug fixed] Michael. ++++++iter
   for (std::vector<double>::const_iterator iter = specificPoints.begin();
-      iter < specificPoints.end(); ++++++iter)  // 2017.11.26 [Bug fixed] Michael. ++++++iter
-      {
+      iter < specificPoints.end(); ++++++iter) {
     searchPoint.x = *iter;
     searchPoint.y = *(iter + 1);
     searchPoint.z = *(iter + 2);

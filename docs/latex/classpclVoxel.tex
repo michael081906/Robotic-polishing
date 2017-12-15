@@ -1,0 +1,148 @@
+\hypertarget{classpclVoxel}{}\section{pcl\+Voxel Class Reference}
+\label{classpclVoxel}\index{pcl\+Voxel@{pcl\+Voxel}}
+
+
+\hyperlink{classpclVoxel}{pcl\+Voxel} is an implementation by using pcl voxel\+\_\+grid filter to down sample the point cloud
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
+
+
+
+
+{\ttfamily \#include $<$pcl\+Voxel.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpclVoxel_a77c4be41d81590d53266dbfe9b39eb70}{pcl\+Voxel} ()\hypertarget{classpclVoxel_a77c4be41d81590d53266dbfe9b39eb70}{}\label{classpclVoxel_a77c4be41d81590d53266dbfe9b39eb70}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classpclVoxel_a76f7815ad0e25aa4bda048474d9b4c21}{set\+Leaf\+Size} (float lx, float ly, float lz)
+\begin{DoxyCompactList}\small\item\em set a value into lx, ly, and lz \end{DoxyCompactList}\item 
+vector$<$ float $>$ \hyperlink{classpclVoxel_a1809705dafe6ee554f29e9e74da5f1cf}{get\+Leaf\+Size} ()
+\begin{DoxyCompactList}\small\item\em get value from lx, ly, and lz \end{DoxyCompactList}\item 
+void \hyperlink{classpclVoxel_aed41ac156f4006ebfa0ffb98ad074461}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclVoxel_a0afe52b2fcb7cfddbe917e07c8f24bb4}{get\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em get a point cloud data from private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classpclVoxel_a57b5711e07d1cfb307b8d72766aef447}{filter\+Process} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&cloud\+Out)
+\begin{DoxyCompactList}\small\item\em start down sample the point cloud \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classpclVoxel}{pcl\+Voxel} is an implementation by using pcl voxel\+\_\+grid filter to down sample the point cloud
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000022}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Member Function Documentation}
+\index{pcl\+Voxel@{pcl\+Voxel}!filter\+Process@{filter\+Process}}
+\index{filter\+Process@{filter\+Process}!pcl\+Voxel@{pcl\+Voxel}}
+\subsubsection[{\texorpdfstring{filter\+Process(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{filterProcess(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Voxel\+::filter\+Process (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclVoxel_a57b5711e07d1cfb307b8d72766aef447}{}\label{classpclVoxel_a57b5711e07d1cfb307b8d72766aef447}
+
+
+start down sample the point cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+!!!! Nice work!!! \index{pcl\+Voxel@{pcl\+Voxel}!get\+Input\+Cloud@{get\+Input\+Cloud}}
+\index{get\+Input\+Cloud@{get\+Input\+Cloud}!pcl\+Voxel@{pcl\+Voxel}}
+\subsubsection[{\texorpdfstring{get\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+Out)}{getInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudOut)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Voxel\+::get\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+Out}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclVoxel_a0afe52b2fcb7cfddbe917e07c8f24bb4}{}\label{classpclVoxel_a0afe52b2fcb7cfddbe917e07c8f24bb4}
+
+
+get a point cloud data from private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+Out} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Voxel@{pcl\+Voxel}!get\+Leaf\+Size@{get\+Leaf\+Size}}
+\index{get\+Leaf\+Size@{get\+Leaf\+Size}!pcl\+Voxel@{pcl\+Voxel}}
+\subsubsection[{\texorpdfstring{get\+Leaf\+Size()}{getLeafSize()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ pcl\+Voxel\+::get\+Leaf\+Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclVoxel_a1809705dafe6ee554f29e9e74da5f1cf}{}\label{classpclVoxel_a1809705dafe6ee554f29e9e74da5f1cf}
+
+
+get value from lx, ly, and lz 
+
+\begin{DoxyReturn}{Returns}
+vector$<$float$>$ which contain value of above variables 
+\end{DoxyReturn}
+\index{pcl\+Voxel@{pcl\+Voxel}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!pcl\+Voxel@{pcl\+Voxel}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+Y\+Z $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointXYZ > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Voxel\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+X\+YZ $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclVoxel_aed41ac156f4006ebfa0ffb98ad074461}{}\label{classpclVoxel_aed41ac156f4006ebfa0ffb98ad074461}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{pcl\+Voxel@{pcl\+Voxel}!set\+Leaf\+Size@{set\+Leaf\+Size}}
+\index{set\+Leaf\+Size@{set\+Leaf\+Size}!pcl\+Voxel@{pcl\+Voxel}}
+\subsubsection[{\texorpdfstring{set\+Leaf\+Size(float lx, float ly, float lz)}{setLeafSize(float lx, float ly, float lz)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcl\+Voxel\+::set\+Leaf\+Size (
+\begin{DoxyParamCaption}
+\item[{float}]{lx, }
+\item[{float}]{ly, }
+\item[{float}]{lz}
+\end{DoxyParamCaption}
+)}\hypertarget{classpclVoxel_a76f7815ad0e25aa4bda048474d9b4c21}{}\label{classpclVoxel_a76f7815ad0e25aa4bda048474d9b4c21}
+
+
+set a value into lx, ly, and lz 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em lx} & set the private lx \\
+\hline
+\mbox{\tt in}  & {\em ly} & set the private ly \\
+\hline
+\mbox{\tt in}  & {\em lz} & set the private lz \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{pclVoxel_8h}{pcl\+Voxel.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{pclVoxel_8cpp}{pcl\+Voxel.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="/home/viki/catkin_ws/src/Robotic&#45;polishing/include/pclVoxel.h" name="/home/viki/catkin_ws/src/Robotic&#45;polishing/include/pclVoxel.h">
+<area shape="rect" id="node2" href="$talker_8cpp.html" title="This talker.cpp is a ros node that subscribes point cloud and computes the trajectory f..." alt="" coords="5,109,153,165"/>
+<area shape="rect" id="node3" href="$pclVoxel_8cpp.html" title="This is the implementation of the pclVoxel class. This class consists of 5 methods. Please refer the pclVoxel.h for more detail. " alt="" coords="177,109,376,165"/>
+<area shape="rect" id="node4" href="$pclVoxelTest_8cpp.html" title="pclVoxelTest.cpp consists of 3 unit test cases that test the pclVoxel class. " alt="" coords="400,109,553,165"/>
+</map>

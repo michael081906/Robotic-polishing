@@ -19,14 +19,14 @@
  *  along with kukaControl.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include<ros/ros.h>
-#include<trajectory_msgs/JointTrajectory.h>
-#include<trajectory_msgs/JointTrajectoryPoint.h>
-#include<geometry_msgs/Twist.h>
-#include<iiwa_msgs/JointPosition.h>
-#include<sensor_msgs/JointState.h>
-#include<kdl/chain.hpp>
-#include "Eigen/Core"
+#include <ros/ros.h>
+#include <trajectory_msgs/JointTrajectory.h>
+#include <trajectory_msgs/JointTrajectoryPoint.h>
+#include <geometry_msgs/Twist.h>
+#include <iiwa_msgs/JointPosition.h>
+#include <sensor_msgs/JointState.h>
+#include <kdl/chain.hpp>
+// #include "Eigen/Core"
 #include <kdl/chainfksolver.hpp>
 #include <kdl/chainiksolver.hpp>
 #include <kdl/chainfksolverpos_recursive.hpp>
@@ -35,16 +35,17 @@
 #include <kdl/chainjnttojacsolver.hpp>
 #include <string>
 #include <sstream>
-#ifndef ROBOTIC_POLISHING_INCLUDE_KUKACONTROL_H_
-#define ROBOTIC_POLISHING_INCLUDE_KUKACONTROL_H_
+
+#ifndef INCLUDE_KUKACONTROL_H_
+#define INCLUDE_KUKACONTROL_H_
 /** @brief kukaControl is an implementation of controlling the iiwa kuka arm
  * *
  *  @author Michael Kam (michael081906)
  *  @bug No known bugs.
  */
-class kukaControl{
-private:
-public:
+class kukaControl {
+ private:
+ public:
   /**constructor */
   kukaControl();
   /**@brief initializeJoints sets the initial value for the IK solver
@@ -76,7 +77,4 @@ public:
   KDL::Chain LWR();
 };
 
-
-
-
-#endif /* ROBOTIC_POLISHING_INCLUDE_KUKACONTROL_H_ */
+#endif  // INCLUDE_KUKACONTROL_H_

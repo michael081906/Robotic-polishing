@@ -1,0 +1,258 @@
+\hypertarget{classdijkstraPQ}{}\section{dijkstra\+PQ Class Reference}
+\label{classdijkstraPQ}\index{dijkstra\+PQ@{dijkstra\+PQ}}
+
+
+\hyperlink{classkukaControl}{kuka\+Control} is a header file of finding shortest path among the point cloud.  
+
+
+
+
+{\ttfamily \#include $<$dijkstra\+P\+Q.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdijkstraPQ_a8edda94ff604564b1ae3273bfdb3014e}{dijkstra\+PQ} (int size3)
+\item 
+void \hyperlink{classdijkstraPQ_a372f1b10a704b46cbfd228dfab2a8a97}{add\+Edge} (int u, int v, double w)
+\begin{DoxyCompactList}\small\item\em add distance in to the weighting container \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_a2cc6c8ed66ce145f965eface6cc7853c}{shortest\+Path} (int start\+Node, int end\+Point)
+\begin{DoxyCompactList}\small\item\em start computing shortest distance by using dijkstra algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_a6268acee3ef08aa87bd45b8dcb330f12}{distance\+Calculation} (std\+::vector$<$ int $>$ \&same3indices)
+\begin{DoxyCompactList}\small\item\em request to calculate a specific edge distance in a triangle \end{DoxyCompactList}\item 
+double \hyperlink{classdijkstraPQ_a4da44970fd1314b425e0d00af7ba726c}{cal2\+Point} (int point1, int point2)
+\begin{DoxyCompactList}\small\item\em calculates distance of two points \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_ad0924e412f8dc0be262aa6a1efd819fb}{set\+Tri} (std\+::vector$<$ \hyperlink{structTriad}{Triad} $>$ \&triads\+In)
+\begin{DoxyCompactList}\small\item\em set Tirad into private triads \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_ac83c4c4f6604fbf34cf0de15b254bdd4}{compute\+Weight} ()
+\begin{DoxyCompactList}\small\item\em compute the deistance between two node \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_abe1e628c3e5a6523c6570dcda990f65e}{return\+Dijkstra\+Path} (int start\+Node, int end\+Node, std\+::vector$<$ int $>$ \&path\+Node)
+\begin{DoxyCompactList}\small\item\em return a set of node index on the path \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_abd8f3d392cba1bf31d120a2fe4189189}{set\+Input\+Cloud} (pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)
+\begin{DoxyCompactList}\small\item\em input a point cloud data and set it to the private cloud \end{DoxyCompactList}\item 
+void \hyperlink{classdijkstraPQ_a50558d5dcb4d525e13721f5d8a03ef14}{return\+Dijkstra\+Path\+Position} (int start\+Node, int end\+Node, std\+::vector$<$ \hyperlink{structposition}{position} $>$ \&path\+Pos)
+\begin{DoxyCompactList}\small\item\em return the path position \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classkukaControl}{kuka\+Control} is a header file of finding shortest path among the point cloud. 
+
+\begin{DoxyAuthor}{Author}
+Michael Kam (michael081906) 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000004}{Bug}]No known bugs. \end{DoxyRefDesc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!dijkstra\+PQ@{dijkstra\+PQ}}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{dijkstra\+P\+Q(int size3)}{dijkstraPQ(int size3)}}]{\setlength{\rightskip}{0pt plus 5cm}dijkstra\+P\+Q\+::dijkstra\+PQ (
+\begin{DoxyParamCaption}
+\item[{int}]{size3}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a8edda94ff604564b1ae3273bfdb3014e}{}\label{classdijkstraPQ_a8edda94ff604564b1ae3273bfdb3014e}
+constructor 
+
+\subsection{Member Function Documentation}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{add\+Edge(int u, int v, double w)}{addEdge(int u, int v, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::add\+Edge (
+\begin{DoxyParamCaption}
+\item[{int}]{u, }
+\item[{int}]{v, }
+\item[{double}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a372f1b10a704b46cbfd228dfab2a8a97}{}\label{classdijkstraPQ_a372f1b10a704b46cbfd228dfab2a8a97}
+
+
+add distance in to the weighting container 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em u} & is an node index of a point \\
+\hline
+\mbox{\tt in}  & {\em v} & is an node index of another point \\
+\hline
+\mbox{\tt in}  & {\em w} & is the weighting value between point u and v. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!cal2\+Point@{cal2\+Point}}
+\index{cal2\+Point@{cal2\+Point}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{cal2\+Point(int point1, int point2)}{cal2Point(int point1, int point2)}}]{\setlength{\rightskip}{0pt plus 5cm}double dijkstra\+P\+Q\+::cal2\+Point (
+\begin{DoxyParamCaption}
+\item[{int}]{point1, }
+\item[{int}]{point2}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a4da44970fd1314b425e0d00af7ba726c}{}\label{classdijkstraPQ_a4da44970fd1314b425e0d00af7ba726c}
+
+
+calculates distance of two points 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em point1} & is the first point index \\
+\hline
+\mbox{\tt in}  & {\em point2} & is the second point index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!compute\+Weight@{compute\+Weight}}
+\index{compute\+Weight@{compute\+Weight}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{compute\+Weight()}{computeWeight()}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::compute\+Weight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_ac83c4c4f6604fbf34cf0de15b254bdd4}{}\label{classdijkstraPQ_ac83c4c4f6604fbf34cf0de15b254bdd4}
+
+
+compute the deistance between two node 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!distance\+Calculation@{distance\+Calculation}}
+\index{distance\+Calculation@{distance\+Calculation}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{distance\+Calculation(std\+::vector$<$ int $>$ \&same3indices)}{distanceCalculation(std::vector< int > &same3indices)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::distance\+Calculation (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$ \&}]{same3indices}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a6268acee3ef08aa87bd45b8dcb330f12}{}\label{classdijkstraPQ_a6268acee3ef08aa87bd45b8dcb330f12}
+
+
+request to calculate a specific edge distance in a triangle 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em same3indices} & contains three node index of a traingle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!return\+Dijkstra\+Path@{return\+Dijkstra\+Path}}
+\index{return\+Dijkstra\+Path@{return\+Dijkstra\+Path}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{return\+Dijkstra\+Path(int start\+Node, int end\+Node, std\+::vector$<$ int $>$ \&path\+Node)}{returnDijkstraPath(int startNode, int endNode, std::vector< int > &pathNode)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::return\+Dijkstra\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Node, }
+\item[{int}]{end\+Node, }
+\item[{std\+::vector$<$ int $>$ \&}]{path\+Node}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_abe1e628c3e5a6523c6570dcda990f65e}{}\label{classdijkstraPQ_abe1e628c3e5a6523c6570dcda990f65e}
+
+
+return a set of node index on the path 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em start\+Node} & is an node index of the start point \\
+\hline
+\mbox{\tt in}  & {\em end\+Node} & is an node index of the end point \\
+\hline
+\mbox{\tt out}  & {\em path\+Node} & is a container that stores a sets of node index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!return\+Dijkstra\+Path\+Position@{return\+Dijkstra\+Path\+Position}}
+\index{return\+Dijkstra\+Path\+Position@{return\+Dijkstra\+Path\+Position}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{return\+Dijkstra\+Path\+Position(int start\+Node, int end\+Node, std\+::vector$<$ position $>$ \&path\+Pos)}{returnDijkstraPathPosition(int startNode, int endNode, std::vector< position > &pathPos)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::return\+Dijkstra\+Path\+Position (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Node, }
+\item[{int}]{end\+Node, }
+\item[{std\+::vector$<$ {\bf position} $>$ \&}]{path\+Pos}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a50558d5dcb4d525e13721f5d8a03ef14}{}\label{classdijkstraPQ_a50558d5dcb4d525e13721f5d8a03ef14}
+
+
+return the path position 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em start\+Node} & is an node index of the start point \\
+\hline
+\mbox{\tt in}  & {\em end\+Node} & is an node index of the end point \\
+\hline
+\mbox{\tt out}  & {\em path\+Pos} & is a container that stores a sets of position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!set\+Input\+Cloud@{set\+Input\+Cloud}}
+\index{set\+Input\+Cloud@{set\+Input\+Cloud}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{set\+Input\+Cloud(pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&cloud\+In)}{setInputCloud(pcl::PointCloud< pcl::PointNormal > &cloudIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::set\+Input\+Cloud (
+\begin{DoxyParamCaption}
+\item[{pcl\+::\+Point\+Cloud$<$ pcl\+::\+Point\+Normal $>$ \&}]{cloud\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_abd8f3d392cba1bf31d120a2fe4189189}{}\label{classdijkstraPQ_abd8f3d392cba1bf31d120a2fe4189189}
+
+
+input a point cloud data and set it to the private cloud 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cloud\+In} & reference of a point cloud \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!set\+Tri@{set\+Tri}}
+\index{set\+Tri@{set\+Tri}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{set\+Tri(std\+::vector$<$ Triad $>$ \&triads\+In)}{setTri(std::vector< Triad > &triadsIn)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::set\+Tri (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Triad} $>$ \&}]{triads\+In}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_ad0924e412f8dc0be262aa6a1efd819fb}{}\label{classdijkstraPQ_ad0924e412f8dc0be262aa6a1efd819fb}
+
+
+set Tirad into private triads 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em contains} & a sets of \hyperlink{structTriad}{Triad} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{dijkstra\+PQ@{dijkstra\+PQ}!shortest\+Path@{shortest\+Path}}
+\index{shortest\+Path@{shortest\+Path}!dijkstra\+PQ@{dijkstra\+PQ}}
+\subsubsection[{\texorpdfstring{shortest\+Path(int start\+Node, int end\+Point)}{shortestPath(int startNode, int endPoint)}}]{\setlength{\rightskip}{0pt plus 5cm}void dijkstra\+P\+Q\+::shortest\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Node, }
+\item[{int}]{end\+Point}
+\end{DoxyParamCaption}
+)}\hypertarget{classdijkstraPQ_a2cc6c8ed66ce145f965eface6cc7853c}{}\label{classdijkstraPQ_a2cc6c8ed66ce145f965eface6cc7853c}
+
+
+start computing shortest distance by using dijkstra algorithm. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em start\+Node} & is an node index of the start point \\
+\hline
+\mbox{\tt in}  & {\em end\+Point} & is an node index of the end point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/include/\hyperlink{dijkstraPQ_8h}{dijkstra\+P\+Q.\+h}\item 
+/home/viki/catkin\+\_\+ws/src/\+Robotic-\/polishing/src/pcl\+\_\+midterm/\hyperlink{dijkstraPQ_8cpp}{dijkstra\+P\+Q.\+cpp}\end{DoxyCompactItemize}
