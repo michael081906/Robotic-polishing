@@ -19,16 +19,16 @@
  *  along with jointControlKuka.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "kukaControl.h"
+#include <kukaControl.h>
 #include <ros/ros.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
-#include "robotic_polishing/Trajectory.h"
+#include <robotic_polishing/Trajectory.h>
 #include <geometry_msgs/Twist.h>
 #include <iiwa_msgs/JointPosition.h>
 #include <sensor_msgs/JointState.h>
 #include <kdl/chain.hpp>
-#include "Eigen/Core"
+// #include "Eigen/Core"
 #include <kdl/chainfksolver.hpp>
 #include <kdl/chainiksolver.hpp>
 #include <kdl/chainfksolverpos_recursive.hpp>
@@ -38,10 +38,11 @@
 #include <string>
 #include <sstream>
 #include <cmath>
+#include <vector>
 
 sensor_msgs::JointState joints;
 bool initialized = false;
-//callback for reading joint values
+// callback for reading joint values
 /** @brief get_joints is a callback function that subscribe the joint position data
  * and set it into joints vector
  *  @param[in] data sensor_msgs::JointState that contains joint position
@@ -89,8 +90,8 @@ int main(int argc, char * argv[]) {
   KDL::Chain chain = kc.LWR();
   KDL::ChainFkSolverPos_recursive fksolver = KDL::ChainFkSolverPos_recursive(
       chain);  // define the forward kinematic solver via the defined chain
-  KDL::ChainIkSolverVel_pinv iksolverv = KDL::ChainIkSolverVel_pinv(chain);  //Inverse velocity solver
-  KDL::ChainIkSolverPos_NR iksolver(chain, fksolver, iksolverv, 100, 1e-6);  //Maximum 100 iterations, stop at accuracy 1e-6
+  KDL::ChainIkSolverVel_pinv iksolverv = KDL::ChainIkSolverVel_pinv(chain);  // Inverse velocity solver
+  KDL::ChainIkSolverPos_NR iksolver(chain, fksolver, iksolverv, 100, 1e-6);  // Maximum 100 iterations, stop at accuracy 1e-6
   unsigned int nj = chain.getNrOfJoints();  // get the number of joints from the chain
   KDL::JntArray jointpositions = KDL::JntArray(nj);  // define a joint array in KDL format for the joint positions
   KDL::JntArray jointpositions_new = KDL::JntArray(nj);  // define a joint array in KDL format for the next joint positions
@@ -111,7 +112,7 @@ int main(int argc, char * argv[]) {
       "FindTrajectory");
   robotic_polishing::Trajectory srv;
   int loop_freq = 10;
-  float dt = (float) 1 / loop_freq;
+  float dt = static_cast<float>(1)/ loop_freq; // 2017.12.15 Bug fix! float dt = static_cast<float>(1/ loop_freq);
   ros::Rate loop_rate(loop_freq);
   double roll, pitch, yaw, x, y, z;
   KDL::Frame cartpos;
@@ -141,18 +142,24 @@ int main(int argc, char * argv[]) {
 
   // ***********************************************************************************//
   float xStart, yStart, zStart, xEnd, yEnd, zEnd;
-  /*home.getParam("xStart", xStart);
-   home.getParam("yStart", yStart);
-   home.getParam("zStart", zStart);
-   home.getParam("xEnd", xEnd);
-   home.getParam("yEnd", yEnd);
-   home.getParam("zEnd", zEnd);*/
-  xStart = 0.8;
-  yStart = 0.1;
-  zStart = 0.3;
-  xEnd = 0.8;
-  yEnd = -0.1;
-  zEnd = 0.3;
+  int iterationMax;
+  home.getParam("xStart", xStart);
+  home.getParam("yStart", yStart);
+  home.getParam("zStart", zStart);
+  home.getParam("xEnd", xEnd);
+  home.getParam("yEnd", yEnd);
+  home.getParam("zEnd", zEnd);
+  home.getParam("times", iterationMax);
+
+  /*
+   xStart = 0.8;
+   yStart = 0.1;
+   zStart = 0.3;
+   xEnd = 0.8;
+   yEnd = -0.1;
+   zEnd = 0.3;
+   iterationMax = 5;*/
+
   srv.request.start.push_back(xStart);
   srv.request.start.push_back(yStart);
   srv.request.start.push_back(zStart);
@@ -272,7 +279,7 @@ int main(int argc, char * argv[]) {
   ROS_INFO("cmd_rz= %f\n", yaw);
 
   pt.time_from_start = ros::Duration(3.0);
-  KDL::Rotation rpy = KDL::Rotation::RPY(roll, pitch, yaw);  //Rotation built from Roll-Pitch-Yaw angles
+  KDL::Rotation rpy = KDL::Rotation::RPY(roll, pitch, yaw);  // Rotation built from Roll-Pitch-Yaw angles
   cartpos.p[0] = x;
   cartpos.p[1] = y;
   cartpos.p[2] = z;
@@ -334,7 +341,6 @@ int main(int argc, char * argv[]) {
   double d0, d1, d2, d3, d4, d5, d6;
   double d01, d02, d03, d04, d05, d06, d07;
   int iterationTime = 0;
-  int iterationMax = 5;
   while (ros::ok()) {
 
     if (iterationTime != iterationMax) {
