@@ -17,6 +17,10 @@ In your catkin workspace directory (or create a new one)
 ```
 git clone --recursive https://github.com/michael081906/Robotic-polishing.git
 git clone --recursive https://github.com/michael081906/iiwa_stack.git
+git clone --recursive https://github.com/ros-simulation/gazebo_ros_pkgs.git
+git clone --recursive https://github.com/ros-controls/realtime_tools.git
+git clone --recursive https://github.com/michael081906/control_toolbox.git
+git clone --recursive https://github.com/ros-controls/ros_control.git
 ```
 At catkin workspace 
 ```
@@ -26,8 +30,19 @@ catkin_make
 
 ## Dependencies (and how to install if not included in repository)
 
-make sure you have these packages installed in the environment.
+Make sure you have these packages installed in the environment:
+ros-kinetic-velocity-controllers
+ros-kinetic-ros-control
+ros-kinetic-position-controllers
+ros-kinetic-joint-state-controller
+ros-kinetic-joint-trajectory-controller
 
+If not, type:
+
+```
+sudo apt-get install ros-kinetic-velocity-controllers ros-kinetic-ros-control ros-kinetic-position-controllers ros-kinetic-joint-state-controller ros-kinetic-joint-trajectory-controller
+```
+to install the packages.
 
 ## Run demo
 
