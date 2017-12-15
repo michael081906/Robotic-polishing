@@ -96,7 +96,7 @@ find an index.html in ./html directory, which can be viewed on web browser.
 Point Cloud Library(pcl) License: Copyright (c) 2012-, Open Perception, Inc.
 Doxygen license: Copyright © 1997-2016 by Dimitri van Heesch.
 Googletest license: Copyright 2008, Google Inc.
-Delunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
+Delaunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
 iiwa_stack license: Copyright (c) 2016-2017, Salvatore Virga - salvo.virga@tum.de
 
 
