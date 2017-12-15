@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   trajectory_msgs
   roslib
+  iiwa_msgs
 )
 
 find_package( orocos_kdl REQUIRED )
@@ -107,7 +108,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES mrepathplanning
 # 11/30
-  CATKIN_DEPENDS message_runtime std_msgs sensor_msgs
+  CATKIN_DEPENDS message_runtime std_msgs sensor_msgs iiwa_msgs
 #  DEPENDS system_lib
 )
 
@@ -206,11 +207,12 @@ add_executable(talkerpcl
      src/pcl_midterm/delaunay3.cpp
      src/pcl_midterm/dijkstraPQ.cpp
      )
-target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(talkerpcl ${catkin_LIBRARIES} ${PCL_LIBRARIES} )
+add_dependencies(talkerpcl ${PROJECT_NAME}_gencpp iiwa_msgs_generate_messages_cpp)
 
 add_executable(roboticPolishing_kuka_control_joint src/jointControlKuka.cpp src/kuka_control/kukaControl.cpp)
-target_link_libraries(roboticPolishing_kuka_control_joint ${catkin_LIBRARIES} orocos-kdl)
-
+target_link_libraries(roboticPolishing_kuka_control_joint ${catkin_LIBRARIES} orocos-kdl )
+add_dependencies(roboticPolishing_kuka_control_joint ${PROJECT_NAME}_gencpp iiwa_msgs_generate_messages_cpp)
 
 #############
 ## Testing ##
