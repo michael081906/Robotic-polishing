@@ -97,24 +97,24 @@ find an index.html in ./html directory, which can be viewed on web browser.
 
 ## License 
 
-Point Cloud Library(pcl) License: Copyright (c) 2012-, Open Perception, Inc.
-Doxygen license: Copyright © 1997-2016 by Dimitri van Heesch.
-Googletest license: Copyright 2008, Google Inc.
-Delaunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
-iiwa_stack license: Copyright (c) 2016-2017, Salvatore Virga - salvo.virga@tum.de
+- Point Cloud Library(pcl) License: Copyright (c) 2012-, Open Perception, Inc.
+- Doxygen license: Copyright © 1997-2016 by Dimitri van Heesch.
+- Googletest license: Copyright 2008, Google Inc.
+- Delaunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
+- iiwa_stack license: Copyright (c) 2016-2017, Salvatore Virga - salvo.virga@tum.de
 
 
 ## Dependencies
 
-Kinetic version of Robot operating system(ROS) framework under Ubuntu 16.04 LTS.
-Rviz and Gazebo
-Eclipse
-CMake
-Google Test Framework for unit testing. Copyright (c) 2008, Google Inc.
-Point cloud library(PCL) for point cloud processing. BSD License. Copyright (c) 2012-2017, Open Perception, Inc.
-ROS stack: https://github.com/SalvoVirga/iiwa_stack.git BSD License. Copyright (c) 2016-2017, Salvatore Virga.
-Github: https://github.com/michael081906/MidtermProject.git BSD License. Copyright (c) 2017, Michael Kam.
-Doxygen: Copyright © 1997-2016 by Dimitri van Heesch.
-Delunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
+- Kinetic version of Robot operating system(ROS) framework under Ubuntu 16.04 LTS.  
+- Rviz and Gazebo
+- Eclipse
+- CMake
+- Google Test Framework for unit testing. Copyright (c) 2008, Google Inc.
+- Point cloud library(PCL) for point cloud processing. BSD License. Copyright (c) 2012-2017, Open Perception, Inc.
+- ROS stack: https://github.com/SalvoVirga/iiwa_stack.git BSD License. Copyright (c) 2016-2017, Salvatore Virga.
+- Github: https://github.com/michael081906/MidtermProject.git BSD License. Copyright (c) 2017, Michael Kam.
+- Doxygen: Copyright © 1997-2016 by Dimitri van Heesch.
+- Delunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
 
 
