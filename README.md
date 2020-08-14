@@ -10,13 +10,13 @@ During a casting process such as solidifying metal plates, those metal plates us
 
 ## Presentation link:
 
-Youtube:https://www.youtube.com/watch?v=YhQdyyhUI3c&feature=youtu.be
-Google slides:https://docs.google.com/presentation/d/1rI3Nj8a8sGg6t7eYuaSVSCyE0983Q329ykSKCLgTq6U/edit#slide=id.p
+- [Youtube](https://www.youtube.com/watch?v=YhQdyyhUI3c&feature=youtu.be)
+- [Google slides](https://docs.google.com/presentation/d/1rI3Nj8a8sGg6t7eYuaSVSCyE0983Q329ykSKCLgTq6U/edit#slide=id.p)
 
 ## SIP process link:
 
-SIP process: https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0
-Sprint reflection: https://docs.google.com/document/d/1ROcQN64o7sSzH2lZel_-hgHf1hhe9IFEqnSOjLyZbQA/edit
+- [SIP process](https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0)
+- [Sprint reflection](https://docs.google.com/document/d/1ROcQN64o7sSzH2lZel_-hgHf1hhe9IFEqnSOjLyZbQA/edit)
 
 ## Installation and build of package
 
@@ -37,12 +37,12 @@ catkin_make
 
 ## Dependencies (and how to install if not included in repository)
 
-Make sure you have these packages installed in the environment:
-ros-kinetic-velocity-controllers
-ros-kinetic-ros-control
-ros-kinetic-position-controllers
-ros-kinetic-joint-state-controller
-ros-kinetic-joint-trajectory-controller
+Make sure you have these packages installed in the environment:  
+- ros-kinetic-velocity-controllers  
+- ros-kinetic-ros-control  
+- ros-kinetic-position-controllers  
+- ros-kinetic-joint-state-controller  
+- ros-kinetic-joint-trajectory-controller  
 
 If not, type:
 
@@ -77,7 +77,7 @@ At catkin workspace
 cd ~/catkin_ws
 catkin_make run_tests
 ```
-If the test fail with no reason, try to re-run the test after several seconds.
+If the test fail with no reason, try to re-run the test after several seconds.  
  
 ## Doxygen documentation
 ```
