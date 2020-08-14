@@ -1,5 +1,5 @@
 # 2020/8/12 Update
-This was a final project of an awesome course ENPM808X (Advanced Topics in Engineering; Software Development for Robotics) in 2017. I learned so much from this course and have been using some of the content during my everyday research programming tasks. This is a deprecated repository, but I just put it here to show my learning footprint.   
+This was a final project of an awesome course ENPM808X (Advanced Topics in Engineering; Software Development for Robotics) in 2017. I learned so much from this course and have been using some of the contents during my everyday research programming tasks. This is a deprecated repository, but I just put it here to show my learning footprint.   
 
 # Robotic-polishing
 [![Build Status](https://travis-ci.org/michael081906/Robotic-polishing.svg?branch=master)](https://travis-ci.org/michael081906/Robotic-polishing)
