@@ -7,15 +7,15 @@ This was a final project of an awesome course ENPM808X (Advanced Topics in Engin
 
 <img src="https://github.com/michael081906/ros-project-robotic-polishing/blob/master/docs/robot-polishing-demo.gif" width="400" >  
 
-## Overview and purpose of the project 
+## Overview
 
-During a casting process such as solidifying metal plates, those metal plates usually have a coarse surface and is necessary to apply a polishing procedure to smooth the workpiece’s surface. Therefore, this project goal is to develop an industrial robotic application for polishing surface of a workpiece. The project consists of a robotic arm and a depth camera. The robotic arm will operate motion for polishing based on multiple positions sent from the depth camera. The depth camera will generate point cloud data of the object first and sends it to the robotic arm. The robotic arm will then start to polish the target surface by using the point cloud information. The module will be developed by using robot operating system(ROS) framework and simulating in gazebo.
+During a casting process such as solidifying metal plates,the metal plates usually have a coarse surface and it's necessary to apply a polishing procedure to smooth the workpiece’s surface. Therefore, the goal of this project is to develop a robotic application for polishing surface. The project consists of a robotic arm and a depth camera. The robotic arm will operate motions for polishing based on multiple positions sent from the depth camera. The depth camera will generate pointcloud data of the object first and sends it to the robotic arm. The robotic arm will then start to polish the target surface by using the pointcloud information. The module was developed by using Robot Operating System(ROS) with Kinetic version and simulated in gazebo. 
 
 
-## Presentation link:
+## Presentation link
 - [Google slides](https://docs.google.com/presentation/d/1rI3Nj8a8sGg6t7eYuaSVSCyE0983Q329ykSKCLgTq6U/edit#slide=id.p)
 
-## SIP process link:
+## SIP process link
 
 - [SIP process](https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0)
 - [Sprint reflection](https://docs.google.com/document/d/1ROcQN64o7sSzH2lZel_-hgHf1hhe9IFEqnSOjLyZbQA/edit)
@@ -37,7 +37,7 @@ cd ~/catkin_ws
 catkin_make 
 ```
 
-## Dependencies (and how to install if not included in repository)
+## Dependencies installation 
 
 Make sure you have these packages installed in the environment:  
 - ros-kinetic-velocity-controllers  
@@ -55,7 +55,7 @@ to install the packages.
 
 ## Run demo
 
-After the Build step, switch to  catkin workspace and type:
+After the Build step, switch to catkin workspace and type:
 ```
 roslaunch robotic_polishing robotPolishing.launch
 ```
@@ -64,7 +64,7 @@ to launch the gazebo environment. The open a new terminal and type:
 rosrun robotic_polishing kukapcl.launch
 ```
 
-First cloud viewer window shows the point cloud of the wheel taken by the depth camera. After closing the window (make sure click only ONE time on X button), the program will continue rest of the algorithm. Switch back to gazebo and you can now see the robot is moving.
+First cloud viewer window shows the pointcloud of the wheel taken by the depth camera. After closing the window (make sure you click only ONCE on X button), the program will continue. Switch back to gazebo and you can now see the robot is moving.
 
 If you would like to record by using rosbag, you can type:
 ```
@@ -109,7 +109,7 @@ find an index.html in ./html directory, which can be viewed on web browser.
 - iiwa_stack license: Copyright (c) 2016-2017, Salvatore Virga - salvo.virga@tum.de
 
 
-## Dependencies
+## Dependencies List
 
 - Kinetic version of Robot operating system(ROS) framework under Ubuntu 16.04 LTS.  
 - Rviz and Gazebo
