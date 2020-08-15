@@ -4,20 +4,20 @@
 # The 'wstool' utility is the preferred way of adding elements to this file. To
 # add all repositories from an existing workspace, you can use `wstool scrape`.
 
-- git:
-    local-name: gazebo_ros_pkgs
-    uri: https://github.com/ros-simulation/gazebo_ros_pkgs.git
-- git:
-    local-name: realtime_tools
-    uri: https://github.com/ros-controls/realtime_tools.git
-- git:
-    local-name: control_toolbox
-    uri: https://github.com/michael081906/control_toolbox.git
-- git:
-    local-name: ros_control
-    uri: https://github.com/ros-controls/ros_control.git
-- git:
-    local-name: iiwa_stack
-    uri: https://github.com/michael081906/iiwa_stack.git
+#- git:
+#    local-name: gazebo_ros_pkgs
+#    uri: https://github.com/ros-simulation/gazebo_ros_pkgs.git
+#- git:
+#    local-name: realtime_tools
+#    uri: https://github.com/ros-controls/realtime_tools.git
+#- git:
+#    local-name: control_toolbox
+#    uri: https://github.com/michael081906/control_toolbox.git
+#- git:
+#    local-name: ros_control
+#    uri: https://github.com/ros-controls/ros_control.git
+#- git:
+#    local-name: iiwa_stack
+#    uri: https://github.com/michael081906/iiwa_stack.git
 
 
