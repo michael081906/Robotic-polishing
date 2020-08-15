@@ -5,7 +5,7 @@ This was a final project of an awesome course ENPM808X (Advanced Topics in Engin
 [![Build Status](https://travis-ci.org/michael081906/Robotic-polishing.svg?branch=master)](https://travis-ci.org/michael081906/Robotic-polishing)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-<img src="https://github.com/michael081906/rotation-filter/blob/michael081906-patch-readme/docs/demo.gif" width="400" >  
+<img src="https://github.com/michael081906/ros-project-robotic-polishing/blob/master/docs/robot-polishing-demo.gif" width="400" >  
 
 ## Overview and purpose of the project 
 
