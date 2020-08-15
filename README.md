@@ -1,6 +1,10 @@
 ## 2020/8/12 Update
 This was a final project of an awesome course ENPM808X (Advanced Topics in Engineering; Software Development for Robotics) in 2017. I learned so much from this course and have been using some of the contents during my everyday research programming tasks. This is a deprecated repository, but I just put it here to show my learning footprint.   
 
+###TODO:
+1. iiwa_stack has error with "iiwa_ros/command/joint_position.hpp" during build. 
+
+
 # Robotic-polishing
 [![Build Status](https://travis-ci.org/michael081906/ros-project-robotic-polishing.svg?branch=master)](https://travis-ci.org/michael081906/ros-project-robotic-polishing)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
@@ -11,49 +15,32 @@ This was a final project of an awesome course ENPM808X (Advanced Topics in Engin
 
 During a casting process such as solidifying metal plates,the metal plates usually have a coarse surface and it's necessary to apply a polishing procedure to smooth the workpiece’s surface. Therefore, the goal of this project is to develop a robotic application for polishing surface. The project consists of a robotic arm and a depth camera. The robotic arm will operate motions for polishing based on multiple positions sent from the depth camera. The depth camera will generate pointcloud data of the object first and sends it to the robotic arm. The robotic arm will then start to polish the target surface by using the pointcloud information. The module was developed by using Robot Operating System(ROS) with Kinetic version and simulated in gazebo. 
 
-
-## Presentation link
+## Presentation
 - [Google slides](https://docs.google.com/presentation/d/1rI3Nj8a8sGg6t7eYuaSVSCyE0983Q329ykSKCLgTq6U/edit#slide=id.p)
 
-## SIP process link
+## SIP Process
 
 - [SIP process](https://docs.google.com/spreadsheets/d/1UUcCnmibCKxxiiPX6WSljX4oefd2pRVzwdVSvT2h65M/edit#gid=0)
 - [Sprint reflection](https://docs.google.com/document/d/1ROcQN64o7sSzH2lZel_-hgHf1hhe9IFEqnSOjLyZbQA/edit)
 
-## Installation and build of package
+## Installation
 
 In your catkin workspace directory (or create a new one)
 ```
-git clone --recursive https://github.com/michael081906/Robotic-polishing.git
-git clone --recursive https://github.com/michael081906/iiwa_stack.git
-git clone --recursive https://github.com/ros-simulation/gazebo_ros_pkgs.git
-git clone --recursive https://github.com/ros-controls/realtime_tools.git
-git clone --recursive https://github.com/michael081906/control_toolbox.git
-git clone --recursive https://github.com/ros-controls/ros_control.git
+git clone --recursive https://github.com/michael081906/ros-project-robotic-polishing.git
 ```
-At catkin workspace 
+Make sure you have the dependencies install
+```
+cd ~/catkin_ws/src
+bash ./ros-project-robotic-polishing/dependencies_install.bash
+```
+Go back to the catkin workspace 
 ```
 cd ~/catkin_ws
 catkin_make 
 ```
 
-## Dependencies installation 
-
-Make sure you have these packages installed in the environment:  
-- ros-kinetic-velocity-controllers  
-- ros-kinetic-ros-control  
-- ros-kinetic-position-controllers  
-- ros-kinetic-joint-state-controller  
-- ros-kinetic-joint-trajectory-controller  
-
-If not, type:
-
-```
-sudo apt-get install ros-kinetic-velocity-controllers ros-kinetic-ros-control ros-kinetic-position-controllers ros-kinetic-joint-state-controller ros-kinetic-joint-trajectory-controller
-```
-to install the packages.
-
-## Run demo
+## Run Demo
 
 After the Build step, switch to catkin workspace and type:
 ```
@@ -81,7 +68,7 @@ catkin_make run_tests
 ```
 If the test fail with no reason, try to re-run the test after several seconds.  
  
-## Doxygen documentation
+## Doxygen Documentation
 ```
 sudo apt install doxygen
 cd <path to repository>
