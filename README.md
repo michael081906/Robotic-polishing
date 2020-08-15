@@ -3,14 +3,16 @@ This was a final project of an awesome course ENPM808X (Advanced Topics in Engin
 
 # Robotic-polishing
 [![Build Status](https://travis-ci.org/michael081906/Robotic-polishing.svg?branch=master)](https://travis-ci.org/michael081906/Robotic-polishing)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
+<img src="https://github.com/michael081906/rotation-filter/blob/michael081906-patch-readme/docs/demo.gif" width="400" >  
 
 ## Overview and purpose of the project 
 
 During a casting process such as solidifying metal plates, those metal plates usually have a coarse surface and is necessary to apply a polishing procedure to smooth the workpiece’s surface. Therefore, this project goal is to develop an industrial robotic application for polishing surface of a workpiece. The project consists of a robotic arm and a depth camera. The robotic arm will operate motion for polishing based on multiple positions sent from the depth camera. The depth camera will generate point cloud data of the object first and sends it to the robotic arm. The robotic arm will then start to polish the target surface by using the point cloud information. The module will be developed by using robot operating system(ROS) framework and simulating in gazebo.
 
-## Presentation link:
 
-- [Youtube](https://www.youtube.com/watch?v=YhQdyyhUI3c&feature=youtu.be)
+## Presentation link:
 - [Google slides](https://docs.google.com/presentation/d/1rI3Nj8a8sGg6t7eYuaSVSCyE0983Q329ykSKCLgTq6U/edit#slide=id.p)
 
 ## SIP process link:
