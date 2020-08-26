@@ -5,7 +5,7 @@
 <img src="https://github.com/michael081906/ros-project-robotic-polishing/blob/master/docs/robot-polishing-demo.gif" width="400" >  
 
 ### Updates
-(08/15/20) This was a final project of an awesome course ENPM808X (Advanced Topics in Engineering; Software Development for Robotics) in 2017. I learned so much from this course and have been using some of the contents during my everyday research programming tasks. This is a deprecated repository, but I just put it here to show my learning footprint.   
+(08/15/20) This was a final project of an awesome course ENPM808X (Advanced Topics in Engineering; Software Development for Robotics) in 2017. I learned so much from this course and have been using some of the contents during my everyday programming tasks. This is a deprecated repository, but I just put it here as my learning footprint.   
 
 ### TODO:
 1. iiwa_stack has error with "iiwa_ros/command/joint_position.hpp" during build. 
