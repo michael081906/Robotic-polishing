@@ -104,7 +104,6 @@ find an index.html in ./html directory, which can be viewed on web browser.
 - Google Test Framework for unit testing. Copyright (c) 2008, Google Inc.
 - Point cloud library(PCL) for point cloud processing. BSD License. Copyright (c) 2012-2017, Open Perception, Inc.
 - ROS stack: https://github.com/SalvoVirga/iiwa_stack.git BSD License. Copyright (c) 2016-2017, Salvatore Virga.
-- Github: https://github.com/michael081906/MidtermProject.git BSD License. Copyright (c) 2017, Michael Kam.
 - Doxygen: Copyright © 1997-2016 by Dimitri van Heesch.
 - Delunay triangulation S-hull license: Copyright 2016 Dr David Sinclair
 
